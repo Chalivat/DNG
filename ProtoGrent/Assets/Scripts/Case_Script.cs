@@ -17,6 +17,6 @@ public class Case_Script : MonoBehaviour
 
     public void UpdateBoard(Vector2 pos)
     {
-        
+        GetComponentInParent<Board_Script>().allCase[(int)pos.x,(int)pos.y] = this;
     }
 }
