@@ -9,7 +9,7 @@ public class Board_Script : MonoBehaviour
 
     private void OnEnable()
     {
-
+        Debug.Log("coucou");
     }
 
 
