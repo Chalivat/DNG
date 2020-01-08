@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class CardSelection_Script : MonoBehaviour
 {
-    List<GameObject> nombrePioche = new List<GameObject>();
-    void Start()
-    {
-        
-    }
+    public List<GameObject> nombrePioche = new List<GameObject>();
     
     void Update()
     {

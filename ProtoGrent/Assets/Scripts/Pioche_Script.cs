@@ -5,17 +5,33 @@ using UnityEngine;
 public class Pioche_Script : MonoBehaviour
 {
     public List<GameObject> carte = new List<GameObject>();
+    public CardSelection_Script selection;
     public int nombrePioche;
+    int nombreCarte;
 
     void Start()
     {
+        selection = GetComponent<CardSelection_Script>();
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            ShowCarte(nombrePioche);
+            CombienDePioche(nombrePioche);
+            ShowCarte(nombreCarte);
+        }
+    }
+
+    void CombienDePioche(int nombre)
+    {
+        if(nombrePioche > 3)
+        {
+            nombreCarte = 5;
+        }
+        else
+        {
+            nombreCarte = 3;
         }
     }
 
@@ -25,6 +41,7 @@ public class Pioche_Script : MonoBehaviour
         {
             int rnd = Random.Range(0, carte.Count - 1);
             print(carte[rnd]);
+            selection.nombrePioche.Add(carte[rnd]);
             carte.RemoveAt(rnd);
         }
     }

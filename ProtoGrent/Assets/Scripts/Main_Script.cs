@@ -5,6 +5,7 @@ using UnityEngine;
 public class Main_Script : MonoBehaviour
 {
     List<GameObject> carteMain = new List<GameObject>();
+    
 
     void Start()
     {
