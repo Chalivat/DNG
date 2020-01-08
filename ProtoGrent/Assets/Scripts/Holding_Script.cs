@@ -5,6 +5,7 @@ using UnityEngine;
 public class Holding_Script : MonoBehaviour
 {
     private GameObject Card, Case;
+    private Card card;
     private bool canPlayCard;
     public Camera cam;
 
@@ -31,6 +32,7 @@ public class Holding_Script : MonoBehaviour
                 //canPlayCard = Case.Check(Card);
             }
         }
+        else canPlayCard = false;
 
     }
 
@@ -43,5 +45,11 @@ public class Holding_Script : MonoBehaviour
                 //Case.PlayCard
             }
         }
+    }
+
+    void StartHoldingCard(GameObject newCard)
+    {
+        Card = newCard;
+        card = Card.GetComponent<Card_Script>().card;
     }
 }
