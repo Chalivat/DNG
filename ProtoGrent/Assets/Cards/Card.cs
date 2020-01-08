@@ -6,6 +6,7 @@ using UnityEngine;
 public class Card : ScriptableObject
 {
     public new string name;
+    public int type;
     public string description;
     public int damage;
 
