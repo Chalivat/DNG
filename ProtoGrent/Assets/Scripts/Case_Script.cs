@@ -6,10 +6,13 @@ public class Case_Script : MonoBehaviour
 {
     public Vector2 pos;
 
+    public Card card;
+
     public bool isEmpty = true;
 
     public bool Check(int type)
     {
+        Debug.Log(type + " : " + pos.y);
         if(pos.y == type)
         {
             return true;
@@ -17,11 +20,11 @@ public class Case_Script : MonoBehaviour
         return false;
     }
 
-    public void PlacerCarte()
+    public void PlacerCarte(Card newCard)
     {
-
-        isEmpty = true;
-        //set scriptable object value
+        Debug.Log("CARTE PLACEE");
+        isEmpty = false;
+        card = newCard;
 
         UpdateBoard();
     }
