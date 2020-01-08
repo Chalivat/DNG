@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Main_Script : MonoBehaviour
 {
-    // Start is called before the first frame update
+    List<GameObject> carteMain = new List<GameObject>();
+
     void Start()
     {
         
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
-        
+        if (Input.GetKey(KeyCode.Alpha2))
+        {
+            print(carteMain);
+        }
     }
 }

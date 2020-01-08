@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pioche_Script : MonoBehaviour
 {
-    public List<string> carte = new List<string>();
+    public List<GameObject> carte = new List<GameObject>();
     public int nombrePioche;
 
     void Start()
