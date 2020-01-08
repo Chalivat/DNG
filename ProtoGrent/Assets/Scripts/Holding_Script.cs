@@ -4,19 +4,28 @@ using UnityEngine;
 
 public class Holding_Script : MonoBehaviour
 {
-    private GameObject Card, Case;
+    public GameObject board;
+
+    private Transform Card, Case;
     private Card card;
-    private bool canPlayCard;
+    public bool canPlayCard;
     public Camera cam;
 
-    void Start()
+    private void Start()
     {
-        
+        cam = Camera.main;
     }
-   
+
     void Update()
     {
-        CheckForCase();
+        if(Input.GetMouseButton(0))
+        {
+            CheckForCase();
+        }
+        if (Input.GetMouseButtonUp(0) && canPlayCard)
+        {
+            ReleaseCard();
+        }
     }
 
     void CheckForCase()
@@ -28,28 +37,24 @@ public class Holding_Script : MonoBehaviour
         {
             if (hit.transform.CompareTag("Case"))
             {
-                Case = hit.transform.gameObject;
-                //canPlayCard = Case.Check(Card);
+                Case = hit.transform;
+                transform.position = hit.point;
+
+                canPlayCard = Case.GetComponent<Case_Script>().Check(card.type);
             }
         }
         else canPlayCard = false;
-
     }
 
-    void PlayCard()
+    void ReleaseCard()
     {
-        if (Case)
-        {
-            if (canPlayCard)
-            {
-                //Case.PlayCard
-            }
-        }
+        Case.GetComponent<Case_Script>().PlacerCarte(card);
     }
 
-    void StartHoldingCard(GameObject newCard)
+    public void StartHoldingCard(Card_Script newCard)
     {
-        Card = newCard;
-        card = Card.GetComponent<Card_Script>().card;
+        card = newCard.card;
+
+        board.GetComponent<LigneHighlight_Script>().HighlightLine(card.type);
     }
 }

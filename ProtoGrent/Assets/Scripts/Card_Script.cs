@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class Card_Script : MonoBehaviour
 {
@@ -21,7 +21,7 @@ public class Card_Script : MonoBehaviour
     void Start()
     {
         name = card.name;
-        description = card.name;
+        description = card.description;
         damage = card.damage;
 
         nombrePioche = card.nombrePioche;
@@ -30,10 +30,5 @@ public class Card_Script : MonoBehaviour
         cardName.text = name;
         cardDamage.text = damage.ToString();
         cardDescription.text = description;
-    }
-    
-    void Update()
-    {
-        
     }
 }

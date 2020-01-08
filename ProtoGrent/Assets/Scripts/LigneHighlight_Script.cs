@@ -5,45 +5,47 @@ using UnityEngine;
 public class LigneHighlight_Script : MonoBehaviour
 {
     public Transform ligne_Front;
-    Transform[] allCase_Front;
+    public List<Transform> allCase_Front;
 
     public Transform ligne_Distance;
-    Transform[] allCase_Distance;
+    public List<Transform> allCase_Distance;
 
     public Transform ligne_Artillerie;
-    Transform[] allCase_Artillerie;
+    public List<Transform> allCase_Artillerie;
 
     public Color highlight_Color;
     public Color base_Color;
 
     private void Start()
     {
-        base_Color = allCase_Front[0].GetComponentInChildren<MeshRenderer>().material.GetColor("_BaseColor");
 
         for (int i = 0; i < ligne_Front.childCount; i++)
         {
-            allCase_Front[i] = ligne_Front.GetChild(i);
+            allCase_Front.Add(ligne_Front.GetChild(i));
         }
         for (int i = 0; i < ligne_Distance.childCount; i++)
         {
-            allCase_Distance[i] = ligne_Distance.GetChild(i);
+            allCase_Distance.Add(ligne_Distance.GetChild(i));
         }
         for (int i = 0; i < ligne_Artillerie.childCount; i++)
         {
-            allCase_Artillerie[i] = ligne_Artillerie.GetChild(i);
+            allCase_Artillerie.Add(ligne_Artillerie.GetChild(i));
         }
+
+        base_Color = allCase_Front[0].GetComponentInChildren<MeshRenderer>().material.GetColor("_BaseColor");
     }
 
-    public void HighlightLine(int yIndex,Color color)
+    public void HighlightLine(int yIndex)
     {
         switch(yIndex)
         {
             case 0:
                 foreach (Transform caseCarte in allCase_Front)
                 {
+                    Debug.Log(caseCarte.GetComponent<Case_Script>().isEmpty);
                     if (caseCarte.GetComponent<Case_Script>().isEmpty)
                     {
-                        caseCarte.GetComponentInChildren<MeshRenderer>().material.SetColor("_BaseColor", color);
+                        caseCarte.GetComponentInChildren<MeshRenderer>().material.SetColor("_BaseColor", Color.blue);
                     }
                 }
                 break;
@@ -52,7 +54,7 @@ public class LigneHighlight_Script : MonoBehaviour
                 {
                     if (caseCarte.GetComponent<Case_Script>().isEmpty)
                     {
-                        caseCarte.GetComponentInChildren<MeshRenderer>().material.SetColor("_BaseColor", color);
+                        caseCarte.GetComponentInChildren<MeshRenderer>().material.SetColor("_BaseColor", highlight_Color);
                     }
                 }
                 break;
@@ -61,7 +63,7 @@ public class LigneHighlight_Script : MonoBehaviour
                 {
                     if (caseCarte.GetComponent<Case_Script>().isEmpty)
                     {
-                        caseCarte.GetComponentInChildren<MeshRenderer>().material.SetColor("_BaseColor", color);
+                        caseCarte.GetComponentInChildren<MeshRenderer>().material.SetColor("_BaseColor", highlight_Color);
                     }
                 }
                 break;
