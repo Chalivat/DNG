@@ -20,13 +20,15 @@ public class Case_Script : MonoBehaviour
         return false;
     }
 
-    public void PlacerCarte(Card newCard)
+    public void PlacerCarte(Card newCard, GameObject cardObject)
     {
         Debug.Log("CARTE PLACEE");
         isEmpty = false;
         card = newCard;
 
         UpdateBoard();
+
+        Destroy(cardObject);
     }
 
     void UpdateBoard()

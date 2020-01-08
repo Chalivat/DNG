@@ -35,17 +35,16 @@ public class LigneHighlight_Script : MonoBehaviour
         base_Color = allCase_Front[0].GetComponentInChildren<MeshRenderer>().material.GetColor("_BaseColor");
     }
 
-    public void HighlightLine(int yIndex)
+    public void HighlightLine(int yIndex,Color color)
     {
         switch(yIndex)
         {
             case 0:
                 foreach (Transform caseCarte in allCase_Front)
                 {
-                    Debug.Log(caseCarte.GetComponent<Case_Script>().isEmpty);
                     if (caseCarte.GetComponent<Case_Script>().isEmpty)
                     {
-                        caseCarte.GetComponentInChildren<MeshRenderer>().material.SetColor("_BaseColor", Color.blue);
+                        caseCarte.GetComponentInChildren<MeshRenderer>().material.SetColor("_BaseColor", color);
                     }
                 }
                 break;
@@ -54,7 +53,7 @@ public class LigneHighlight_Script : MonoBehaviour
                 {
                     if (caseCarte.GetComponent<Case_Script>().isEmpty)
                     {
-                        caseCarte.GetComponentInChildren<MeshRenderer>().material.SetColor("_BaseColor", highlight_Color);
+                        caseCarte.GetComponentInChildren<MeshRenderer>().material.SetColor("_BaseColor", color);
                     }
                 }
                 break;
@@ -63,7 +62,7 @@ public class LigneHighlight_Script : MonoBehaviour
                 {
                     if (caseCarte.GetComponent<Case_Script>().isEmpty)
                     {
-                        caseCarte.GetComponentInChildren<MeshRenderer>().material.SetColor("_BaseColor", highlight_Color);
+                        caseCarte.GetComponentInChildren<MeshRenderer>().material.SetColor("_BaseColor", color);
                     }
                 }
                 break;

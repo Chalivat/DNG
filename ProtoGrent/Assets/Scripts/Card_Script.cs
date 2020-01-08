@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class Card_Script : MonoBehaviour
 {
+    public Vector3 posInMain;
+    public Vector3 rotInMain;
+
+    public Holding_Script holding;
     public Card card;
 
     private new string name;
@@ -30,5 +34,32 @@ public class Card_Script : MonoBehaviour
         cardName.text = name;
         cardDamage.text = damage.ToString();
         cardDescription.text = description;
+
+        holding = GameObject.FindGameObjectWithTag("Main").GetComponent<Holding_Script>();
+
+        posInMain = transform.localPosition;
+        rotInMain = transform.localEulerAngles;
+    }
+
+    private void OnMouseOver()
+    {
+        holding.Card = transform;
+        holding.card = card;
+        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 1);
+    }
+
+    private void OnMouseExit()
+    {
+        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 0);
+    }
+
+    private void OnMouseDown()
+    {
+        GetComponent<BoxCollider>().enabled = false;
+    }
+
+    private void OnMouseUp()
+    {
+        GetComponent<BoxCollider>().enabled = true;
     }
 }

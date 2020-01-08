@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 264401297862635989}
   - component: {fileID: 9197293283444799683}
   - component: {fileID: 7144897403712537940}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Case
   m_TagString: Case
   m_Icon: {fileID: 0}
@@ -59,6 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pos: {x: 0, y: 0}
+  card: {fileID: 0}
   isEmpty: 1
 --- !u!1 &6360804110292419648
 GameObject:
@@ -71,8 +72,7 @@ GameObject:
   - component: {fileID: 5159954145094654421}
   - component: {fileID: 4316820117597364031}
   - component: {fileID: 2095252626160206383}
-  - component: {fileID: 7494848959579170867}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,17 +140,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7494848959579170867
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6360804110292419648}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
