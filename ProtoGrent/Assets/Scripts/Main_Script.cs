@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Main_Script : MonoBehaviour
 {
-    List<GameObject> carteMain = new List<GameObject>();
+    public List<GameObject> carteMain = new List<GameObject>();
     
 
     void Start()
@@ -14,7 +14,7 @@ public class Main_Script : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKey(KeyCode.Alpha2))
+        if (Input.GetKey(KeyCode.M))
         {
             print(carteMain);
         }

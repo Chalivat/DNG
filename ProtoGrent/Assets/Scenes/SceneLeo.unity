@@ -234,6 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5730ac0b785e7646aa0160316458d0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nombrePioche: []
 --- !u!114 &987767762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,17 +291,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carte:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  nombrePioche: 0
+  - {fileID: 2513322507776886251, guid: 47b49a17fd0f5f34485b76f5b85483b8, type: 3}
+  - {fileID: 2513322507776886251, guid: 11e73c67652e5c74ca6f5ea4143ce625, type: 3}
+  - {fileID: 2513322507776886251, guid: d67eccada176f194aae527372b5ec131, type: 3}
+  - {fileID: 2513322507776886251, guid: 8a59da455a97cb44bb1034a57c617256, type: 3}
+  - {fileID: 2513322507776886251, guid: 1d8df0028f039eb44aa2aae1ea7c6b7b, type: 3}
+  - {fileID: 2513322507776886251, guid: 9bd77ed870bb9354f99c79ca65b43b65, type: 3}
+  - {fileID: 2513322507776886251, guid: 1065e4651bfd50447848b0634bf7c71b, type: 3}
+  - {fileID: 2513322507776886251, guid: 2ca0333c4cbda3b4b952c84faa29cdc8, type: 3}
+  - {fileID: 2513322507776886251, guid: 1e6b9e21f4593de4eb5411a149afe66f, type: 3}
+  - {fileID: 2513322507776886251, guid: df9ac8ce79abb0b47aa0ac3ab35a1a38, type: 3}
+  selection: {fileID: 987767761}
+  nombrePioche: 3
 --- !u!4 &1365173530
 Transform:
   m_ObjectHideFlags: 0

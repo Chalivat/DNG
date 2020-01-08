@@ -11,7 +11,6 @@ public class Pioche_Script : MonoBehaviour
 
     void Start()
     {
-        selection = GetComponent<CardSelection_Script>();
     }
 
     void Update()
@@ -40,9 +39,14 @@ public class Pioche_Script : MonoBehaviour
         for (int i = 0; i < nombre; i++)
         {
             int rnd = Random.Range(0, carte.Count - 1);
+            selection.AddToList(carte[rnd]);
             print(carte[rnd]);
-            selection.nombrePioche.Add(carte[rnd]);
             carte.RemoveAt(rnd);
+
+            if(i == nombre -1)
+            {
+                selection.ShowTheCards();
+            }
         }
     }
 }
