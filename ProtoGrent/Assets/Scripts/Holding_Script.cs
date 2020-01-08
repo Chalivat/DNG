@@ -6,8 +6,8 @@ public class Holding_Script : MonoBehaviour
 {
     public GameObject board;
 
-    private Transform Card, Case;
-    private Card card;
+    public Transform Card, Case;
+    public Card card;
     public bool canPlayCard;
     public Camera cam;
 
@@ -21,6 +21,7 @@ public class Holding_Script : MonoBehaviour
         if(Input.GetMouseButton(0))
         {
             CheckForCase();
+            board.GetComponent<LigneHighlight_Script>().HighlightLine(card.type);
         }
         if (Input.GetMouseButtonUp(0) && canPlayCard)
         {
@@ -38,7 +39,7 @@ public class Holding_Script : MonoBehaviour
             if (hit.transform.CompareTag("Case"))
             {
                 Case = hit.transform;
-                transform.position = hit.point;
+                Card.transform.position = hit.point;
 
                 canPlayCard = Case.GetComponent<Case_Script>().Check(card.type);
             }
@@ -48,13 +49,6 @@ public class Holding_Script : MonoBehaviour
 
     void ReleaseCard()
     {
-        Case.GetComponent<Case_Script>().PlacerCarte(card);
-    }
-
-    public void StartHoldingCard(Card_Script newCard)
-    {
-        card = newCard.card;
-
-        board.GetComponent<LigneHighlight_Script>().HighlightLine(card.type);
+        Case.GetComponent<Case_Script>().PlacerCarte(card,Card.gameObject);
     }
 }
