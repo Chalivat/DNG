@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Holding_Script : MonoBehaviour
 {
+    public Main_Script main_script;
+
     public GameObject board;
     LigneHighlight_Script Highlight_Script;
 
@@ -35,6 +37,7 @@ public class Holding_Script : MonoBehaviour
     {
         if(Input.GetMouseButton(0) && Card != null)
         {
+            main_script.removeCartesFromMain(Card.gameObject);
             CheckForCase();
             Highlight_Script.HighlightLine(card.type,Highlight_Script.highlight_Color);
             isHolding = true;
@@ -77,6 +80,7 @@ public class Holding_Script : MonoBehaviour
     void ReleaseCard()
     {
         Case.GetComponent<Case_Script>().PlacerCarte(card,Card.gameObject);
+        main_script.removeCartesFromMain(Card.gameObject);
     }
 
     void PlaceCardToMain()
@@ -87,5 +91,7 @@ public class Holding_Script : MonoBehaviour
 
         Card.localPosition = card_Script.posInMain;
         Card.localEulerAngles = card_Script.rotInMain;
+
+        main_script.addCarteToMain(Card.gameObject);
     }
 }
