@@ -45,19 +45,14 @@ public class Card_Script : MonoBehaviour
         posInWorld = transform.position;
     }
 
-    /*private void OnMouseOver()
+    private void OnMouseOver()
     {
         if (!holding.isHolding)
         {
             holding.Card = transform;
             holding.card = card;
-           transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 1);
+           //transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 1);
         }
-    }*/
-
-    private void OnMouseExit()
-    {
-        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 0);
     }
 
     private void OnMouseDown()
