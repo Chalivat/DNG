@@ -7,14 +7,23 @@ public class Holding_Script : MonoBehaviour
     public GameObject board;
     LigneHighlight_Script Highlight_Script;
 
-    public float lerpSpeed;
-
     public LayerMask mask;
 
     public Transform Card, Case;
     public Card card;
-    public bool canPlayCard;
-    public Camera cam;
+    bool canPlayCard;
+    Camera cam;
+
+    [Space]
+    [Header("Holding value")]
+
+    public Vector3 offset;
+    public Vector3 holdingRot;
+
+    Vector3 lerpPoint;
+    public float lerpSpeed;
+
+    public bool isHolding;
 
     private void Start()
     {
@@ -26,13 +35,15 @@ public class Holding_Script : MonoBehaviour
     {
         if(Input.GetMouseButton(0) && Card != null)
         {
+            Debug.Log(Card.transform.position);
             CheckForCase();
             Highlight_Script.HighlightLine(card.type,Highlight_Script.highlight_Color);
+            isHolding = true;
         }
         if (Input.GetMouseButtonUp(0))
         {
             Highlight_Script.HighlightLine(card.type, Highlight_Script.base_Color);
-            if (canPlayCard)
+            if (canPlayCard && Case.GetComponent<Case_Script>().isEmpty)
             {
                 ReleaseCard();
             }
@@ -40,6 +51,7 @@ public class Holding_Script : MonoBehaviour
             {
                 PlaceCardToMain();
             }
+            isHolding = false;
         }
     }
 
@@ -50,8 +62,8 @@ public class Holding_Script : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, mask))
         {
-            Card.transform.position = Vector3.Lerp(Card.transform.position, hit.point, lerpSpeed*Time.deltaTime);
-            Card.transform.eulerAngles = new Vector3(90, 0, 0);
+            lerpPoint = hit.point;
+            Card.transform.eulerAngles = holdingRot;
 
             if (hit.transform.CompareTag("Case"))
             {
@@ -60,6 +72,7 @@ public class Holding_Script : MonoBehaviour
             }
         }
         else canPlayCard = false;
+        //Card.transform.position = Vector3.Lerp(Card.transform.position, lerpPoint + offset, lerpSpeed * Time.deltaTime);
     }
 
     void ReleaseCard()
@@ -69,6 +82,8 @@ public class Holding_Script : MonoBehaviour
 
     void PlaceCardToMain()
     {
+        Card.SetParent(transform);
+
         Card_Script card_Script = Card.GetComponent<Card_Script>();
 
         Card.localPosition = card_Script.posInMain;
