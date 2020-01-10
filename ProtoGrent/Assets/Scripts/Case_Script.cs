@@ -11,7 +11,6 @@ public class Case_Script : MonoBehaviour
 
     public bool Check(int type)
     {
-        Debug.Log(type + " : " + pos.y);
         if(pos.y == type)
         {
             return true;

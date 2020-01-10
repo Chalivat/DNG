@@ -35,6 +35,7 @@ public class Holding_Script : MonoBehaviour
     {
         if(Input.GetMouseButton(0) && Card != null)
         {
+            Debug.Log(Card.transform.position);
             CheckForCase();
             Highlight_Script.HighlightLine(card.type,Highlight_Script.highlight_Color);
             isHolding = true;
@@ -71,7 +72,7 @@ public class Holding_Script : MonoBehaviour
             }
         }
         else canPlayCard = false;
-        Card.transform.position = Vector3.Lerp(Card.transform.position, lerpPoint + offset, lerpSpeed * Time.deltaTime);
+        //Card.transform.position = Vector3.Lerp(Card.transform.position, lerpPoint + offset, lerpSpeed * Time.deltaTime);
     }
 
     void ReleaseCard()
@@ -81,6 +82,8 @@ public class Holding_Script : MonoBehaviour
 
     void PlaceCardToMain()
     {
+        Card.SetParent(transform);
+
         Card_Script card_Script = Card.GetComponent<Card_Script>();
 
         Card.localPosition = card_Script.posInMain;
