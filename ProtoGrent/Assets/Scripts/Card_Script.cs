@@ -16,26 +16,40 @@ public class Card_Script : MonoBehaviour
     private new string name;
     private string description;
     private int damage;
+    private int type;
 
     private int nombrePioche;
     private int nombreDefausse;
 
-    public Text cardName;
     public Text cardDamage;
     public Text cardDescription;
+    public Text cardType;
+
+    public GameObject descriptionObject;
+    public bool asDescription = true;
 
     void Start()
     {
+        if(asDescription)
+        {
+            descriptionObject.SetActive(true);
+        }
+        else
+        {
+            descriptionObject.SetActive(false);
+        }
+
         name = card.name;
         description = card.description;
         damage = card.damage;
+        type = card.type;
 
         nombrePioche = card.nombrePioche;
         nombreDefausse = card.nombreDefausse;
 
-        cardName.text = name;
         cardDamage.text = damage.ToString();
         cardDescription.text = description;
+        cardType.text = type.ToString();
 
         holding = GameObject.FindGameObjectWithTag("Main").GetComponent<Holding_Script>();
 
