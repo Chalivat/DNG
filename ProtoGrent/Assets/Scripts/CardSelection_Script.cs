@@ -5,6 +5,7 @@ using UnityEngine;
 public class CardSelection_Script : MonoBehaviour
 {
     public List<GameObject> nombrePioche = new List<GameObject>();
+    public Transform[] cardsPosition;
     Main_Script main;
     int nombreCarte;
     int cardCount;
@@ -19,28 +20,22 @@ public class CardSelection_Script : MonoBehaviour
         nombrePioche.Add(carte);
     }
 
-    public void ShowTheCards()
+    public void ShowTheCards(int nombre)
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        for (int i = 0; i < nombre; i++)
         {
-            cardCount = 1;
-            DrawCard();
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            cardCount = 2;
-            DrawCard();
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            cardCount = 3;
-            DrawCard();
+            Instantiate(nombrePioche[i], cardsPosition[i].transform.position, Quaternion.identity);
         }
     }
 
-    public void DrawCard()
+    public void DrawCard(int nombreP)
     {
+        cardCount += 1;
         main.carteMain.Add(nombrePioche[cardCount]);
-        nombrePioche.Clear();
+
+        if(cardCount == nombreP)
+        {
+            nombrePioche.Clear();
+        }
     }
 }

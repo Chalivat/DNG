@@ -43,9 +43,10 @@ public class Pioche_Script : MonoBehaviour
             print(carte[rnd]);
             carte.RemoveAt(rnd);
 
-            if(i == nombre -1)
+            if(i == nombre - 1)
             {
-                selection.ShowTheCards();
+                selection.ShowTheCards(nombreCarte);
+                selection.DrawCard(nombrePioche);
             }
         }
     }
