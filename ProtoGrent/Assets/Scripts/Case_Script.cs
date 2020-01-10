@@ -5,7 +5,6 @@ using UnityEngine;
 public class Case_Script : MonoBehaviour
 {
     public Vector2 pos;
-
     public Card card;
 
     public bool isEmpty = true;
@@ -33,6 +32,6 @@ public class Case_Script : MonoBehaviour
 
     void UpdateBoard()
     {
-        GetComponentInParent<Board_Script>().allCase[(int)pos.x,(int)pos.y] = this;
+        GetComponentInParent<Board_Script>().UpdateBoardCases();
     }
 }

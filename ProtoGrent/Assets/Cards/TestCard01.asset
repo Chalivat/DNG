@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adaaee7a1750456489d23d910588e1a5, type: 3}
   m_Name: TestCard01
   m_EditorClassIdentifier: 
-  name: 
-  type: 0
-  description: 
-  damage: 0
+  name: Distance
+  type: 1
+  description: 'qe<i df igoiugeig <oieuf '
+  damage: 4
   nombrePioche: 0
   nombreDefausse: 0

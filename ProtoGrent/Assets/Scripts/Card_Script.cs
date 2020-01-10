@@ -43,9 +43,12 @@ public class Card_Script : MonoBehaviour
 
     private void OnMouseOver()
     {
-        holding.Card = transform;
-        holding.card = card;
-        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 1);
+        if (!holding.isHolding)
+        {
+            holding.Card = transform;
+            holding.card = card;
+           transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 1);
+        }
     }
 
     private void OnMouseExit()

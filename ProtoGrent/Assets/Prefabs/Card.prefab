@@ -353,6 +353,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f7ac0cc9e029e1419f747a8fb5a4255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posInMain: {x: 0, y: 0, z: 0}
+  rotInMain: {x: 0, y: 0, z: 0}
   holding: {fileID: 0}
   card: {fileID: 11400000, guid: 3fd1dbf4fd308684a8c80e3dc7dfe414, type: 2}
   cardName: {fileID: 2513322506969928293}
@@ -502,7 +504,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 10, y: 10}
+  m_SizeDelta: {x: 2, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2513322508469086912
 Canvas:
