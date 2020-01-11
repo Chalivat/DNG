@@ -28,14 +28,16 @@ public class CardSelection_Script : MonoBehaviour
         }
     }
 
-    public void DrawCard(int nombreP)
+    public void DrawCard(int nombreP, GameObject carte)
     {
         cardCount += 1;
-        main.carteMain.Add(nombrePioche[cardCount]);
+        main.addCarteToMain(carte);
+        Destroy(carte);
 
         if(cardCount == nombreP)
         {
             nombrePioche.Clear();
+            cardCount = 0;
         }
     }
 }

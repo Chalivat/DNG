@@ -11,6 +11,7 @@ public class Pioche_Script : MonoBehaviour
 
     void Start()
     {
+
     }
 
     void Update()
@@ -46,7 +47,7 @@ public class Pioche_Script : MonoBehaviour
             if(i == nombre - 1)
             {
                 selection.ShowTheCards(nombreCarte);
-                selection.DrawCard(nombrePioche);
+                //selection.DrawCard(nombrePioche);
             }
         }
     }

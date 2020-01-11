@@ -241,6 +241,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2513322507102596367, guid: 73d876e70376a1c4faade8972f0751cc,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2513322507776886250, guid: 73d876e70376a1c4faade8972f0751cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -249,7 +254,7 @@ PrefabInstance:
     - target: {fileID: 2513322507776886250, guid: 73d876e70376a1c4faade8972f0751cc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -2.61
       objectReference: {fileID: 0}
     - target: {fileID: 2513322507776886250, guid: 73d876e70376a1c4faade8972f0751cc,
         type: 3}
@@ -301,6 +306,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card
       objectReference: {fileID: 0}
+    - target: {fileID: 2513322507776886251, guid: 73d876e70376a1c4faade8972f0751cc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73d876e70376a1c4faade8972f0751cc, type: 3}
 --- !u!1 &924723326 stripped
@@ -334,6 +344,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 924723327}
+  eventTrigger: {fileID: 0}
+  isOnMain: 0
 --- !u!1 &987767760
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,7 +359,7 @@ GameObject:
   - component: {fileID: 987767761}
   m_Layer: 0
   m_Name: Main
-  m_TagString: Untagged
+  m_TagString: Main
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -384,6 +396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carteMain: []
+  placement: {fileID: 0}
 --- !u!4 &987767763
 Transform:
   m_ObjectHideFlags: 0
@@ -470,7 +483,7 @@ GameObject:
   - component: {fileID: 1365173529}
   m_Layer: 0
   m_Name: Pioche
-  m_TagString: Untagged
+  m_TagString: Pioche
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -489,15 +502,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carte:
   - {fileID: 2513322507776886251, guid: 7f3c3512b30e58a408dd995c1028086d, type: 3}
-  - {fileID: 2513322507776886251, guid: c57d94b373e556f4c85c0dfbe9647c9a, type: 3}
-  - {fileID: 2513322507776886251, guid: 1bbd146c7603fee4babda565357b2c2c, type: 3}
-  - {fileID: 2513322507776886251, guid: 7b7932c8e8f0eb0468de8b048d730f06, type: 3}
-  - {fileID: 2513322507776886251, guid: c60c680b6957a644dbe865977323c12d, type: 3}
-  - {fileID: 2513322507776886251, guid: 73a5c8b15e12e9a468a3d06d7a283200, type: 3}
-  - {fileID: 2513322507776886251, guid: 69dc2d452759ddc43a6930e7a8fd4f0c, type: 3}
-  - {fileID: 2513322507776886251, guid: 4211d3b09efc372418c91b09f736b65e, type: 3}
-  - {fileID: 2513322507776886251, guid: 5d5b96c5e2ad68b4d966ad4c84816a51, type: 3}
-  - {fileID: 2513322507776886251, guid: 92f4d52d6bc93114d9c6857c0a0656b6, type: 3}
+  - {fileID: 2513322507776886251, guid: 0a5bbf010f5f36847ac74384d2f0359a, type: 3}
+  - {fileID: 2513322507776886251, guid: 712018cda00eba34db9adfb0dd62d12d, type: 3}
+  - {fileID: 2513322507776886251, guid: cc559eec07c6e3b43935201bd1b4c87f, type: 3}
+  - {fileID: 2513322507776886251, guid: 462fd87eb46df784a93c904b95430d7a, type: 3}
+  - {fileID: 2513322507776886251, guid: a3971cf4b8ee5d04286a1956455c30f4, type: 3}
+  - {fileID: 2513322507776886251, guid: 20702225958f1b048bad3532682bb406, type: 3}
+  - {fileID: 2513322507776886251, guid: f33a351b9b3dddf459d4aff8d5af07a8, type: 3}
+  - {fileID: 2513322507776886251, guid: 8f49ec04f6f5c7f4c808a1349a002311, type: 3}
+  - {fileID: 2513322507776886251, guid: 7de2b701143596a4ebff4cc349f7f808, type: 3}
   selection: {fileID: 987767761}
   nombrePioche: 1
 --- !u!4 &1365173530
