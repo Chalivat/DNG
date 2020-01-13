@@ -13,6 +13,9 @@ public class LigneHighlight_Script : MonoBehaviour
     public Transform ligne_Artillerie;
     public List<Transform> allCase_Artillerie;
 
+    public Transform ligne_Effet;
+    public List<Transform> allCase_Effet;
+
     public Color highlight_Color;
     public Color base_Color;
 
@@ -30,6 +33,10 @@ public class LigneHighlight_Script : MonoBehaviour
         for (int i = 0; i < ligne_Artillerie.childCount; i++)
         {
             allCase_Artillerie.Add(ligne_Artillerie.GetChild(i));
+        }
+        for (int i = 0; i < ligne_Effet.childCount; i++)
+        {
+            allCase_Effet.Add(ligne_Effet.GetChild(i));
         }
 
         base_Color = allCase_Front[0].GetComponentInChildren<MeshRenderer>().material.GetColor("_BaseColor");

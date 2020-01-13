@@ -9,7 +9,9 @@ public class Card : ScriptableObject
     public int type;
     public string description;
     public int damage;
-
+    
     public int nombrePioche;
     public int nombreDefausse;
+
+    public Effect effect;
 }

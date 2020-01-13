@@ -72,6 +72,7 @@ public class Holding_Script : MonoBehaviour
                 Case = hit.transform;
                 canPlayCard = Case.GetComponent<Case_Script>().Check(card.type);
             }
+            
         }
         else canPlayCard = false;
         Card.transform.position = Vector3.Lerp(Card.transform.position, lerpPoint + offset, lerpSpeed * Time.deltaTime);
