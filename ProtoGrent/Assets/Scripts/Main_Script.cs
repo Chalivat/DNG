@@ -32,6 +32,7 @@ public class Main_Script : MonoBehaviour
         carte.GetComponent<ChangeEvent_Script>().isOnMain = true;
         carteMain.Add(carte);
         placement.UpdatePlacement();
+        Debug.Log("carte added");
     }
 
     public List<GameObject> getMain()
