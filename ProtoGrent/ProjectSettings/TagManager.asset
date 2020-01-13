@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Case
   - Main
+  - EffectReceiver
   layers:
   - Default
   - TransparentFX
