@@ -41,30 +41,40 @@ public class Pioche_Script : MonoBehaviour
     {
         for (int i = 0; i < nombre; i++)
         {
-            int rnd = Random.Range(0, carte.Count - 1);
-
-            if (random.IndexOf(rnd) == -1)
+            //int rnd = Random.Range(0, carte.Count - 1);
+            while (random.Count < nombre)
             {
-                random.Add(rnd);
-                selection.AddToList(new CartePioche(carte[rnd], rnd));
-
-                if (i == nombre - 1)
+                int rnd = Random.Range(0, carte.Count - 1);
+                if (random.Contains(rnd))
                 {
-                    selection.ShowTheCards(nombreCarte);
+                    //random.Add(RandomPioche());
+
+                }
+                else
+                {
+                    random.Add(rnd);
                 }
             }
-            else
+
+            for (int t = 0; t < random.Count; t++)
             {
-                print("Mangus Tes morus");
-                ShowCarte(nombreCarte);
+                selection.AddToList(new CartePioche(carte[random[t]], random[t]));
             }
+
+            selection.ShowTheCards(nombreCarte);
         }
     }
+
+    /*int RandomPioche()
+    {
+        int rnd = Random.Range(0, carte.Count - 1);
+
+        return rnd;
+    }*/
 
     public void RemoveCarte(int index)
     {
         carte.RemoveAt(index);
-        random.Clear();
     }
 }
 
