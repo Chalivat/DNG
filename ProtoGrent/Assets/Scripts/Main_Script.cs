@@ -31,6 +31,7 @@ public class Main_Script : MonoBehaviour
     {
         carteMain.Add(carte);
         placement.UpdatePlacement();
+        Debug.Log("carte added");
     }
 
     public List<GameObject> getMain()
