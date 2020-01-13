@@ -73,6 +73,9 @@ public class LigneHighlight_Script : MonoBehaviour
                     }
                 }
                 break;
+            default:
+                Debug.Log("pas de ligne : " + yIndex);
+                break;
         }
     }
 }

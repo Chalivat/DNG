@@ -37,10 +37,10 @@ public class Holding_Script : MonoBehaviour
     {
         if(Input.GetMouseButton(0) && Card != null)
         {
+            Debug.Log("holding");
             main_script.removeCartesFromMain(Card.gameObject);
             CheckForCase();
             Highlight_Script.HighlightLine(card.type,Highlight_Script.highlight_Color);
-            isHolding = true;
         }
         if (Input.GetMouseButtonUp(0))
         {
@@ -53,7 +53,6 @@ public class Holding_Script : MonoBehaviour
             {
                 PlaceCardToMain();
             }
-            isHolding = false;
         }
     }
 
@@ -80,12 +79,16 @@ public class Holding_Script : MonoBehaviour
 
     void ReleaseCard()
     {
+        Debug.Log("CARTE TO BOARD");
         Case.GetComponent<Case_Script>().PlacerCarte(card,Card.gameObject);
+
         main_script.removeCartesFromMain(Card.gameObject);
     }
 
     void PlaceCardToMain()
     {
+        Debug.Log("CARTE TO MAIN");
+
         Card.SetParent(transform);
 
         Card_Script card_Script = Card.GetComponent<Card_Script>();

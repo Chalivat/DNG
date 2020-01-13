@@ -59,7 +59,7 @@ public class Card_Script : MonoBehaviour
         posInWorld = transform.position;
     }
 
-    private void OnMouseOver()
+    /*private void OnMouseOver()
     {
         if (!holding.isHolding)
         {
@@ -67,9 +67,9 @@ public class Card_Script : MonoBehaviour
             holding.card = card;
            //transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 1);
         }
-    }
+    }*/
 
-    private void OnMouseDown()
+    /*private void OnMouseDown()
     {
         GetComponent<BoxCollider>().enabled = false;
     }
@@ -77,19 +77,30 @@ public class Card_Script : MonoBehaviour
     private void OnMouseUp()
     {
         GetComponent<BoxCollider>().enabled = true;
-    }
+    }*/
 
     public void ClickOnCard()
     {
+        Debug.Log("POINTER DOWN");
         if (!holding.isHolding)
         {
-            transform.SetParent(null);
-            transform.position = posInWorld;
-            Debug.Log(transform.position + " : " + transform.localPosition);
+            GetComponent<BoxCollider>().enabled = false;
 
             holding.Card = transform;
             holding.card = card;
+
+            transform.SetParent(null);
+            transform.position = posInWorld;
+
+            holding.isHolding = true;
         }
+    }
+
+    public void PointerUpOnCard()
+    {
+        Debug.Log("POINTER UP");
+
+        holding.isHolding = false;
     }
 
     public GameObject GetGameObject()
