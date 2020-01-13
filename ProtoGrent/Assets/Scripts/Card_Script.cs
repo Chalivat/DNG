@@ -12,6 +12,7 @@ public class Card_Script : MonoBehaviour
 
     public Holding_Script holding;
     public Card card;
+    public ChangeEvent_Script changeEvent;
 
     private new string name;
     private string description;
@@ -52,6 +53,7 @@ public class Card_Script : MonoBehaviour
         cardType.text = type.ToString();
 
         holding = GameObject.FindGameObjectWithTag("Main").GetComponent<Holding_Script>();
+        changeEvent = GetComponent<ChangeEvent_Script>();
 
         posInMain = transform.localPosition;
         rotInMain = transform.localEulerAngles;
