@@ -7,7 +7,6 @@ using UnityEngine.EventSystems;
 public class ChangeEvent_Script : MonoBehaviour
 {
     public Button button;
-    public EventTrigger eventTrigger;
 
     CardSelection_Script selection;
     Pioche_Script pioche;
@@ -17,36 +16,17 @@ public class ChangeEvent_Script : MonoBehaviour
     {
         selection = GameObject.FindGameObjectWithTag("Main").GetComponent<CardSelection_Script>();
         pioche = GameObject.FindGameObjectWithTag("Pioche").GetComponent<Pioche_Script>();
-        button.onClick.AddListener(() => SendGameObject());
+        //button.onClick.AddListener(() => SendGameObject());
+        /*trigger = GetComponentInChildren<EventTrigger>();
+        EventTrigger.Entry entry = new EventTrigger.Entry();
+        entry.eventID = EventTriggerType.PointerClick;
+        entry.callback.AddListener((data) => { SendGameObject((PointerEventData)data); });
+        trigger.triggers.Add(entry);*/
     }
     
     void Update()
     {
-        if (isOnMain)
-        {
-            AddHoldingEvent();
-        }
-        else
-        {
-            addOnClickEvent();
-        }
-    }
 
-    public void addOnClickEvent()
-    {
-        if (isOnMain) return;
-    }
-
-    public void AddHoldingEvent()
-    {
-        if (!isOnMain) return;
-
-    }
-
-    public void SendGameObject()
-    {
-        Debug.Log("SENDNUD");
-        selection.DrawCard(pioche.nombrePioche,this.gameObject);
     }
 
     public void Void()

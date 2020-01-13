@@ -449,7 +449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 3497562397009619061}
-  eventTrigger: {fileID: 0}
+  trigger: {fileID: 0}
   isOnMain: 0
 --- !u!1 &2513322508469086915
 GameObject:

@@ -14,11 +14,7 @@ public class Main_Script : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKey(KeyCode.M))
-        {
-            print(carteMain);
-            placement.UpdatePlacement();
-        }
+
     }
 
     public void removeCartesFromMain(GameObject carte)

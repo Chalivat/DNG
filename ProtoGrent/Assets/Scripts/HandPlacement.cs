@@ -21,7 +21,6 @@ public class HandPlacement : MonoBehaviour
     {
         List<GameObject> tmp_Main = new List<GameObject>();
         tmp_Main = Main_Script.getMain();
-        Debug.Log(tmp_Main.Count);
 
         int x = 0;
         for (int i = -tmp_Main.Count / 2; i < tmp_Main.Count / 2; i++)

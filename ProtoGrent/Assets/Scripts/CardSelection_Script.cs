@@ -4,38 +4,70 @@ using UnityEngine;
 
 public class CardSelection_Script : MonoBehaviour
 {
-    public List<GameObject> nombrePioche = new List<GameObject>();
+    public List<CartePioche> nombrePioche = new List<CartePioche>();
+    public List<Transform> pickedUp;
     public Transform[] cardsPosition;
     Main_Script main;
+    Pioche_Script pioche;
     int nombreCarte;
     int cardCount;
 
     private void Start()
     {
         main = GetComponent<Main_Script>();
+        pioche = GameObject.FindGameObjectWithTag("Pioche").GetComponent<Pioche_Script>();
+
+        for (int i = 0; i < cardsPosition.Length; i++)
+        {
+            cardsPosition[i].gameObject.SetActive(false);
+        }
     }
 
-    public void AddToList(GameObject carte)
+    public void AddToList(CartePioche carte)
     {
         nombrePioche.Add(carte);
     }
 
     public void ShowTheCards(int nombre)
     {
+        pickedUp = new List<Transform>(nombre);
         for (int i = 0; i < nombre; i++)
         {
-            Instantiate(nombrePioche[i], cardsPosition[i].transform.position, Quaternion.identity);
+            Transform clone = Instantiate(nombrePioche[i].carte).transform;
+            clone.position = cardsPosition[i].transform.position;
+            clone.rotation = cardsPosition[i].transform.rotation;
+
+            pickedUp.Add(clone);
+        }
+
+        for (int i = 0; i < nombre; i++)
+        {
+            cardsPosition[i].gameObject.SetActive(true);
         }
     }
 
-    public void DrawCard(int nombreP, GameObject carte)
+    public void DrawCard(int index)
     {
         cardCount += 1;
-        main.addCarteToMain(carte);
-        Destroy(carte);
+        main.addCarteToMain(pickedUp[index].gameObject);
+        cardsPosition[index].gameObject.SetActive(false);
 
-        if(cardCount == nombreP)
+        Debug.Log(nombrePioche[index].index);
+        pioche.RemoveCarte(nombrePioche[index].index);
+
+        nombrePioche.RemoveAt(index);
+        pickedUp.RemoveAt(index);
+
+        if (cardCount == pioche.nombrePioche)
         {
+            for (int i = 0; i < pickedUp.Count; i++)
+            {
+                Destroy(pickedUp[i].gameObject);
+            }
+            for (int i = 0; i < cardsPosition.Length; i++)
+            {
+                cardsPosition[i].gameObject.SetActive(false);
+            }
             nombrePioche.Clear();
             cardCount = 0;
         }
