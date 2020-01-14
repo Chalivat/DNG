@@ -14,4 +14,11 @@ public class Card : ScriptableObject
     public int nombreDefausse;
 
     public Effect effect;
+
+    [Header("Visual")]
+
+    public Texture artwork;
+
+    public Color borderColor;
+    public Color fireColor;
 }

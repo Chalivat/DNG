@@ -27,6 +27,9 @@ public class Holding_Script : MonoBehaviour
 
     public bool isHolding;
 
+    public Vector3 cardPos;
+    public Vector3 previousPos;
+
     private void Start()
     {
         cam = Camera.main;
@@ -37,9 +40,9 @@ public class Holding_Script : MonoBehaviour
     {
         if(Input.GetMouseButton(0) && Card != null)
         {
-            Debug.Log("holding");
             main_script.removeCartesFromMain(Card.gameObject);
             CheckForCase();
+            RotateCard();
             Highlight_Script.HighlightLine(card.type,Highlight_Script.highlight_Color);
         }
         if (Input.GetMouseButtonUp(0))
@@ -97,5 +100,19 @@ public class Holding_Script : MonoBehaviour
         Card.localEulerAngles = card_Script.rotInMain;
 
         main_script.addCarteToMain(Card.gameObject);
+    }
+
+    void RotateCard()
+    {
+        previousPos = cardPos;
+        cardPos = Card.position;
+
+        Vector3 cardvelocity = ((cardPos - previousPos) / Time.deltaTime) * 2;
+
+        Debug.Log(cardvelocity);
+
+        Vector3 rot = Vector3.Cross(Vector3.up, cardvelocity);
+
+        Card.transform.eulerAngles = new Vector3(holdingRot.x + rot.x , rot.y , rot.z);
     }
 }

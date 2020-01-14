@@ -10,11 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adaaee7a1750456489d23d910588e1a5, type: 3}
-  m_Name: TestCard
+  m_Name: TestCard02
   m_EditorClassIdentifier: 
-  name: Front
-  type: 0
-  description: sjfgqei gqiozgfoiuzgf qzd
-  damage: 2
+  name: Loin
+  type: 2
+  description: 'qe<i df igoiugeig <oieuf '
+  damage: 4
   nombrePioche: 0
   nombreDefausse: 0
+  effect: {fileID: 0}
+  artwork: {fileID: 2800000, guid: f99e7a7f41af6e147977651d847a89e4, type: 3}
+  borderColor: {r: 0.9715263, g: 0.19339621, b: 1, a: 0}
+  fireColor: {r: 0.2028302, g: 1, b: 0.42649558, a: 0}

@@ -534,7 +534,7 @@ PrefabInstance:
         type: 3}
       propertyPath: card
       value: 
-      objectReference: {fileID: 11400000, guid: eb16acf3fb7659745baddd17caecd23a,
+      objectReference: {fileID: 11400000, guid: 3fd1dbf4fd308684a8c80e3dc7dfe414,
         type: 2}
     - target: {fileID: 2513322507776886250, guid: 73d876e70376a1c4faade8972f0751cc,
         type: 3}
@@ -760,7 +760,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 224089435}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -6.5}
+  m_LocalPosition: {x: -0.5, y: 1, z: -6.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1182448106}
@@ -801,6 +801,8 @@ MonoBehaviour:
   holdingRot: {x: 60, y: 0, z: 0}
   lerpSpeed: 5
   isHolding: 0
+  cardPos: {x: 0, y: 0, z: 0}
+  previousPos: {x: 0, y: 0, z: 0}
 --- !u!114 &224089438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -894,7 +896,7 @@ PrefabInstance:
         type: 3}
       propertyPath: card
       value: 
-      objectReference: {fileID: 11400000, guid: c519525cc6bd3b54bb160933e3049da4,
+      objectReference: {fileID: 11400000, guid: 3fd1dbf4fd308684a8c80e3dc7dfe414,
         type: 2}
     - target: {fileID: 2513322507776886250, guid: 73d876e70376a1c4faade8972f0751cc,
         type: 3}
@@ -1116,7 +1118,7 @@ PrefabInstance:
         type: 3}
       propertyPath: card
       value: 
-      objectReference: {fileID: 11400000, guid: eb16acf3fb7659745baddd17caecd23a,
+      objectReference: {fileID: 11400000, guid: b89a2069b605aaf43929e58053b1ca3b,
         type: 2}
     - target: {fileID: 2513322507776886250, guid: 73d876e70376a1c4faade8972f0751cc,
         type: 3}
@@ -1264,7 +1266,7 @@ PrefabInstance:
         type: 3}
       propertyPath: card
       value: 
-      objectReference: {fileID: 11400000, guid: eb16acf3fb7659745baddd17caecd23a,
+      objectReference: {fileID: 11400000, guid: b89a2069b605aaf43929e58053b1ca3b,
         type: 2}
     - target: {fileID: 2513322507776886250, guid: 73d876e70376a1c4faade8972f0751cc,
         type: 3}
@@ -1364,7 +1366,7 @@ PrefabInstance:
         type: 3}
       propertyPath: card
       value: 
-      objectReference: {fileID: 11400000, guid: eb16acf3fb7659745baddd17caecd23a,
+      objectReference: {fileID: 11400000, guid: 3fd1dbf4fd308684a8c80e3dc7dfe414,
         type: 2}
     - target: {fileID: 2513322507776886250, guid: 73d876e70376a1c4faade8972f0751cc,
         type: 3}

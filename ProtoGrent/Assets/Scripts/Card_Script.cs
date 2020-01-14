@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class Card_Script : MonoBehaviour
 {
+    public GameObject[] typeSymbols;
+
+    public MeshRenderer planeRenderer;
+
     public Vector3 posInMain;
     public Vector3 posInWorld;
 
@@ -17,14 +21,12 @@ public class Card_Script : MonoBehaviour
     private new string name;
     private string description;
     private int damage;
-    private int type;
 
     private int nombrePioche;
     private int nombreDefausse;
 
     public Text cardDamage;
     public Text cardDescription;
-    public Text cardType;
 
     public GameObject descriptionObject;
     public bool asDescription = true;
@@ -40,17 +42,34 @@ public class Card_Script : MonoBehaviour
             descriptionObject.SetActive(false);
         }
 
+        switch(card.type)
+        {
+            case 0:
+                typeSymbols[0].SetActive(true);
+                break;
+            case 1:
+                typeSymbols[1].SetActive(true);
+                break;
+            case 2:
+                typeSymbols[2].SetActive(true);
+                break;
+            default:
+                break;
+        }
+
+        planeRenderer.material.SetColor("_FireColor",card.fireColor);
+        planeRenderer.material.SetColor("_BorderColor", card.borderColor);
+        planeRenderer.material.SetTexture("_Artwork", card.artwork);
+
         name = card.name;
         description = card.description;
         damage = card.damage;
-        type = card.type;
 
         nombrePioche = card.nombrePioche;
         nombreDefausse = card.nombreDefausse;
 
         cardDamage.text = damage.ToString();
         cardDescription.text = description;
-        cardType.text = type.ToString();
 
         holding = GameObject.FindGameObjectWithTag("Main").GetComponent<Holding_Script>();
         changeEvent = GetComponent<ChangeEvent_Script>();
@@ -60,26 +79,6 @@ public class Card_Script : MonoBehaviour
 
         posInWorld = transform.position;
     }
-
-    /*private void OnMouseOver()
-    {
-        if (!holding.isHolding)
-        {
-            holding.Card = transform;
-            holding.card = card;
-           //transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 1);
-        }
-    }*/
-
-    /*private void OnMouseDown()
-    {
-        GetComponent<BoxCollider>().enabled = false;
-    }
-
-    private void OnMouseUp()
-    {
-        GetComponent<BoxCollider>().enabled = true;
-    }*/
 
     public void ClickOnCard()
     {
@@ -92,7 +91,7 @@ public class Card_Script : MonoBehaviour
             holding.card = card;
 
             transform.SetParent(null);
-            transform.position = posInWorld;
+            //transform.position = posInWorld;
 
             holding.isHolding = true;
         }

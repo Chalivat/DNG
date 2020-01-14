@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adaaee7a1750456489d23d910588e1a5, type: 3}
-  m_Name: TestCard01
+  m_Name: TestCard00
   m_EditorClassIdentifier: 
-  name: Distance
-  type: 1
-  description: 'qe<i df igoiugeig <oieuf '
-  damage: 4
+  name: Front
+  type: 0
+  description: sjfgqei gqiozgfoiuzgf qzd
+  damage: 2
   nombrePioche: 0
   nombreDefausse: 0
   effect: {fileID: 0}
-  artwork: {fileID: 2800000, guid: f99e7a7f41af6e147977651d847a89e4, type: 3}
-  borderColor: {r: 0.9557375, g: 0.9622642, b: 0.16794233, a: 0}
-  fireColor: {r: 1, g: 0.3703554, b: 0.24056602, a: 0}
+  artwork: {fileID: 2800000, guid: 17377a2af6e681f43984035a047993b6, type: 3}
+  borderColor: {r: 0.11792451, g: 1, b: 0.19983928, a: 1}
+  fireColor: {r: 0.21226418, g: 0.8247454, b: 1, a: 1}
