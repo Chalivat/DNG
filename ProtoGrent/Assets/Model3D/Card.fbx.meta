@@ -2,7 +2,34 @@ fileFormatVersion: 2
 guid: f31c415d350e1b94e84d1889dad963f9
 ModelImporter:
   serializedVersion: 19300
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 5608388855592774532
+    second: Art_Plane|Art_PlaneAction
+  - first:
+      74: 5088359942197825546
+    second: Art_Plane|ForceBubbleAction
+  - first:
+      74: 3403555560431996209
+    second: Art_Plane|SymbolPointAction
+  - first:
+      74: -4156454743879852749
+    second: ForceBubble|Art_PlaneAction
+  - first:
+      74: -6022856350546784311
+    second: ForceBubble|ForceBubbleAction
+  - first:
+      74: -1652531755231064966
+    second: ForceBubble|SymbolPointAction
+  - first:
+      74: 7748005736704124131
+    second: SymbolPoint|Art_PlaneAction
+  - first:
+      74: -7196446170831563337
+    second: SymbolPoint|ForceBubbleAction
+  - first:
+      74: -6981561868248791402
+    second: SymbolPoint|SymbolPointAction
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -80,7 +107,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.005
+    globalScale: 0.5
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

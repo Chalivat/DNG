@@ -134,6 +134,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 224089436}
     m_Modifications:
+    - target: {fileID: 2265660035688256407, guid: 73d876e70376a1c4faade8972f0751cc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2513322507776886248, guid: 73d876e70376a1c4faade8972f0751cc,
         type: 3}
       propertyPath: posInMain.x
@@ -259,6 +264,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 224089436}
     m_Modifications:
+    - target: {fileID: 2265660035688256407, guid: 73d876e70376a1c4faade8972f0751cc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2513322507776886248, guid: 73d876e70376a1c4faade8972f0751cc,
         type: 3}
       propertyPath: posInMain.x
@@ -425,6 +435,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 224089436}
     m_Modifications:
+    - target: {fileID: 2265660035688256407, guid: 73d876e70376a1c4faade8972f0751cc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2513322507776886248, guid: 73d876e70376a1c4faade8972f0751cc,
         type: 3}
       propertyPath: posInMain.x
@@ -525,6 +540,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 224089436}
     m_Modifications:
+    - target: {fileID: 2265660035688256407, guid: 73d876e70376a1c4faade8972f0751cc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2513322507776886248, guid: 73d876e70376a1c4faade8972f0751cc,
         type: 3}
       propertyPath: posInMain.x
@@ -887,6 +907,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 224089436}
     m_Modifications:
+    - target: {fileID: 2265660035688256407, guid: 73d876e70376a1c4faade8972f0751cc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2513322507776886248, guid: 73d876e70376a1c4faade8972f0751cc,
         type: 3}
       propertyPath: posInMain.x
@@ -1109,6 +1134,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 224089436}
     m_Modifications:
+    - target: {fileID: 2265660035688256407, guid: 73d876e70376a1c4faade8972f0751cc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2513322507776886248, guid: 73d876e70376a1c4faade8972f0751cc,
         type: 3}
       propertyPath: posInMain.x
@@ -1257,6 +1287,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 224089436}
     m_Modifications:
+    - target: {fileID: 2265660035688256407, guid: 73d876e70376a1c4faade8972f0751cc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2513322507776886248, guid: 73d876e70376a1c4faade8972f0751cc,
         type: 3}
       propertyPath: posInMain.x
@@ -1357,6 +1392,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 224089436}
     m_Modifications:
+    - target: {fileID: 2265660035688256407, guid: 73d876e70376a1c4faade8972f0751cc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2513322507776886248, guid: 73d876e70376a1c4faade8972f0751cc,
         type: 3}
       propertyPath: posInMain.x
@@ -1469,6 +1509,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 224089436}
     m_Modifications:
+    - target: {fileID: 2265660035688256407, guid: 73d876e70376a1c4faade8972f0751cc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2513322507776886248, guid: 73d876e70376a1c4faade8972f0751cc,
         type: 3}
       propertyPath: posInMain.x
@@ -1599,6 +1644,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 224089436}
     m_Modifications:
+    - target: {fileID: 2265660035688256407, guid: 73d876e70376a1c4faade8972f0751cc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2513322507776886248, guid: 73d876e70376a1c4faade8972f0751cc,
         type: 3}
       propertyPath: asDescription

@@ -26,7 +26,7 @@ public class Case_Script : MonoBehaviour
 
         UpdateBoard();
 
-        Destroy(cardObject);
+        //Destroy(cardObject);
     }
 
     void UpdateBoard()

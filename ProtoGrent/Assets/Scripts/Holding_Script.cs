@@ -86,6 +86,8 @@ public class Holding_Script : MonoBehaviour
         Case.GetComponent<Case_Script>().PlacerCarte(card,Card.gameObject);
 
         main_script.removeCartesFromMain(Card.gameObject);
+
+        Card.GetComponentInChildren<Animator>().SetTrigger("DestroyCard");
     }
 
     void PlaceCardToMain()
@@ -108,8 +110,6 @@ public class Holding_Script : MonoBehaviour
         cardPos = Card.position;
 
         Vector3 cardvelocity = ((cardPos - previousPos) / Time.deltaTime) * 2;
-
-        Debug.Log(cardvelocity);
 
         Vector3 rot = Vector3.Cross(Vector3.up, cardvelocity);
 
