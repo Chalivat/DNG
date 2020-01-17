@@ -24,22 +24,24 @@ public class HandPlacement : MonoBehaviour
         tmp_Main.Clear();
         tmp_Main = Main_Script.getMain();
 
+        float test = tmp_Main.Count;
+
         int x = 0;
-        for (int i = -tmp_Main.Count / 2; i < tmp_Main.Count / 2; i++)
+        for (float i = -(test / 2) ; i < (test / 2) ; i++)
         {
-                tmp_Main[x].transform.localPosition = Vector3.zero;
-                tmp_Main[x].transform.localEulerAngles = new Vector3(60, 0, 0);
+            tmp_Main[x].transform.localPosition = Vector3.zero;
+            tmp_Main[x].transform.localEulerAngles = new Vector3(60, 0, 0);
 
-                Card_Script card_Script = tmp_Main[x].GetComponent<Card_Script>();
+            Card_Script card_Script = tmp_Main[x].GetComponent<Card_Script>();
 
-                tmp_Main[x].transform.RotateAround(pivot.position, pivot.forward, angle / tmp_Main.Count * i);
-                tmp_Main[x].transform.localPosition += new Vector3(xOffSet * i, 0, 0);
-                tmp_Main[x].transform.Translate(transform.forward * .05f * x, Space.Self);
+            tmp_Main[x].transform.RotateAround(pivot.position, pivot.forward, angle / tmp_Main.Count * i);
+            tmp_Main[x].transform.localPosition += new Vector3(xOffSet * i, 0, 0);
+            tmp_Main[x].transform.Translate(transform.forward * .05f * x, Space.Self);
 
-                card_Script.posInMain = tmp_Main[x].transform.localPosition;
-                card_Script.rotInMain = tmp_Main[x].transform.localEulerAngles;
+            card_Script.posInMain = tmp_Main[x].transform.localPosition;
+            card_Script.rotInMain = tmp_Main[x].transform.localEulerAngles;
 
-                x++;
+            x++;
         }
     }
 }

@@ -5,16 +5,11 @@ using UnityEngine;
 public class Pioche_Script : MonoBehaviour
 {
     public List<GameObject> carte = new List<GameObject>();
-    List<int> random = new List<int>();
+    public List<int> random = new List<int>();
     public CardSelection_Script selection;
     public int nombrePioche;
     int nombreCarte;
     int indexCartes;
-
-    void Start()
-    {
-
-    }
 
     void Update()
     {
@@ -35,22 +30,24 @@ public class Pioche_Script : MonoBehaviour
         {
             nombreCarte = 3;
         }
+
+        if(carte.Count < nombrePioche)
+        {
+            nombrePioche = carte.Count;
+        }
     }
 
     void ShowCarte(int nombre)
     {
-        for (int i = 0; i < nombre; i++)
+        if(carte.Count < nombre)
         {
-            //int rnd = Random.Range(0, carte.Count - 1);
+            nombre = carte.Count;
+        }
+        random.Clear();
             while (random.Count < nombre)
             {
-                int rnd = Random.Range(0, carte.Count - 1);
-                if (random.Contains(rnd))
-                {
-                    //random.Add(RandomPioche());
-
-                }
-                else
+                int rnd = Random.Range(0, carte.Count);
+                if (!random.Contains(rnd))
                 {
                     random.Add(rnd);
                 }
@@ -61,20 +58,13 @@ public class Pioche_Script : MonoBehaviour
                 selection.AddToList(new CartePioche(carte[random[t]], random[t]));
             }
 
-            selection.ShowTheCards(nombreCarte);
-        }
+            selection.ShowTheCards(nombre);
     }
 
-    /*int RandomPioche()
+    public void RemoveCarte(GameObject objectToDestroy)
     {
-        int rnd = Random.Range(0, carte.Count - 1);
-
-        return rnd;
-    }*/
-
-    public void RemoveCarte(int index)
-    {
-        carte.RemoveAt(index);
+        carte.Remove(objectToDestroy);
+        Debug.Log(objectToDestroy.name);
     }
 }
 

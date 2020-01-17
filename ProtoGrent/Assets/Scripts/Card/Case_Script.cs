@@ -20,7 +20,6 @@ public class Case_Script : MonoBehaviour
 
     public void PlacerCarte(Card newCard, GameObject cardObject)
     {
-        Debug.Log("CARTE PLACEE");
         isEmpty = false;
         card = newCard;
 

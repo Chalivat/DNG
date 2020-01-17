@@ -56,6 +56,9 @@ public class Holding_Script : MonoBehaviour
             {
                 PlaceCardToMain();
             }
+            Card = null;
+            Case = null;
+            card = null;
         }
     }
 
@@ -82,7 +85,6 @@ public class Holding_Script : MonoBehaviour
 
     void ReleaseCard()
     {
-        Debug.Log("CARTE TO BOARD");
         Case.GetComponent<Case_Script>().PlacerCarte(card,Card.gameObject);
 
         main_script.removeCartesFromMain(Card.gameObject);
@@ -92,8 +94,6 @@ public class Holding_Script : MonoBehaviour
 
     void PlaceCardToMain()
     {
-        Debug.Log("CARTE TO MAIN");
-
         Card.SetParent(transform);
 
         Card_Script card_Script = Card.GetComponent<Card_Script>();

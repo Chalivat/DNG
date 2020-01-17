@@ -5,6 +5,8 @@ using UnityEngine;
 public class CardSelection_Script : MonoBehaviour
 {
     public List<CartePioche> nombrePioche = new List<CartePioche>();
+    public List<CartePioche> tmpPioche = new List<CartePioche>();
+
     public List<Transform> pickedUp;
     public Transform[] cardsPosition;
     Main_Script main;
@@ -31,6 +33,8 @@ public class CardSelection_Script : MonoBehaviour
     public void ShowTheCards(int nombre)
     {
         pickedUp = new List<Transform>(nombre);
+        tmpPioche.Clear();
+
         for (int i = 0; i < nombre; i++)
         {
             Transform clone = Instantiate(nombrePioche[i].carte).transform;
@@ -49,20 +53,27 @@ public class CardSelection_Script : MonoBehaviour
     public void DrawCard(int index)
     {
         cardCount += 1;
+
+        pickedUp[index].parent = main.transform;
         main.addCarteToMain(pickedUp[index].gameObject);
+        pickedUp[index] = null;
+
         cardsPosition[index].gameObject.SetActive(false);
 
-        Debug.Log(nombrePioche[index].index);
-        pioche.RemoveCarte(nombrePioche[index].index);
-
-        nombrePioche.RemoveAt(index);
-        pickedUp.RemoveAt(index);
+        tmpPioche.Add(nombrePioche[index]);
 
         if (cardCount == pioche.nombrePioche)
         {
             for (int i = 0; i < pickedUp.Count; i++)
             {
-                Destroy(pickedUp[i].gameObject);
+                if (pickedUp[i] != null)
+                {
+                    Destroy(pickedUp[i].gameObject);
+                }
+            }
+            for (int i = 0; i < tmpPioche.Count; i++)
+            {
+                pioche.RemoveCarte(tmpPioche[i].carte);
             }
             for (int i = 0; i < cardsPosition.Length; i++)
             {

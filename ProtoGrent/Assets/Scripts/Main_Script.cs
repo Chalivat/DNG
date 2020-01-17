@@ -6,16 +6,6 @@ public class Main_Script : MonoBehaviour
 {
     public List<GameObject> carteMain = new List<GameObject>();
     public HandPlacement placement;
-    
-    void Start()
-    {
-        
-    }
-    
-    void Update()
-    {
-
-    }
 
     public void removeCartesFromMain(GameObject carte)
     {
@@ -27,7 +17,6 @@ public class Main_Script : MonoBehaviour
     {
         carteMain.Add(carte);
         placement.UpdatePlacement();
-        Debug.Log("carte added");
     }
 
     public List<GameObject> getMain()

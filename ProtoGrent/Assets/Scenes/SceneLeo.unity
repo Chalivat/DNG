@@ -482,6 +482,8 @@ MonoBehaviour:
   holdingRot: {x: 0, y: 0, z: 0}
   lerpSpeed: 0
   isHolding: 0
+  cardPos: {x: 0, y: 0, z: 0}
+  previousPos: {x: 0, y: 0, z: 0}
 --- !u!114 &987767765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -495,9 +497,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Main_Script: {fileID: 987767762}
-  cartesMain: []
+  tmp_Main: []
   pivot: {fileID: 987767763}
   angle: 0
+  xOffSet: 0
 --- !u!1001 &1104981307
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -679,18 +682,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carte:
-  - {fileID: 2513322507776886251, guid: 7f3c3512b30e58a408dd995c1028086d, type: 3}
-  - {fileID: 2513322507776886251, guid: 925b602270d06ee4ca6687559934daae, type: 3}
-  - {fileID: 2513322507776886251, guid: 0570cd45b20cd584780dd8c5a5badf37, type: 3}
-  - {fileID: 2513322507776886251, guid: 0570cd45b20cd584780dd8c5a5badf37, type: 3}
-  - {fileID: 2513322507776886251, guid: 1f5b7f774c6e9ec488b16590b119b646, type: 3}
-  - {fileID: 2513322507776886251, guid: b32ea882bc27d2e4ab8b05ff1542c758, type: 3}
-  - {fileID: 2513322507776886251, guid: 0194dfd22aeb5ca4c826435c035271a9, type: 3}
-  - {fileID: 2513322507776886251, guid: 0194dfd22aeb5ca4c826435c035271a9, type: 3}
-  - {fileID: 2513322507776886251, guid: 8781625774c472d42a813a34ff172c36, type: 3}
-  - {fileID: 2513322507776886251, guid: 52eaa0ef21c47874cbba2affd609a110, type: 3}
+  - {fileID: 3281928490813438873, guid: e1596c645b933a043a619566de7dbd62, type: 3}
+  - {fileID: 3281928490813438873, guid: 1c006a02def66c1429f04d4e90a3734f, type: 3}
+  - {fileID: 3281928490813438873, guid: c2bc8e6d15816174e879000c9f2ff8f2, type: 3}
+  - {fileID: 3281928490813438873, guid: c8b76c6f29e6fd54b8a29907760b6b5c, type: 3}
+  - {fileID: 3281928490813438873, guid: 56e6092db1c1afe4791a8142e60ff877, type: 3}
+  - {fileID: 3281928490813438873, guid: 403eef47d8733e4429715049f80ad73f, type: 3}
+  - {fileID: 3281928490813438873, guid: 5b8765e4e224a3345823b652c4dfb8b0, type: 3}
+  - {fileID: 3281928490813438873, guid: dd4e0fed82de3d24982cf15a39cd53e7, type: 3}
+  - {fileID: 3281928490813438873, guid: bb25274ead67bdd4bb3a37e032584f18, type: 3}
+  - {fileID: 3281928490813438873, guid: 827d70451eb85df4fa8e36f071acf4a8, type: 3}
+  random: 
   selection: {fileID: 987767761}
-  nombrePioche: 2
+  nombrePioche: 1
 --- !u!4 &1365173530
 Transform:
   m_ObjectHideFlags: 0

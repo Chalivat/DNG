@@ -82,7 +82,6 @@ public class Card_Script : MonoBehaviour
 
     public void ClickOnCard()
     {
-        Debug.Log("POINTER DOWN");
         if (!holding.isHolding)
         {
             GetComponent<BoxCollider>().enabled = false;
@@ -99,8 +98,6 @@ public class Card_Script : MonoBehaviour
 
     public void PointerUpOnCard()
     {
-        Debug.Log("POINTER UP");
-
         holding.isHolding = false;
     }
 
