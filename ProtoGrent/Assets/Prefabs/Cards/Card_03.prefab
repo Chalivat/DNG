@@ -7,6 +7,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2513322507776886248, guid: 73d876e70376a1c4faade8972f0751cc,
+        type: 3}
+      propertyPath: card
+      value: 
+      objectReference: {fileID: 11400000, guid: b89a2069b605aaf43929e58053b1ca3b,
+        type: 2}
     - target: {fileID: 2513322507776886250, guid: 73d876e70376a1c4faade8972f0751cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -65,7 +71,7 @@ PrefabInstance:
     - target: {fileID: 2513322507776886251, guid: 73d876e70376a1c4faade8972f0751cc,
         type: 3}
       propertyPath: m_Name
-      value: Card_Original
+      value: Card_03
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73d876e70376a1c4faade8972f0751cc, type: 3}

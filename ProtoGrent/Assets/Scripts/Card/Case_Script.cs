@@ -18,14 +18,12 @@ public class Case_Script : MonoBehaviour
         return false;
     }
 
-    public void PlacerCarte(Card newCard, GameObject cardObject)
+    public void PlacerCarte(Card newCard)
     {
         isEmpty = false;
         card = newCard;
 
         UpdateBoard();
-
-        //Destroy(cardObject);
     }
 
     void UpdateBoard()

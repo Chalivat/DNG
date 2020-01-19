@@ -25,6 +25,22 @@ public class Board_Script : MonoBehaviour
         CountPoint();
     }
 
+    public List<Card> GetCardPlaced()
+    {
+        List<Card> allCardPlaced = new List<Card>();
+
+        for (int x = 0; x < 5; x++)
+        {
+            for (int y = 0; y < 3; y++)
+            {
+                if(allCase[x,y].card != null)
+                allCardPlaced.Add(allCase[x, y].card);
+            }
+        }
+
+        return allCardPlaced;
+    }
+
     void CountPoint()
     {
         point = 0;

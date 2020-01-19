@@ -43,9 +43,9 @@ public class Holding_Script : MonoBehaviour
             main_script.removeCartesFromMain(Card.gameObject);
             CheckForCase();
             RotateCard();
-            Highlight_Script.HighlightLine(card.type,Highlight_Script.highlight_Color);
+            Highlight_Script.HighlightLine(card.type, Highlight_Script.highlight_Color);
         }
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) && Card != null)
         {
             Highlight_Script.HighlightLine(card.type, Highlight_Script.base_Color);
             if (canPlayCard && Case.GetComponent<Case_Script>().isEmpty)
@@ -85,7 +85,7 @@ public class Holding_Script : MonoBehaviour
 
     void ReleaseCard()
     {
-        Case.GetComponent<Case_Script>().PlacerCarte(card,Card.gameObject);
+        Case.GetComponent<Case_Script>().PlacerCarte(card);
 
         main_script.removeCartesFromMain(Card.gameObject);
 

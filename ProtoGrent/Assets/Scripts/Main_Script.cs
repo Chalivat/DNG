@@ -15,6 +15,10 @@ public class Main_Script : MonoBehaviour
 
     public void addCarteToMain(GameObject carte)
     {
+        if(carte.transform.parent != transform)
+        {
+            carte.transform.parent = transform;
+        }
         carteMain.Add(carte);
         placement.UpdatePlacement();
     }

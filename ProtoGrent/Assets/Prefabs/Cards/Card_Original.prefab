@@ -423,7 +423,7 @@ GameObject:
   - component: {fileID: 2513322507776886248}
   - component: {fileID: 2513322507776886249}
   m_Layer: 0
-  m_Name: Card
+  m_Name: Card_Original
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -466,7 +466,7 @@ MonoBehaviour:
   posInWorld: {x: 0, y: 0, z: 0}
   rotInMain: {x: 0, y: 0, z: 0}
   holding: {fileID: 0}
-  card: {fileID: 11400000, guid: 3fd1dbf4fd308684a8c80e3dc7dfe414, type: 2}
+  card: {fileID: 0}
   changeEvent: {fileID: 0}
   cardDamage: {fileID: 5554237809884547987}
   cardDescription: {fileID: 2513322507087524590}

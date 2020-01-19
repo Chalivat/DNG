@@ -21,7 +21,6 @@ public class LigneHighlight_Script : MonoBehaviour
 
     private void Start()
     {
-
         for (int i = 0; i < ligne_Front.childCount; i++)
         {
             allCase_Front.Add(ligne_Front.GetChild(i));

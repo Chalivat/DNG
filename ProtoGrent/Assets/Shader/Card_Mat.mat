@@ -73,5 +73,6 @@ Material:
     - Vector2_A9E74066: {r: 0, g: 0, b: 0, a: 0}
     - Vector2_B27089BF: {r: 0, g: 0.5, b: 0, a: 0}
     - Vector2_EFAAE10: {r: -0.4, g: 0.09, b: 0, a: 0}
+    - Vector2_F49F8E1E: {r: 0, g: 0, b: 0, a: 0}
     - _BorderColor: {r: 0.1839623, g: 1, b: 0.9852291, a: 0}
     - _FireColor: {r: 1, g: 0.7043877, b: 0.2311321, a: 1}
