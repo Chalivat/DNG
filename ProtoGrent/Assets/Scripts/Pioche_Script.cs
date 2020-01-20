@@ -64,7 +64,6 @@ public class Pioche_Script : MonoBehaviour
     public void RemoveCarte(GameObject objectToDestroy)
     {
         carte.Remove(objectToDestroy);
-        Debug.Log(objectToDestroy.name);
     }
 }
 

@@ -89,31 +89,34 @@ public class Defausse_Script : MonoBehaviour
 
     public void ShowAllCard()
     {
-        allButton.Clear();
-        allObjectCard.Clear();
-
-        DefausseDisplay.gameObject.SetActive(true);
-
-        for (int i = 0; i < allCarte.Count; i++)
+        if (allCarte.Count > 0)
         {
-            Card_Script card = Instantiate(CardPrebabs).GetComponent<Card_Script>();
-            card.card = allCarte[i];
-            card.UpdateVisual();
+            allButton.Clear();
+            allObjectCard.Clear();
 
-            Transform button = Instantiate(ButtonOverlayPrefabs).transform;
-            button.SetParent(DefausseDisplay.GetChild(0).GetChild(0));
-            button.localPosition = new Vector3(defausseDisplayOffset * i, 0, 0);
-            button.localEulerAngles = new Vector3(0, 0, 0);
+            DefausseDisplay.gameObject.SetActive(true);
 
-            button.GetComponent<DefausseButtonOverlay_Script>().index = i;
+            for (int i = 0; i < allCarte.Count; i++)
+            {
+                Card_Script card = Instantiate(CardPrebabs).GetComponent<Card_Script>();
+                card.card = allCarte[i];
+                card.UpdateVisual();
 
-            allButton.Add(button.gameObject);
+                Transform button = Instantiate(ButtonOverlayPrefabs).transform;
+                button.SetParent(DefausseDisplay.GetChild(0).GetChild(0));
+                button.localPosition = new Vector3(defausseDisplayOffset * i, 0, 0);
+                button.localEulerAngles = new Vector3(0, 0, 0);
 
-            card.transform.parent = DefausseDisplay.GetChild(0);
-            card.transform.localPosition = new Vector3(defausseDisplayOffset * i,0,0);
-            card.transform.localEulerAngles = Vector3.zero;
+                button.GetComponent<DefausseButtonOverlay_Script>().index = i;
 
-            allObjectCard.Add(card.gameObject);
+                allButton.Add(button.gameObject);
+
+                card.transform.parent = DefausseDisplay.GetChild(0);
+                card.transform.localPosition = new Vector3(defausseDisplayOffset * i, 0, 0);
+                card.transform.localEulerAngles = Vector3.zero;
+
+                allObjectCard.Add(card.gameObject);
+            }
         }
     }
 
