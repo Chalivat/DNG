@@ -15,6 +15,7 @@ public class Card_Script : MonoBehaviour
     public Vector3 rotInMain;
 
     public Holding_Script holding;
+    public Main_Script main;
     public Card card;
     public ChangeEvent_Script changeEvent;
 
@@ -31,11 +32,17 @@ public class Card_Script : MonoBehaviour
     public GameObject descriptionObject;
     public bool asDescription = true;
 
+    public bool isClicked = false;
+
+    Vector3 currentMousePos;
+    Vector3 lastMousePos;
+
     void Start()
     {
         UpdateVisual();
 
         holding = GameObject.FindGameObjectWithTag("Main").GetComponent<Holding_Script>();
+        main = GameObject.FindGameObjectWithTag("Main").GetComponent<Main_Script>();
         changeEvent = GetComponent<ChangeEvent_Script>();
 
         posInMain = transform.localPosition;
@@ -44,9 +51,42 @@ public class Card_Script : MonoBehaviour
         posInWorld = transform.position;
     }
 
+    private void Update()
+    {
+        if(isClicked)
+        {
+            lastMousePos = currentMousePos;
+            currentMousePos = Input.mousePosition;
+
+            float xScroll = lastMousePos.x - currentMousePos.x;
+            float yScroll = lastMousePos.y - currentMousePos.y;
+
+            if(yScroll < -15f)
+            {
+                BeginDrag();
+            }
+            else
+            {
+                transform.parent.localPosition += new Vector3(-xScroll / 100f, 0, 0);
+            }
+        }
+    }
+
     public void ClickOnCard()
     {
-        if (!holding.isHolding)
+        currentMousePos = Input.mousePosition;
+        isClicked = true;
+    }
+
+    public void PointerUpOnCard()
+    {
+        isClicked = false;
+        holding.isHolding = false;
+    }
+
+    void BeginDrag()
+    {
+        if (!holding.isHolding && main.mainIsOpen)
         {
             GetComponent<BoxCollider>().enabled = false;
 
@@ -54,15 +94,11 @@ public class Card_Script : MonoBehaviour
             holding.card = card;
 
             transform.SetParent(null);
-            //transform.position = posInWorld;
 
             holding.isHolding = true;
-        }
-    }
 
-    public void PointerUpOnCard()
-    {
-        holding.isHolding = false;
+            isClicked = false;
+        }
     }
 
     public GameObject GetGameObject()

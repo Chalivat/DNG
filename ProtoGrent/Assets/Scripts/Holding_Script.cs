@@ -40,6 +40,7 @@ public class Holding_Script : MonoBehaviour
     {
         if(Input.GetMouseButton(0) && Card != null)
         {
+            main_script.ShowMain(false);
             main_script.removeCartesFromMain(Card.gameObject);
             CheckForCase();
             RotateCard();

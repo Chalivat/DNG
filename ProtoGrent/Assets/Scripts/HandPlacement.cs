@@ -11,7 +11,9 @@ public class HandPlacement : MonoBehaviour
     public Transform pivot;
 
     public float angle;
-    public float xOffSet;
+
+    public float xOffSetMain = -7f;
+    public float xOffSet = -.5f;
 
     private void Start()
     {
@@ -30,13 +32,19 @@ public class HandPlacement : MonoBehaviour
         for (float i = -(test / 2) ; i < (test / 2) ; i++)
         {
             tmp_Main[x].transform.localPosition = Vector3.zero;
-            tmp_Main[x].transform.localEulerAngles = new Vector3(60, 0, 0);
+            tmp_Main[x].transform.localEulerAngles = new Vector3(90, 0, 0);
 
             Card_Script card_Script = tmp_Main[x].GetComponent<Card_Script>();
 
-            tmp_Main[x].transform.RotateAround(pivot.position, pivot.forward, angle / tmp_Main.Count * i);
-            tmp_Main[x].transform.localPosition += new Vector3(xOffSet * i, 0, 0);
-            tmp_Main[x].transform.Translate(transform.forward * .05f * x, Space.Self);
+            //tmp_Main[x].transform.RotateAround(pivot.position, pivot.forward, angle / tmp_Main.Count * i);
+            if (!Main_Script.mainIsOpen)
+            {
+                tmp_Main[x].transform.localPosition += new Vector3(xOffSetMain / tmp_Main.Count * i, -.025f * x, 0);
+            }
+            else
+            {
+                tmp_Main[x].transform.localPosition += new Vector3(xOffSet * i, 0 , 0);
+            }
 
             card_Script.posInMain = tmp_Main[x].transform.localPosition;
             card_Script.rotInMain = tmp_Main[x].transform.localEulerAngles;

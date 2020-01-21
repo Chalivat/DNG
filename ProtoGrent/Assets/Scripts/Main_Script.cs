@@ -7,6 +7,40 @@ public class Main_Script : MonoBehaviour
     public List<GameObject> carteMain = new List<GameObject>();
     public HandPlacement placement;
 
+    public Transform allCartePos;
+
+    public bool mainIsOpen;
+
+    private void Update()
+    {
+        if(Input.GetMouseButtonUp(0))
+        {
+            Vector3 inputPos = Input.mousePosition;
+
+            float screenWidth = Screen.width;
+            float screenHeight = Screen.height;
+
+            float xRatio = inputPos.x / screenWidth;
+            float yRatio = inputPos.y / screenHeight;
+
+            if (xRatio >= .25f && xRatio <= .85f && yRatio <= .3f && !mainIsOpen)
+            {
+                ShowMain(true);
+                placement.UpdatePlacement();
+            }
+            else if(xRatio >= .25f && xRatio <= .85f && yRatio > .5f && mainIsOpen)
+            {
+                ShowMain(false);
+                placement.UpdatePlacement();
+            }
+        }
+
+        Vector3 pos = allCartePos.transform.localPosition;
+        pos.x = Mathf.Clamp(pos.x, (carteMain.Count * -.25f) - (.15f * carteMain.Count), (carteMain.Count * .25f) + (.15f * carteMain.Count));
+
+        allCartePos.transform.localPosition = new Vector3(pos.x, pos.y,pos.z);
+    }
+
     public void removeCartesFromMain(GameObject carte)
     {
         carteMain.Remove(carte);
@@ -15,9 +49,9 @@ public class Main_Script : MonoBehaviour
 
     public void addCarteToMain(GameObject carte)
     {
-        if(carte.transform.parent != transform)
+        if(carte.transform.parent != allCartePos)
         {
-            carte.transform.parent = transform;
+            carte.transform.parent = allCartePos;
         }
         carteMain.Add(carte);
         placement.UpdatePlacement();
@@ -26,5 +60,19 @@ public class Main_Script : MonoBehaviour
     public List<GameObject> getMain()
     {
         return carteMain;
+    }
+
+    public void ShowMain(bool value)
+    {
+        if(!value)
+        {
+            allCartePos.localPosition = new Vector3(0, 0, -1.25f);
+            mainIsOpen = false;
+        }
+        else
+        {
+            allCartePos.localPosition = new Vector3(0, 1.25f, .25f);
+            mainIsOpen = true;
+        }
     }
 }
