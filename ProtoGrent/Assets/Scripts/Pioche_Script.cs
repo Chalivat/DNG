@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pioche_Script : MonoBehaviour
 {
-    public List<GameObject> carte = new List<GameObject>();
+    public List<Card> carte = new List<Card>();
     public List<int> random = new List<int>();
     public CardSelection_Script selection;
     public int nombrePioche;
@@ -61,19 +61,31 @@ public class Pioche_Script : MonoBehaviour
             selection.ShowTheCards(nombre);
     }
 
-    public void RemoveCarte(GameObject objectToDestroy)
+    public void RemoveCarte(Card cardToRemove)
     {
-        carte.Remove(objectToDestroy);
+        carte.Remove(cardToRemove);
+    }
+
+    public List<Card> SimplyAddCardsToPlayer(int nombre)
+    {
+        List<Card> allCard = new List<Card>();
+        for (int i = 0; i < nombre; i++)
+        {
+            int rnd = Random.Range(0, carte.Count);
+            allCard.Add(carte[rnd]);
+            carte.RemoveAt(rnd);
+        }
+        return allCard;
     }
 }
 
 [System.Serializable]
 public class CartePioche
 {
-    public GameObject carte;
+    public Card carte;
     public int index;
 
-    public CartePioche(GameObject carte, int index)
+    public CartePioche(Card carte, int index)
     {
         this.carte = carte;
         this.index = index;

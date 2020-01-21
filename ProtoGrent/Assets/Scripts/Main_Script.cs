@@ -9,11 +9,23 @@ public class Main_Script : MonoBehaviour
 
     public Transform allCartePos;
 
+    public GameObject cardPrefab;
+
+    public float count;
+
     public bool mainIsOpen;
 
     private void Update()
     {
-        if(Input.GetMouseButtonUp(0))
+        if(Input.GetMouseButtonDown(0))
+        {
+            count = 0;
+        }
+        if(Input.GetMouseButton(0))
+        {
+            count += Time.deltaTime;
+        }
+        if(Input.GetMouseButtonUp(0) && count <= .3f)
         {
             Vector3 inputPos = Input.mousePosition;
 
@@ -39,6 +51,24 @@ public class Main_Script : MonoBehaviour
         pos.x = Mathf.Clamp(pos.x, (carteMain.Count * -.25f) - (.15f * carteMain.Count), (carteMain.Count * .25f) + (.15f * carteMain.Count));
 
         allCartePos.transform.localPosition = new Vector3(pos.x, pos.y,pos.z);
+    }
+
+    public void UpdateCardOnMain(List<Card> newMain)
+    {
+        foreach (GameObject card in carteMain)
+        {
+            Destroy(card);
+        }
+
+        carteMain.Clear();
+        foreach (Card card in newMain)
+        {
+            GameObject card_GO = Instantiate(cardPrefab,allCartePos);
+            card_GO.GetComponent<Card_Script>().card = card;
+
+            carteMain.Add(card_GO);
+        }
+        placement.UpdatePlacement();
     }
 
     public void removeCartesFromMain(GameObject carte)

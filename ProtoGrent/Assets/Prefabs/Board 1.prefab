@@ -631,7 +631,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1228487732730518476}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 4}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5984758046928851146}
@@ -1058,7 +1058,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1751174899487445831}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8307457125670960739}
@@ -3959,6 +3959,8 @@ MonoBehaviour:
   allCase_Distance: []
   ligne_Artillerie: {fileID: 8080705138502546183}
   allCase_Artillerie: []
+  ligne_Effet: {fileID: 0}
+  allCase_Effet: []
   highlight_Color: {r: 0, g: 0.9534545, b: 1, a: 1}
   base_Color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &8120436121579280326
