@@ -357,7 +357,7 @@ MonoBehaviour:
   highlight_Script: {fileID: 1863425097}
   CardPos: {fileID: 110825091}
   defausseDisplayOffset: 1.25
-  nombrePioche: 2
+  nombrePioche: 0
   isPlacingCard: 0
 --- !u!4 &136257058
 Transform:

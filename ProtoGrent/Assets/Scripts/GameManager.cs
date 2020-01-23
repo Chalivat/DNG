@@ -137,6 +137,8 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("FIN MANCHE");
 
+        defausse.AddBoardCardToDefausse();
+
         if(player1.point > player2.point)
         {
             Debug.Log("MANCHE POUR JOEUR 1");
