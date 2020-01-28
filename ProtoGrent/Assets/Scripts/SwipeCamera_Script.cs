@@ -27,9 +27,12 @@ public class SwipeCamera_Script : MonoBehaviour
     {
     }
     
-    void FixedUpdate()
+    void Update()
     {
         Drag();
+        Debug.Log("lastPosition" + lastPosition);
+        Debug.Log("pos " + position);
+        Debug.Log("delta" + deltaPosition);
     }
 
     void Drag()
@@ -62,7 +65,7 @@ public class SwipeCamera_Script : MonoBehaviour
             travelled = yRot;
 
             targetPosition = cam.transform.position;
-            Debug.Log("x : " + deltaPosition.x + " : " + yRot);
+            //Debug.Log("x : " + deltaPosition.x + " : " + yRot);
             if ((deltaPosition.x > 0 && yRot < maxRotate) || (deltaPosition.x < 0 && yRot > -maxRotate))
             {
                 cam.transform.rotation = Quaternion.Lerp(cam.transform.rotation, newRot, 5f * Time.deltaTime);
@@ -77,6 +80,7 @@ public class SwipeCamera_Script : MonoBehaviour
 
             if (!Input.GetMouseButton(0))
             {
+                deltaPosition = Vector3.zero;
                    if (leftSnap > yRot)
                    {
                        rotation = cam.transform.rotation.eulerAngles;
@@ -87,7 +91,7 @@ public class SwipeCamera_Script : MonoBehaviour
                   
                    else if (rightSnap < yRot)
                    {
-                       rotation = cam.transform.rotation.eulerAngles;
+                        rotation = cam.transform.rotation.eulerAngles;
                        rotation.y = rightSnap + 10;
                        newRot = Quaternion.Euler(rotation);
                        cam.transform.rotation = Quaternion.Lerp(cam.transform.rotation, newRot, 20f * Time.deltaTime);
@@ -95,7 +99,7 @@ public class SwipeCamera_Script : MonoBehaviour
                   
                    else
                    {
-                       rotation = cam.transform.rotation.eulerAngles;
+                        rotation = cam.transform.rotation.eulerAngles;
                            rotation.y = 0;
                            newRot = Quaternion.Euler(rotation);
                            cam.transform.rotation = Quaternion.Lerp(cam.transform.rotation, newRot, 20f * Time.deltaTime);
