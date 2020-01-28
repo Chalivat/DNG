@@ -33,23 +33,24 @@ public class Defausse_Script : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            foreach (Card item in board1.GetCardPlaced())
-            {
-                AddCardsToDefausseFromBoard(item);
-            }
-            foreach (Card item in board2.GetCardPlaced())
-            {
-                AddCardsToDefausseFromBoard(item);
-            }
-        }
         if(isPlacingCard)
         {
             if(Input.GetMouseButtonDown(0))
             {
                 CheckCase();
             }
+        }
+    }
+
+    public void AddBoardCardToDefausse()
+    {
+        foreach (Card item in board1.GetCardPlaced())
+        {
+            AddCardsToDefausseFromBoard(item);
+        }
+        foreach (Card item in board2.GetCardPlaced())
+        {
+            AddCardsToDefausseFromBoard(item);
         }
     }
 

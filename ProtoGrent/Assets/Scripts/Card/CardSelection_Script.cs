@@ -9,6 +9,9 @@ public class CardSelection_Script : MonoBehaviour
 
     public List<Transform> pickedUp;
     public Transform[] cardsPosition;
+
+    public GameObject cardPrefab;
+
     Main_Script main;
     Pioche_Script pioche;
     int nombreCarte;
@@ -37,9 +40,11 @@ public class CardSelection_Script : MonoBehaviour
 
         for (int i = 0; i < nombre; i++)
         {
-            Transform clone = Instantiate(nombrePioche[i].carte).transform;
+            Transform clone = Instantiate(cardPrefab).transform;
             clone.position = cardsPosition[i].transform.position;
             clone.rotation = cardsPosition[i].transform.rotation;
+
+            clone.GetComponent<Card_Script>().card = nombrePioche[i].carte;
 
             pickedUp.Add(clone);
         }

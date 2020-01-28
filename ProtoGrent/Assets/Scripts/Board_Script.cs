@@ -41,6 +41,54 @@ public class Board_Script : MonoBehaviour
         return allCardPlaced;
     }
 
+    public Card[,] GetAllCard()
+    {
+        Card[,] allCard = new Card[5,3];
+
+        for (int x = 0; x < 5; x++)
+        {
+            for (int y = 0; y < 3; y++)
+            {
+                    allCard[x,y] = allCase[x, y].card;
+            }
+        }
+
+        return allCard;
+    }
+
+    public void SetCardOnBoard(Card[,] allCard)
+    {
+        for (int x = 0; x < 5; x++)
+        {
+            for (int y = 0; y < 3; y++)
+            {
+                allCase[x, y].card = allCard[x, y];
+                if (allCard[x, y] != null)
+                {
+                    allCase[x, y].isEmpty = false;
+                }
+                else
+                {
+                    allCase[x, y].isEmpty = true;
+                }
+            }
+        }
+
+        CountPoint();
+    }
+
+    public void ClearBoard()
+    {
+        for (int x = 0; x < 5; x++)
+        {
+            for (int y = 0; y < 3; y++)
+            {
+                allCase[x, y].card = null;
+                allCase[x, y].isEmpty = true;
+            }
+        }
+    }
+
     void CountPoint()
     {
         point = 0;
