@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class Holding_Script : MonoBehaviour
@@ -73,6 +74,8 @@ public class Holding_Script : MonoBehaviour
             lerpPoint = hit.point;
             Card.transform.eulerAngles = holdingRot;
 
+            Debug.Log(hit.transform.name);
+
             if (hit.transform.CompareTag("Case"))
             {
                 Case = hit.transform;
@@ -86,6 +89,7 @@ public class Holding_Script : MonoBehaviour
 
     void ReleaseCard()
     {
+        Debug.Log("Coucuo");
         Case.GetComponent<Case_Script>().PlacerCarte(card);
 
         main_script.removeCartesFromMain(Card.gameObject);

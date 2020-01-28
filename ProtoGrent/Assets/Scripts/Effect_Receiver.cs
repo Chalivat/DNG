@@ -18,11 +18,6 @@ public class Effect_Receiver : MonoBehaviour
         else length = 3;
 
         board = FindObjectOfType<Board_Script>();
-
-        foreach (Case_Script item in board.allCase)
-        {
-            item.gameObject.AddComponent<Card_Effect_Manager>();
-        }
     }
     
     void Update()
@@ -38,6 +33,8 @@ public class Effect_Receiver : MonoBehaviour
             {
                 board.allCase[i, index].gameObject.GetComponent<Card_Effect_Manager>().ReceiveEffect(effectName);
             }
+
+            // appliquer pour le board d'en face
         }
 
     else

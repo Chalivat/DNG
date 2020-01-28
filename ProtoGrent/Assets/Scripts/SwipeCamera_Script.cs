@@ -17,6 +17,7 @@ public class SwipeCamera_Script : MonoBehaviour
     public float centerSnap;
     public float rightSnap;
 
+    public float offset;
     public float travelled;
     private Vector3 position;
     private Vector3 lastPosition;
@@ -30,9 +31,6 @@ public class SwipeCamera_Script : MonoBehaviour
     void Update()
     {
         Drag();
-        Debug.Log("lastPosition" + lastPosition);
-        Debug.Log("pos " + position);
-        Debug.Log("delta" + deltaPosition);
     }
 
     void Drag()
@@ -65,16 +63,12 @@ public class SwipeCamera_Script : MonoBehaviour
             travelled = yRot;
 
             targetPosition = cam.transform.position;
-            //Debug.Log("x : " + deltaPosition.x + " : " + yRot);
             if ((deltaPosition.x > 0 && yRot < maxRotate) || (deltaPosition.x < 0 && yRot > -maxRotate))
             {
                 cam.transform.rotation = Quaternion.Lerp(cam.transform.rotation, newRot, 5f * Time.deltaTime);
-                //cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z + yRot * yRot);
-                //cam.transform.Translate(Vector3.right * deltaPosition.x * Time.deltaTime,Space.World);
-                
 
             }
-            targetPosition = new Vector3(transform.position.x + (yRot * 0.2f), cam.transform.position.y, cam.transform.position.z);
+            targetPosition = new Vector3(transform.position.x + (yRot * 0.2f) + offset, cam.transform.position.y, cam.transform.position.z);
             cam.transform.position = Vector3.Lerp(cam.transform.position, targetPosition, 5f * Time.deltaTime);
             cam.transform.position =new Vector3(Mathf.Clamp(cam.transform.position.x, -maxTranslate,maxTranslate),cam.transform.position.y,cam.transform.position.z);
 

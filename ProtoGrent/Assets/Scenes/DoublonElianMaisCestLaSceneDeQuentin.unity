@@ -790,7 +790,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   main_script: {fileID: 224089439}
-  board: {fileID: 1863425094}
+  board: {fileID: 0}
   mask:
     serializedVersion: 2
     m_Bits: 256
@@ -846,6 +846,8 @@ MonoBehaviour:
   - {fileID: 700137715}
   placement: {fileID: 224089438}
   allCartePos: {fileID: 0}
+  cardPrefab: {fileID: 0}
+  count: 0
   mainIsOpen: 0
 --- !u!1 &358212630 stripped
 GameObject:
@@ -1596,12 +1598,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73d876e70376a1c4faade8972f0751cc, type: 3}
---- !u!1 &1863425094 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8080705140035158780, guid: 4d8c08330dea725488953df5bb13f995,
-    type: 3}
-  m_PrefabInstance: {fileID: 8080705138205499066}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2076058701
 GameObject:
   m_ObjectHideFlags: 0
@@ -1844,10 +1840,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5327809878548292038, guid: cf74a428827be50449a731233cb52dbc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5
+      objectReference: {fileID: 0}
     - target: {fileID: 5327809878548292041, guid: cf74a428827be50449a731233cb52dbc,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf74a428827be50449a731233cb52dbc, type: 3}
