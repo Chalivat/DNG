@@ -15,7 +15,7 @@ MonoBehaviour:
   name: FrontPioche
   type: 0
   description: Pioche 1 carte
-  damage: 4
+  damage: 1
   effectType: 6
   nombrePioche: 1
   artwork: {fileID: 2800000, guid: a9625093d82c6314fad1827309b14ddc, type: 3}
