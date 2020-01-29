@@ -67,7 +67,7 @@ public class CardSelection_Script : MonoBehaviour
 
         tmpPioche.Add(nombrePioche[index]);
 
-        if (cardCount == pioche.nombrePioche)
+        if (cardCount == pioche.cardToPioche)
         {
             for (int i = 0; i < pickedUp.Count; i++)
             {
@@ -86,6 +86,8 @@ public class CardSelection_Script : MonoBehaviour
             }
             nombrePioche.Clear();
             cardCount = 0;
+
+            main.EndMyTurn();
         }
     }
 }

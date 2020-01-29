@@ -24,7 +24,6 @@ public class Card_Script : MonoBehaviour
     private int damage;
 
     private int nombrePioche;
-    private int nombreDefausse;
 
     public Text cardDamage;
     public Text cardDescription;
@@ -128,6 +127,8 @@ public class Card_Script : MonoBehaviour
             case 2:
                 typeSymbols[2].SetActive(true);
                 break;
+            case 4:
+                break;
             default:
                 break;
         }
@@ -141,7 +142,6 @@ public class Card_Script : MonoBehaviour
         damage = card.damage;
 
         nombrePioche = card.nombrePioche;
-        nombreDefausse = card.nombreDefausse;
 
         cardDamage.text = damage.ToString();
         cardDescription.text = description;

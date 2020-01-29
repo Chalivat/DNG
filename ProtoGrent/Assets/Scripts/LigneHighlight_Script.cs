@@ -48,7 +48,7 @@ public class LigneHighlight_Script : MonoBehaviour
             case 0:
                 foreach (Transform caseCarte in allCase_Front)
                 {
-                    if (caseCarte.GetComponent<Case_Script>().isEmpty)
+                    if (caseCarte.GetComponent<Case_Script>().isEmpty && !caseCarte.GetComponent<Case_Effect_Manager>().isOiled)
                     {
                         caseCarte.GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", color);
                     }
@@ -57,7 +57,7 @@ public class LigneHighlight_Script : MonoBehaviour
             case 1:
                 foreach (Transform caseCarte in allCase_Distance)
                 {
-                    if (caseCarte.GetComponent<Case_Script>().isEmpty)
+                    if (caseCarte.GetComponent<Case_Script>().isEmpty && !caseCarte.GetComponent<Case_Effect_Manager>().isOiled)
                     {
                         caseCarte.GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", color);
                     }
@@ -66,14 +66,37 @@ public class LigneHighlight_Script : MonoBehaviour
             case 2:
                 foreach (Transform caseCarte in allCase_Artillerie)
                 {
-                    if (caseCarte.GetComponent<Case_Script>().isEmpty)
+                    if (caseCarte.GetComponent<Case_Script>().isEmpty && !caseCarte.GetComponent<Case_Effect_Manager>().isOiled)
+                    {
+                        caseCarte.GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", color);
+                    }
+                }
+                break;
+            case 3:
+                foreach (Transform caseCarte in allCase_Front)
+                {
+                    if (!caseCarte.GetComponent<Case_Script>().isEmpty && !caseCarte.GetComponent<Case_Effect_Manager>().isOiled)
+                    {
+                        caseCarte.GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", color);
+                    }
+                }
+                foreach (Transform caseCarte in allCase_Distance)
+                {
+                    if (!caseCarte.GetComponent<Case_Script>().isEmpty && !caseCarte.GetComponent<Case_Effect_Manager>().isOiled)
+                    {
+                        caseCarte.GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", color);
+                    }
+                }
+                foreach (Transform caseCarte in allCase_Artillerie)
+                {
+                    if (!caseCarte.GetComponent<Case_Script>().isEmpty && !caseCarte.GetComponent<Case_Effect_Manager>().isOiled)
                     {
                         caseCarte.GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", color);
                     }
                 }
                 break;
             default:
-                Debug.Log("pas de ligne : " + yIndex);
+                //Debug.Log("pas de ligne : " + yIndex);
                 break;
         }
     }

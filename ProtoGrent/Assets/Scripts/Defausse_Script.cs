@@ -31,6 +31,11 @@ public class Defausse_Script : MonoBehaviour
     Card selectedCard;
     Transform choosedCard;
 
+    private void Start()
+    {
+        EffectManager.DefausseEffect += OpenDefausseToPioche;
+    }
+
     private void Update()
     {
         if(isPlacingCard)
@@ -77,15 +82,25 @@ public class Defausse_Script : MonoBehaviour
         case_Script.PlacerCarte(card);
 
         Destroy(choosedCard.gameObject);
-        if(nombrePioche > 0 && allCarte.Count > 0)
+        if (nombrePioche > 0 && allCarte.Count > 0)
         {
             ShowAllCard();
+        }
+        else if(card.effectType == Card.EffectType.None)
+        {
+            case_Script.EndMyTurn();
         }
     }
 
     void AddCardsToDefausseFromBoard(Card card)
     {
         allCarte.Add(card);
+    }
+
+    void OpenDefausseToPioche(int nombre)
+    {
+        nombrePioche = nombre;
+        ShowAllCard();
     }
 
     public void ShowAllCard()

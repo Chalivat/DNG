@@ -16,19 +16,21 @@ public class GameManager : MonoBehaviour
 
     public Turn turn = Turn.player1Turn;
 
+    private void Start()
+    {
+        Case_Script.EndTheTurn += NextTurn;
+        Main_Script.EndTheTurn += NextTurn;
+    }
+
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Z))
-        {
-            NextTurn();
-        }
         if (Input.GetKeyDown(KeyCode.E))
         {
             BeginMatch();
         }
     }
 
-    void BeginMatch()
+    public void BeginMatch()
     {
         Debug.Log("BEGIN MATCH !!!");
 
@@ -54,8 +56,11 @@ public class GameManager : MonoBehaviour
         NextTurn();
     }
 
-    void NextTurn()
+    public void NextTurn()
     {
+        playingBoard.UpdateBoardCases();
+        notPlayingBoard.UpdateBoardCases();
+
         if(player1.asPassed && player2.asPassed)
         {
             FinManche();
@@ -131,6 +136,11 @@ public class GameManager : MonoBehaviour
 
         notPlayingBoard.SetCardOnBoard(playingBoard.GetAllCard());
         playingBoard.SetCardOnBoard(tmp_Board);
+
+        bool[,] tmp_Bool = notPlayingBoard.allEncouragement;
+
+        notPlayingBoard.SetEncrougement(playingBoard.allEncouragement);
+        playingBoard.SetEncrougement(tmp_Bool);
     }
 
     void FinManche()

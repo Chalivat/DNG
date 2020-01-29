@@ -50,8 +50,10 @@ public class Holding_Script : MonoBehaviour
         if (Input.GetMouseButtonUp(0) && Card != null)
         {
             Highlight_Script.HighlightLine(card.type, Highlight_Script.base_Color);
-            if (canPlayCard && Case.GetComponent<Case_Script>().isEmpty)
+
+            if (canPlayCard && Case.GetComponent<Case_Script>().isEmpty && card.type != 3 || card.type == 3 && !Case.GetComponent<Case_Script>().isEmpty)
             {
+                Debug.Log("Card placed");
                 ReleaseCard();
             }
             else
@@ -74,8 +76,6 @@ public class Holding_Script : MonoBehaviour
             lerpPoint = hit.point;
             Card.transform.eulerAngles = holdingRot;
 
-            Debug.Log(hit.transform.name);
-
             if (hit.transform.CompareTag("Case"))
             {
                 Case = hit.transform;
@@ -89,7 +89,6 @@ public class Holding_Script : MonoBehaviour
 
     void ReleaseCard()
     {
-        Debug.Log("Coucuo");
         Case.GetComponent<Case_Script>().PlacerCarte(card);
 
         main_script.removeCartesFromMain(Card.gameObject);

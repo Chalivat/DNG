@@ -14,11 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: FireEffect
   type: 4
-  description: Damages are now equal to 1
+  description: Fire
   damage: 0
+  effectType: 1
   nombrePioche: 0
-  nombreDefausse: 0
-  effect: {fileID: 11400000, guid: eba66e57850742b4d84d11394701a124, type: 2}
   artwork: {fileID: 2800000, guid: f99e7a7f41af6e147977651d847a89e4, type: 3}
   borderColor: {r: 1, g: 0, b: 0, a: 1}
   fireColor: {r: 1, g: 0.7532815, b: 0, a: 1}
