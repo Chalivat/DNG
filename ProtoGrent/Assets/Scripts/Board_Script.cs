@@ -106,7 +106,6 @@ public class Board_Script : MonoBehaviour
                 allCase[x, y].SetCard(null);
                 allCase[x, y].isEmpty = true;
 
-                Debug.Log(allEffect[x, y]);
                 allEffect[x, y].isEncouraged = false;
                 allEffect[x, y].isWatered = false;
                 allEffect[x, y].isFired = false;

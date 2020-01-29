@@ -41,21 +41,18 @@ public class EffectManager : MonoBehaviour
                 {
                     FireEffectColonne((int)effect.pos.x);
 
-                    effect.case_Script.SetCard(null);
-                    effect.case_Script.isEmpty = true;
-
                     SpawnParticle(particleEffect[4], particleEffectPos_Colonne[(int)effect.pos.x]);
                 }
                 else
                 {
                     FireEffect((int)effect.pos.y);
 
-                    effect.case_Script.SetCard(null);
-                    effect.case_Script.isEmpty = true;
-
                     SpawnParticle(particleEffect[0], particleEffectPos_Front[(int)effect.pos.y]);
                     SpawnParticle(particleEffect[0], particleEffectPos_Back[(int)effect.pos.y]);
                 }
+                effect.case_Script.SetCard(null);
+                effect.case_Script.isEmpty = true;
+
                 effect.case_Script.EndMyTurn();
                 break;
 
@@ -64,21 +61,18 @@ public class EffectManager : MonoBehaviour
                 {
                     WaterEffectColonne((int)effect.pos.x);
 
-                    effect.case_Script.SetCard(null);
-                    effect.case_Script.isEmpty = true;
-
                     SpawnParticle(particleEffect[5], particleEffectPos_Colonne[(int)effect.pos.x]);
                 }
                 else
                 {
                     WaterEffect((int)effect.pos.y);
 
-                    effect.case_Script.SetCard(null);
-                    effect.case_Script.isEmpty = true;
-
                     SpawnParticle(particleEffect[1], particleEffectPos_Front[(int)effect.pos.y]);
                     SpawnParticle(particleEffect[1], particleEffectPos_Back[(int)effect.pos.y]);
                 }
+                effect.case_Script.SetCard(null);
+                effect.case_Script.isEmpty = true;
+
                 effect.case_Script.EndMyTurn();
                 break;
 
@@ -87,21 +81,18 @@ public class EffectManager : MonoBehaviour
                 {
                     OilEffectColonne((int)effect.pos.x);
 
-                    effect.case_Script.SetCard(null);
-                    effect.case_Script.isEmpty = true;
-
                     SpawnParticle(particleEffect[6], particleEffectPos_Colonne[(int)effect.pos.x]);
                 }
                 else
                 {
                     OilEffect((int)effect.pos.y);
 
-                    effect.case_Script.SetCard(null);
-                    effect.case_Script.isEmpty = true;
-
                     SpawnParticle(particleEffect[2], particleEffectPos_Front[(int)effect.pos.y]);
                     SpawnParticle(particleEffect[2], particleEffectPos_Back[(int)effect.pos.y]);
                 }
+                effect.case_Script.SetCard(null);
+                effect.case_Script.isEmpty = true;
+
                 effect.case_Script.EndMyTurn();
                 break;
 
@@ -129,21 +120,35 @@ public class EffectManager : MonoBehaviour
                 if (effect.isColonne)
                 {
                     PiocheEffect(GetNonEmptyCaseColonne((int)effect.pos.x));
-
-                    effect.case_Script.SetCard(null);
-                    effect.case_Script.isEmpty = true;
                 }
                 else
                 {
                     PiocheEffect(GetNonEmptyCase((int)effect.pos.y));
-
-                    effect.case_Script.SetCard(null);
-                    effect.case_Script.isEmpty = true;
                 }
+                effect.case_Script.SetCard(null);
+                effect.case_Script.isEmpty = true;
                 break;
 
             case Card.EffectType.Zap:
                 ZapEffect(effect.case_Script);
+                break;
+
+            case Card.EffectType.Clean:
+                if(effect.isColonne)
+                {
+                    CleanEffectColonne((int)effect.pos.x);
+
+                    SpawnParticle(particleEffect[8], particleEffectPos_Colonne[(int)effect.pos.x]);
+                }
+                else
+                {
+                    CleanEffect((int)effect.pos.y);
+
+                    SpawnParticle(particleEffect[7], particleEffectPos_Front[(int)effect.pos.y]);
+                    SpawnParticle(particleEffect[7], particleEffectPos_Back[(int)effect.pos.y]);
+                }
+                effect.case_Script.SetCard(null);
+                effect.case_Script.isEmpty = true;
                 break;
         }
     }
@@ -195,6 +200,34 @@ public class EffectManager : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             allCase_Front[i, posY].gameObject.GetComponent<Case_Effect_Manager>().isEncouraged = true;
+        }
+    }
+
+    void CleanEffect(int posY)
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            allCase_Front[i, posY].gameObject.GetComponent<Case_Effect_Manager>().isWatered = false;
+            allCase_Front[i, posY].gameObject.GetComponent<Case_Effect_Manager>().isFired = false;
+            allCase_Front[i, posY].gameObject.GetComponent<Case_Effect_Manager>().isOiled = false;
+
+            allCase_Back[i, posY].gameObject.GetComponent<Case_Effect_Manager>().isWatered = false;
+            allCase_Back[i, posY].gameObject.GetComponent<Case_Effect_Manager>().isFired = false;
+            allCase_Back[i, posY].gameObject.GetComponent<Case_Effect_Manager>().isOiled = false;
+        }
+    }
+
+    void CleanEffectColonne(int posX)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            allCase_Front[posX, i].gameObject.GetComponent<Case_Effect_Manager>().isWatered = false;
+            allCase_Front[posX, i].gameObject.GetComponent<Case_Effect_Manager>().isFired = false;
+            allCase_Front[posX, i].gameObject.GetComponent<Case_Effect_Manager>().isOiled = false;
+
+            allCase_Back[posX, i].gameObject.GetComponent<Case_Effect_Manager>().isWatered = false;
+            allCase_Back[posX, i].gameObject.GetComponent<Case_Effect_Manager>().isFired = false;
+            allCase_Back[posX, i].gameObject.GetComponent<Case_Effect_Manager>().isOiled = false;
         }
     }
 

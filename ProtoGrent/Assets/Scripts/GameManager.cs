@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void BeginMatch()
+    public void BeginMatch()
     {
         Debug.Log("BEGIN MATCH !!!");
 

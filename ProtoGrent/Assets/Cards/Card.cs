@@ -10,7 +10,7 @@ public class Card : ScriptableObject
     public string description;
     public int damage;
     
-    public enum EffectType {None,Fire,Water,Oil,Zap,Rafle,Pioche,Defausse,Encouragement};
+    public enum EffectType {None,Fire,Water,Oil,Zap,Rafle,Pioche,Defausse,Encouragement,Clean};
     public EffectType effectType;
 
     public int nombrePioche;
