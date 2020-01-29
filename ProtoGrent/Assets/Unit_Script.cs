@@ -16,7 +16,7 @@ public class Unit_Script : MonoBehaviour
 
     public int u;
     public int t;
-    public Transform p;
+    public Vector3 p;
 
     public float rndX;
     public float rndY;
@@ -34,7 +34,7 @@ public class Unit_Script : MonoBehaviour
         }
     }
 
-    void WhichUnity(int unit,int type, Transform position)
+    void WhichUnity(int unit,int type, Vector3 position)
     {
         if(unit <= 4)
         {
@@ -50,15 +50,15 @@ public class Unit_Script : MonoBehaviour
         }
     }
 
-    Vector3 FinalPosition(Transform position)
+    Vector3 FinalPosition(Vector3 position)
     {
         float rnd = Random.Range(-rndX, rndX);
         float rnd1 = Random.Range(-rndY, rndY);
-        Vector3 finalPosition = new Vector3(position.position.x + rnd, position.position.y, position.position.z + rnd1);
+        Vector3 finalPosition = position + new Vector3(rnd,0,rnd1);
         return finalPosition;
     }
 
-    void SpawnerWeak(int unitnumber, int type, Transform position)
+    void SpawnerWeak(int unitnumber, int type, Vector3 position)
     {
         switch (type)
         {
@@ -86,7 +86,7 @@ public class Unit_Script : MonoBehaviour
         }
     }
 
-    void SpawnerMid(int unitnumber, int type, Transform position)
+    void SpawnerMid(int unitnumber, int type, Vector3 position)
     {
         switch (type)
         {
@@ -114,7 +114,7 @@ public class Unit_Script : MonoBehaviour
         }
     }
 
-    void SpawnerStrong(int unitnumber, int type, Transform position)
+    void SpawnerStrong(int unitnumber, int type, Vector3 position)
     {
         switch (type)
         {
