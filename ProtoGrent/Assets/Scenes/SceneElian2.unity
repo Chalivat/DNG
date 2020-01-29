@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &99186617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,12 +153,15 @@ MonoBehaviour:
   cam: {fileID: 1811441544}
   maxTranslate: 8
   maxRotate: 24.8
-  sensitivity: 0.4
+  sensitivity: 0.86
   leftSnap: -13
   centerSnap: 13
   rightSnap: 13
   offset: -5
   travelled: 0
+  mainScript: {fileID: 224089439}
+  holdingScript: {fileID: 224089437}
+  defausseScript: {fileID: 1260861278}
 --- !u!4 &99186618
 Transform:
   m_ObjectHideFlags: 0

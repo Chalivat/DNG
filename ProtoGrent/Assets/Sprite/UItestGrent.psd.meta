@@ -8,6 +8,9 @@ TextureImporter:
   - first:
       213: 3754531723515776366
     second: NextTurnButton
+  - first:
+      213: -4625046593157443167
+    second: PowerCrystal
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -152,12 +155,12 @@ TextureImporter:
       name: NextTurnButton
       rect:
         serializedVersion: 2
-        x: 688
-        y: 827
-        width: 146
-        height: 218
+        x: 960
+        y: 758
+        width: 221
+        height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -165,6 +168,27 @@ TextureImporter:
       bones: []
       spriteID: 6ee745f7abae47244861d0d17721975f
       internalID: 3754531723515776366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PowerCrystal
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 442
+        width: 139
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f82cdde017e2214bbc2bd3fcc4dd464
+      internalID: -4625046593157443167
       vertices: []
       indices: 
       edges: []
