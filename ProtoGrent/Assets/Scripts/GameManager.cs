@@ -22,14 +22,6 @@ public class GameManager : MonoBehaviour
         Main_Script.EndTheTurn += NextTurn;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            BeginMatch();
-        }
-    }
-
     public void BeginMatch()
     {
         Debug.Log("BEGIN MATCH !!!");
