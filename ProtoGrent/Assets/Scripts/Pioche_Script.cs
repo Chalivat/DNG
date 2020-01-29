@@ -7,44 +7,34 @@ public class Pioche_Script : MonoBehaviour
     public List<Card> carte = new List<Card>();
     public List<int> random = new List<int>();
     public CardSelection_Script selection;
-    public int nombrePioche;
-    int nombreCarte;
-    int indexCartes;
 
-    void Update()
+    public int cardToPioche;
+    public int cardToShow;
+
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            CombienDePioche(nombrePioche);
-            ShowCarte(nombreCarte);
-        }
-    }
-
-    void CombienDePioche(int nombre)
-    {
-        if(nombrePioche > 3)
-        {
-            nombreCarte = 5;
-        }
-        else
-        {
-            nombreCarte = 3;
-        }
-
-        if(carte.Count < nombrePioche)
-        {
-            nombrePioche = carte.Count;
-        }
+        EffectManager.PiocheEffect += ShowCarte;
     }
 
     void ShowCarte(int nombre)
     {
-        if(carte.Count < nombre)
+        cardToPioche = nombre;
+        if (nombre > 3)
+        {
+            cardToShow = 5;
+        }
+        else
+        {
+            cardToShow = 3;
+        }
+        if (carte.Count < nombre)
         {
             nombre = carte.Count;
         }
+
         random.Clear();
-            while (random.Count < nombre)
+
+            while (random.Count < cardToShow)
             {
                 int rnd = Random.Range(0, carte.Count);
                 if (!random.Contains(rnd))
@@ -58,7 +48,7 @@ public class Pioche_Script : MonoBehaviour
                 selection.AddToList(new CartePioche(carte[random[t]], random[t]));
             }
 
-            selection.ShowTheCards(nombre);
+            selection.ShowTheCards(cardToShow);
     }
 
     public void RemoveCarte(Card cardToRemove)

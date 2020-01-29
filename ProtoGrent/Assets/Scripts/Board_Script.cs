@@ -7,9 +7,12 @@ public class Board_Script : MonoBehaviour
 {
     public Case_Script[,] allCase = new Case_Script[5,3];
 
+    public Case_Effect_Manager[,] allEffect = new Case_Effect_Manager[5, 3];
+    public bool[,] allEncouragement = new bool[5, 3];
+
     public int point;
 
-    private void OnEnable()
+    private void Start()
     {
         UpdateBoardCases();
     }
@@ -17,11 +20,17 @@ public class Board_Script : MonoBehaviour
     public void UpdateBoardCases()
     {
         Case_Script[] cases = GetComponentsInChildren<Case_Script>();
+        Case_Effect_Manager[] effect = GetComponentsInChildren<Case_Effect_Manager>();
+
         foreach (Case_Script item in cases)
         {
             allCase[(int)item.pos.x, (int)item.pos.y] = item;
         }
-
+        foreach (Case_Effect_Manager item in effect)
+        {
+            allEffect[(int)item.pos.x, (int)item.pos.y] = item;
+            allEncouragement[(int)item.pos.x, (int)item.pos.y] = item.isEncouraged;
+        }
         CountPoint();
     }
 
@@ -62,7 +71,7 @@ public class Board_Script : MonoBehaviour
         {
             for (int y = 0; y < 3; y++)
             {
-                allCase[x, y].card = allCard[x, y];
+                allCase[x, y].SetCard(allCard[x, y]);
                 if (allCard[x, y] != null)
                 {
                     allCase[x, y].isEmpty = false;
@@ -77,14 +86,31 @@ public class Board_Script : MonoBehaviour
         CountPoint();
     }
 
+    public void SetEncrougement(bool[,] allEncouragement)
+    {
+        for (int x = 0; x < 5; x++)
+        {
+            for (int y = 0; y < 3; y++)
+            {
+                allEffect[x, y].isEncouraged = allEncouragement[x, y];
+            }
+        }
+    }
+
     public void ClearBoard()
     {
         for (int x = 0; x < 5; x++)
         {
             for (int y = 0; y < 3; y++)
             {
-                allCase[x, y].card = null;
+                allCase[x, y].SetCard(null);
                 allCase[x, y].isEmpty = true;
+
+                Debug.Log(allEffect[x, y]);
+                allEffect[x, y].isEncouraged = false;
+                allEffect[x, y].isWatered = false;
+                allEffect[x, y].isFired = false;
+                allEffect[x, y].isOiled = false;
             }
         }
     }

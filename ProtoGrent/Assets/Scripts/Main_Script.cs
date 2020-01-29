@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Main_Script : MonoBehaviour
 {
+    public delegate void EndTurn();
+    public static EndTurn EndTheTurn;
+
     public List<GameObject> carteMain = new List<GameObject>();
     public HandPlacement placement;
 
@@ -104,5 +107,10 @@ public class Main_Script : MonoBehaviour
             allCartePos.localPosition = new Vector3(0, 1.25f, .25f);
             mainIsOpen = true;
         }
+    }
+
+    public void EndMyTurn()
+    {
+        EndTheTurn();
     }
 }

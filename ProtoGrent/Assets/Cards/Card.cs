@@ -10,10 +10,12 @@ public class Card : ScriptableObject
     public string description;
     public int damage;
     
-    public int nombrePioche;
-    public int nombreDefausse;
+    public enum EffectType {None,Fire,Water,Oil,Zap,Rafle,Pioche,Defausse,Encouragement};
+    public EffectType effectType;
 
-    public Effect effect;
+    public int nombrePioche;
+
+    //public Effect effect;
 
     [Header("Visual")]
 
