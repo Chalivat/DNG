@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/DoublonElianMaisCestLaSceneDeQuentin.unity
-    guid: 8ac72b72c2dfbca4899531e71dc081fa
-  - enabled: 0
     path: Assets/Scenes/SceneElian2.unity
     guid: c6b96aa05ae3ace479b2d1270b98c0ff
   m_configObjects: {}

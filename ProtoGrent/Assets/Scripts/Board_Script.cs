@@ -103,13 +103,19 @@ public class Board_Script : MonoBehaviour
         {
             for (int y = 0; y < 3; y++)
             {
-                allCase[x, y].SetCard(null);
-                allCase[x, y].isEmpty = true;
+                if (allCase[x, y] != null)
+                {
+                    allCase[x, y].SetCard(null);
+                    allCase[x, y].isEmpty = true;
+                }
 
-                allEffect[x, y].isEncouraged = false;
-                allEffect[x, y].isWatered = false;
-                allEffect[x, y].isFired = false;
-                allEffect[x, y].isOiled = false;
+                if (allEffect[x, y] != null)
+                {
+                    allEffect[x, y].isEncouraged = false;
+                    allEffect[x, y].isWatered = false;
+                    allEffect[x, y].isFired = false;
+                    allEffect[x, y].isOiled = false;
+                }
             }
         }
     }
