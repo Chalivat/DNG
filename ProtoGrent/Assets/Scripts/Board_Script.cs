@@ -167,6 +167,11 @@ public class Board_Script : MonoBehaviour
                     allEffect[x, y].isFired = false;
                     allEffect[x, y].isOiled = false;
                 }
+
+                if(allUnitCase[x,y] != null)
+                {
+                    allUnitCase[x, y].DestroyUnitOnCase();
+                }
             }
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
     public Defausse_Script defausse;
 
     public GameObject screenCanvas;
+    public Text passButton_txt;
 
     public Board_Script playingBoard, notPlayingBoard;
 
@@ -18,10 +20,39 @@ public class GameManager : MonoBehaviour
 
     public Turn turn = Turn.player1Turn;
 
+    public bool passTurn = false;
+
+    public float timerEndTurn_Start;
+    public float timerEndTurn;
+
     private void Start()
     {
         Case_Script.EndTheTurn += EndTurn;
         Main_Script.EndTheTurn += EndTurn;
+    }
+
+    private void Update()
+    {
+        if (passTurn)
+        {
+            timerEndTurn -= Time.deltaTime;
+            if (timerEndTurn <= 0)
+            {
+                if (turn == Turn.player1Turn)
+                    if(!player1.asPassed)
+                    passButton_txt.text = "BEGIN Tour Player 1";
+                else
+                        passButton_txt.text = "BEGIN Tour Player 2";
+                else
+                    if(!player2.asPassed)
+                    passButton_txt.text = "BEGIN Tour Player 2";
+                else
+                    passButton_txt.text = "BEGIN Tour Player 1";
+
+                screenCanvas.SetActive(true);
+                passTurn = false;
+            }
+        }
     }
 
     public void BeginMatch()
@@ -47,16 +78,20 @@ public class GameManager : MonoBehaviour
         notPlayingBoard.ClearBoard();
         playingBoard.ClearBoard();
 
-        EndTurn();
+        timerEndTurn = 0f;
+        passTurn = true;
     }
 
     public void EndTurn()
     {
-        screenCanvas.SetActive(true);
+        timerEndTurn = timerEndTurn_Start;
+        passTurn = true;
     }
 
     public void NextTurn()
     {
+        main.canPlaceCard = true;
+
         playingBoard.UpdateBoardCases();
         notPlayingBoard.UpdateBoardCases();
 
@@ -131,6 +166,20 @@ public class GameManager : MonoBehaviour
         main.UpdateCardOnMain(player.allCard);
     }
 
+    public void PassTurn()
+    {
+        if(turn == Turn.player2Turn)
+        {
+            player1.asPassed = true;
+        }
+        else
+        {
+            player2.asPassed = true;
+        }
+        timerEndTurn = 0f;
+        passTurn = true;
+    }
+
     void EchangeBoard()
     {
         Card[,] tmp_Board = notPlayingBoard.GetAllCard();
@@ -163,7 +212,7 @@ public class GameManager : MonoBehaviour
 
         if(player1.point > player2.point)
         {
-            Debug.Log("MANCHE POUR JOEUR 1");
+            Debug.Log("MANCHE POUR JOUEUR 1");
             player2.life--;
             if(player2.life <= 0)
             {
@@ -171,7 +220,6 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("coucou");
                 turn = Turn.player1Turn;
                 NewManche();
             }
@@ -186,7 +234,6 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("coucou2");
                 turn = Turn.player2Turn;
                 NewManche();
             }

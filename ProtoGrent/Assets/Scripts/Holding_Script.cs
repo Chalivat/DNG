@@ -39,30 +39,30 @@ public class Holding_Script : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetMouseButton(0) && Card != null)
-        {
-            main_script.ShowMain(false);
-            main_script.removeCartesFromMain(Card.gameObject);
-            CheckForCase();
-            RotateCard();
-            Highlight_Script.HighlightLine(card.type, Highlight_Script.highlight_Color);
-        }
-        if (Input.GetMouseButtonUp(0) && Card != null)
-        {
-            Highlight_Script.HighlightLine(card.type, Highlight_Script.base_Color);
+            if (Input.GetMouseButton(0) && Card != null)
+            {
+                main_script.ShowMain(false);
+                main_script.removeCartesFromMain(Card.gameObject);
+                CheckForCase();
+                RotateCard();
+                Highlight_Script.HighlightLine(card.type, Highlight_Script.highlight_Color);
+            }
+            if (Input.GetMouseButtonUp(0) && Card != null)
+            {
+                Highlight_Script.HighlightLine(card.type, Highlight_Script.base_Color);
 
-            if (canPlayCard && Case.GetComponent<Case_Script>().isEmpty && card.type != 3 || card.type == 3 && !Case.GetComponent<Case_Script>().isEmpty)
-            {
-                ReleaseCard();
+                if (canPlayCard && Case.GetComponent<Case_Script>().isEmpty && card.type != 3 || card.type == 3 && !Case.GetComponent<Case_Script>().isEmpty)
+                {
+                    ReleaseCard();
+                }
+                else
+                {
+                    PlaceCardToMain();
+                }
+                Card = null;
+                Case = null;
+                card = null;
             }
-            else
-            {
-                PlaceCardToMain();
-            }
-            Card = null;
-            Case = null;
-            card = null;
-        }
     }
 
     void CheckForCase()
@@ -91,6 +91,7 @@ public class Holding_Script : MonoBehaviour
         Case.GetComponent<Case_Script>().PlacerCarte(card);
 
         main_script.removeCartesFromMain(Card.gameObject);
+        main_script.canPlaceCard = false;
 
         Card.GetComponentInChildren<Animator>().SetTrigger("DestroyCard");
     }
