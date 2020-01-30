@@ -7,7 +7,7 @@ public class Card_Script : MonoBehaviour
 {
     public GameObject[] typeSymbols;
 
-    public MeshRenderer planeRenderer;
+    public Image image;
 
     public Vector3 posInMain;
     public Vector3 posInWorld;
@@ -29,7 +29,6 @@ public class Card_Script : MonoBehaviour
     public Text cardDescription;
 
     public GameObject descriptionObject;
-    public bool asDescription = true;
 
     public bool isClicked = false;
 
@@ -38,8 +37,6 @@ public class Card_Script : MonoBehaviour
 
     void Start()
     {
-        UpdateVisual();
-
         holding = GameObject.FindGameObjectWithTag("Main").GetComponent<Holding_Script>();
         main = GameObject.FindGameObjectWithTag("Main").GetComponent<Main_Script>();
         changeEvent = GetComponent<ChangeEvent_Script>();
@@ -48,6 +45,11 @@ public class Card_Script : MonoBehaviour
         rotInMain = transform.localEulerAngles;
 
         posInWorld = transform.position;
+
+        /*if (card != null)
+        {
+            UpdateVisual();
+        }*/
     }
 
     private void Update()
@@ -83,6 +85,12 @@ public class Card_Script : MonoBehaviour
         holding.isHolding = false;
     }
 
+    public void SetCard(Card newCard)
+    {
+        card = newCard;
+        UpdateVisual();
+    }
+
     void BeginDrag()
     {
         if (!holding.isHolding && main.mainIsOpen)
@@ -107,7 +115,7 @@ public class Card_Script : MonoBehaviour
 
     public void UpdateVisual()
     {
-        if (asDescription)
+        if (card.asDescription)
         {
             descriptionObject.SetActive(true);
         }
@@ -133,9 +141,7 @@ public class Card_Script : MonoBehaviour
                 break;
         }
 
-        planeRenderer.material.SetColor("_FireColor", card.fireColor);
-        planeRenderer.material.SetColor("_BorderColor", card.borderColor);
-        planeRenderer.material.SetTexture("_Artwork", card.artwork);
+       image.sprite = card.artwork;
 
         name = card.name;
         description = card.description;

@@ -18,6 +18,5 @@ MonoBehaviour:
   damage: 0
   effectType: 2
   nombrePioche: 0
-  artwork: {fileID: 2800000, guid: e2e3d8122230e9648a555ac29902e23c, type: 3}
-  borderColor: {r: 0.11792451, g: 1, b: 0.19983928, a: 1}
-  fireColor: {r: 0.21226418, g: 0.8247454, b: 1, a: 1}
+  artwork: {fileID: 21300000, guid: c799fca474e20534cb44a9cfe1b55fc9, type: 3}
+  asDescription: 1
