@@ -16,6 +16,7 @@ MonoBehaviour:
   type: 1
   description: Pioche 1 carte dans la defausse
   damage: 2
+  contourColor: {r: 1, g: 0.55099326, b: 0, a: 1}
   effectType: 7
   nombrePioche: 1
   artwork: {fileID: 21300000, guid: ecaffdba21be0fd45abef11464170050, type: 3}

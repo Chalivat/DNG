@@ -28,6 +28,9 @@ public class Card_Script : MonoBehaviour
     public Text cardDamage;
     public Text cardDescription;
 
+    public Image[] imagesToColour;
+    public Text descriptionText;
+
     public GameObject descriptionObject;
 
     public bool isClicked = false;
@@ -115,6 +118,13 @@ public class Card_Script : MonoBehaviour
 
     public void UpdateVisual()
     {
+        for (int i = 0; i < imagesToColour.Length; i++)
+        {
+            imagesToColour[i].GetComponent<Image>().color = card.contourColor;
+        }
+
+        descriptionText.color = card.contourColor;
+
         if (card.asDescription)
         {
             descriptionObject.SetActive(true);

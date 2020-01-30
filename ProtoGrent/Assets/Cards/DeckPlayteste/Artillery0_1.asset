@@ -16,6 +16,7 @@ MonoBehaviour:
   type: 2
   description: 
   damage: 4
+  contourColor: {r: 0, g: 0.5550184, b: 1, a: 1}
   effectType: 0
   nombrePioche: 0
   artwork: {fileID: 21300000, guid: bf3c43f1c06a26545a122dfa29ae4bbd, type: 3}
