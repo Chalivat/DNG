@@ -16,7 +16,7 @@ MonoBehaviour:
   type: 2
   description: Pioche 1 carte
   damage: 1
-  contourColor: {r: 1, g: 1, b: 1, a: 1}
+  contourColor: {r: 0, g: 0.5550184, b: 1, a: 1}
   effectType: 6
   nombrePioche: 1
   artwork: {fileID: 21300000, guid: bf3c43f1c06a26545a122dfa29ae4bbd, type: 3}

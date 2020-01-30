@@ -154,7 +154,7 @@ MonoBehaviour:
   cam: {fileID: 1811441544}
   maxTranslate: 8
   maxRotate: 24.8
-  sensitivity: 0.86
+  sensitivity: 0.4
   leftSnap: -13
   centerSnap: 13
   rightSnap: 13

@@ -632,6 +632,8 @@ MonoBehaviour:
   - {fileID: 5643942992568367655}
   - {fileID: 367168950446838997}
   - {fileID: 6036102139175527653}
+  - {fileID: 581340078171617524}
+  descriptionText: {fileID: 2513322507087524590}
   descriptionObject: {fileID: 1326082372987569459}
   isClicked: 0
 --- !u!65 &2513322507776886249

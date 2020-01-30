@@ -29,6 +29,7 @@ public class Card_Script : MonoBehaviour
     public Text cardDescription;
 
     public Image[] imagesToColour;
+    public Text descriptionText;
 
     public GameObject descriptionObject;
 
@@ -121,6 +122,8 @@ public class Card_Script : MonoBehaviour
         {
             imagesToColour[i].GetComponent<Image>().color = card.contourColor;
         }
+
+        descriptionText.color = card.contourColor;
 
         if (card.asDescription)
         {
