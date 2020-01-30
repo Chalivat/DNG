@@ -84,8 +84,16 @@ public class GameManager : MonoBehaviour
 
     public void EndTurn()
     {
-        timerEndTurn = timerEndTurn_Start;
-        passTurn = true;
+        if (player1.asPassed || player2.asPassed)
+        {
+            Debug.Log("canplaceCard");
+            NextTurn();
+        }
+        else
+        {
+            timerEndTurn = timerEndTurn_Start;
+            passTurn = true;
+        }
     }
 
     public void NextTurn()
