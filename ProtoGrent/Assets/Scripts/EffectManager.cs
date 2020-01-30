@@ -149,6 +149,8 @@ public class EffectManager : MonoBehaviour
                 }
                 effect.case_Script.SetCard(null);
                 effect.case_Script.isEmpty = true;
+
+                effect.case_Script.EndMyTurn();
                 break;
         }
     }
@@ -191,6 +193,8 @@ public class EffectManager : MonoBehaviour
     {
         case_Script.SetCard(null);
         case_Script.isEmpty = true;
+
+        case_Script.gameObject.GetComponent<Case_Unit_Manager>().DestroyUnitOnCase();
 
         PiocheEffect(1);
     }

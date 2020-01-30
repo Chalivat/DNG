@@ -14,40 +14,28 @@ public class Unit_Script : MonoBehaviour
     public List<GameObject> artillery2 = new List<GameObject>();
     public List<GameObject> artillery3 = new List<GameObject>();
 
-    public int u;
-    public int t;
-    public Vector3 p;
-
     public float rndX;
     public float rndY;
 
-    void Start()
+    public Transform WhichUnity(int unit,int type, Transform transform)
     {
-        
-    }
-    
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            WhichUnity(u,t,p);
-        }
-    }
+        GameObject unitsParent = new GameObject("UnitParent" + transform.ToString());
+        unitsParent.transform.SetParent(transform);
+        unitsParent.transform.localPosition = Vector3.zero;
 
-    void WhichUnity(int unit,int type, Vector3 position)
-    {
-        if(unit <= 4)
+        if (unit <= 4)
         {
-            SpawnerWeak(unit, type, position);
+            SpawnerWeak(unit, type, unitsParent.transform);
         }
         else if(unit > 4 && unit <= 7)
         {
-            SpawnerMid(unit, type, position);
+            SpawnerMid(unit, type, unitsParent.transform);
         }
         else
         {
-            SpawnerStrong(unit, type, position);
+            SpawnerStrong(unit, type, unitsParent.transform);
         }
+        return unitsParent.transform;
     }
 
     Vector3 FinalPosition(Vector3 position)
@@ -58,26 +46,26 @@ public class Unit_Script : MonoBehaviour
         return finalPosition;
     }
 
-    void SpawnerWeak(int unitnumber, int type, Vector3 position)
+    void SpawnerWeak(int unitnumber, int type, Transform transform)
     {
         switch (type)
         {
             case 0:
                 for (int i = 0; i < unitnumber; i++)
                 {
-                    GameObject cloneFront = Instantiate(front1[Random.Range(0, front1.Count)], FinalPosition(position), Quaternion.identity);
+                    GameObject cloneFront = Instantiate(front1[Random.Range(0, front1.Count)], FinalPosition(transform.position), Quaternion.identity,transform);
                 }
                 break;
             case 1:
                 for (int i = 0; i < unitnumber; i++)
                 {
-                    GameObject cloneDistance = Instantiate(distance1[Random.Range(0, distance1.Count)], FinalPosition(position), Quaternion.identity);
+                    GameObject cloneDistance = Instantiate(distance1[Random.Range(0, distance1.Count)], FinalPosition(transform.position), Quaternion.identity, transform);
                 }
                 break;
             case 2:
                 for (int i = 0; i < unitnumber; i++)
                 {
-                    GameObject cloneArtillery = Instantiate(artillery1[Random.Range(0, artillery1.Count)], FinalPosition(position), Quaternion.identity);
+                    GameObject cloneArtillery = Instantiate(artillery1[Random.Range(0, artillery1.Count)], FinalPosition(transform.position), Quaternion.identity, transform);
                 }
                 break;
             default:
@@ -86,26 +74,26 @@ public class Unit_Script : MonoBehaviour
         }
     }
 
-    void SpawnerMid(int unitnumber, int type, Vector3 position)
+    void SpawnerMid(int unitnumber, int type, Transform transform)
     {
         switch (type)
         {
             case 0:
                 for (int i = 0; i < unitnumber; i++)
                 {
-                    GameObject cloneFront = Instantiate(front2[Random.Range(0, front1.Count)], FinalPosition(position), Quaternion.identity);
+                    GameObject cloneFront = Instantiate(front2[Random.Range(0, front1.Count)], FinalPosition(transform.position), Quaternion.identity, transform);
                 }
                 break;
             case 1:
                 for (int i = 0; i < unitnumber; i++)
                 {
-                    GameObject cloneDistance = Instantiate(distance2[Random.Range(0, distance1.Count)], FinalPosition(position), Quaternion.identity);
+                    GameObject cloneDistance = Instantiate(distance2[Random.Range(0, distance1.Count)], FinalPosition(transform.position), Quaternion.identity, transform);
                 }
                 break;
             case 2:
                 for (int i = 0; i < unitnumber; i++)
                 {
-                    GameObject cloneArtillery = Instantiate(artillery2[Random.Range(0, artillery1.Count)], FinalPosition(position), Quaternion.identity);
+                    GameObject cloneArtillery = Instantiate(artillery2[Random.Range(0, artillery1.Count)], FinalPosition(transform.position), Quaternion.identity, transform);
                 }
                 break;
             default:
@@ -114,26 +102,26 @@ public class Unit_Script : MonoBehaviour
         }
     }
 
-    void SpawnerStrong(int unitnumber, int type, Vector3 position)
+    void SpawnerStrong(int unitnumber, int type, Transform transform)
     {
         switch (type)
         {
             case 0:
                 for (int i = 0; i < unitnumber; i++)
                 {
-                    GameObject cloneFront = Instantiate(front3[Random.Range(0, front1.Count)], FinalPosition(position), Quaternion.identity);
+                    GameObject cloneFront = Instantiate(front3[Random.Range(0, front1.Count)], FinalPosition(transform.position), Quaternion.identity, transform);
                 }
                 break;
             case 1:
                 for (int i = 0; i < unitnumber; i++)
                 {
-                    GameObject cloneDistance = Instantiate(distance3[Random.Range(0, distance1.Count)], FinalPosition(position), Quaternion.identity);
+                    GameObject cloneDistance = Instantiate(distance3[Random.Range(0, distance1.Count)], FinalPosition(transform.position), Quaternion.identity, transform);
                 }
                 break;
             case 2:
                 for (int i = 0; i < unitnumber; i++)
                 {
-                    GameObject cloneArtillery = Instantiate(artillery3[Random.Range(0, artillery1.Count)], FinalPosition(position), Quaternion.identity);
+                    GameObject cloneArtillery = Instantiate(artillery3[Random.Range(0, artillery1.Count)], FinalPosition(transform.position), Quaternion.identity, transform);
                 }
                 break;
             default:

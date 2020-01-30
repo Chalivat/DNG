@@ -53,7 +53,6 @@ public class Holding_Script : MonoBehaviour
 
             if (canPlayCard && Case.GetComponent<Case_Script>().isEmpty && card.type != 3 || card.type == 3 && !Case.GetComponent<Case_Script>().isEmpty)
             {
-                Debug.Log("Card placed");
                 ReleaseCard();
             }
             else

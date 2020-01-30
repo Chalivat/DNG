@@ -6,7 +6,7 @@ using UnityEditor;
 public class Board_Script : MonoBehaviour
 {
     public Case_Script[,] allCase = new Case_Script[5,3];
-
+    public Case_Unit_Manager[,] allUnitCase = new Case_Unit_Manager[5, 3];
     public Case_Effect_Manager[,] allEffect = new Case_Effect_Manager[5, 3];
     public bool[,] allEncouragement = new bool[5, 3];
 
@@ -15,12 +15,25 @@ public class Board_Script : MonoBehaviour
     private void Start()
     {
         UpdateBoardCases();
+        Case_Script.cardPlaced += UpdateBoardPoint;
+    }
+
+    public void UpdateBoardPoint()
+    {
+        for (int x = 0; x < 5; x++)
+        {
+            for (int y = 0; y < 3; y++)
+            {
+                allCase[x, y].CountPointOnCase();
+            }
+        }
     }
 
     public void UpdateBoardCases()
     {
         Case_Script[] cases = GetComponentsInChildren<Case_Script>();
         Case_Effect_Manager[] effect = GetComponentsInChildren<Case_Effect_Manager>();
+        Case_Unit_Manager[] unit = GetComponentsInChildren<Case_Unit_Manager>();
 
         foreach (Case_Script item in cases)
         {
@@ -30,6 +43,10 @@ public class Board_Script : MonoBehaviour
         {
             allEffect[(int)item.pos.x, (int)item.pos.y] = item;
             allEncouragement[(int)item.pos.x, (int)item.pos.y] = item.isEncouraged;
+        }
+        foreach (Case_Unit_Manager item in unit)
+        {
+            allUnitCase[(int)item.pos.x, (int)item.pos.y] = item;
         }
         CountPoint();
     }
@@ -63,6 +80,39 @@ public class Board_Script : MonoBehaviour
         }
 
         return allCard;
+    }
+
+    public Transform[,] GetAllUnitsParent()
+    {
+        Transform[,] allUnitsParent = new Transform[5, 3];
+
+        for (int x = 0; x < 5; x++)
+        {
+            for (int y = 0; y < 3; y++)
+            {
+                allUnitsParent[x, y] = allUnitCase[x, y].GetUnitsParent();
+            }
+        }
+
+        return allUnitsParent;
+    }
+
+    public void SetAllUnitPosition(Transform[,] allUnit)
+    {
+
+        for (int x = 0; x < 5; x++)
+        {
+            for (int y = 0; y < 3; y++)
+            {
+                allUnitCase[x, y].SetUnitOnCase(null);
+                if (allUnit[x, y] != null)
+                {
+                    allUnitCase[x, y].SetUnitOnCase(allUnit[x, y]);
+                    allUnit[x, y].SetParent(allCase[x, y].transform);
+                    allUnit[x, y].localPosition = Vector3.zero;
+                }
+            }
+        }
     }
 
     public void SetCardOnBoard(Card[,] allCard)
@@ -107,6 +157,7 @@ public class Board_Script : MonoBehaviour
                 {
                     allCase[x, y].SetCard(null);
                     allCase[x, y].isEmpty = true;
+                    allCase[x, y].power = 0;
                 }
 
                 if (allEffect[x, y] != null)
@@ -120,18 +171,13 @@ public class Board_Script : MonoBehaviour
         }
     }
 
-    void CountPoint()
+    public void CountPoint()
     {
         point = 0;
 
         foreach (Case_Script item in allCase)
         {
-            Card currentCard = item.card;
-
-            if(currentCard != null)
-            {
-                point += currentCard.damage;
-            }
+            point += item.power;
         }
     }
 }
