@@ -54,18 +54,21 @@ public class Unit_Script : MonoBehaviour
                 for (int i = 0; i < unitnumber; i++)
                 {
                     GameObject cloneFront = Instantiate(front1[Random.Range(0, front1.Count)], FinalPosition(transform.position), Quaternion.identity,transform);
+                    cloneFront.transform.localEulerAngles = new Vector3(-90f, 0, 0);
                 }
                 break;
             case 1:
                 for (int i = 0; i < unitnumber; i++)
                 {
                     GameObject cloneDistance = Instantiate(distance1[Random.Range(0, distance1.Count)], FinalPosition(transform.position), Quaternion.identity, transform);
+                    cloneDistance.transform.localEulerAngles = new Vector3(-90f, 0, 0);
                 }
                 break;
             case 2:
                 for (int i = 0; i < unitnumber; i++)
                 {
                     GameObject cloneArtillery = Instantiate(artillery1[Random.Range(0, artillery1.Count)], FinalPosition(transform.position), Quaternion.identity, transform);
+                    cloneArtillery.transform.localEulerAngles = new Vector3(-90f, 0, 0);
                 }
                 break;
             default:
@@ -82,18 +85,21 @@ public class Unit_Script : MonoBehaviour
                 for (int i = 0; i < unitnumber; i++)
                 {
                     GameObject cloneFront = Instantiate(front2[Random.Range(0, front1.Count)], FinalPosition(transform.position), Quaternion.identity, transform);
+                    cloneFront.transform.localEulerAngles = new Vector3(-90f, 0, 0);
                 }
                 break;
             case 1:
                 for (int i = 0; i < unitnumber; i++)
                 {
                     GameObject cloneDistance = Instantiate(distance2[Random.Range(0, distance1.Count)], FinalPosition(transform.position), Quaternion.identity, transform);
+                    cloneDistance.transform.localEulerAngles = new Vector3(-90f, 0, 0);
                 }
                 break;
             case 2:
                 for (int i = 0; i < unitnumber; i++)
                 {
                     GameObject cloneArtillery = Instantiate(artillery2[Random.Range(0, artillery1.Count)], FinalPosition(transform.position), Quaternion.identity, transform);
+                    cloneArtillery.transform.localEulerAngles = new Vector3(-90f, 0, 0);
                 }
                 break;
             default:
@@ -110,18 +116,21 @@ public class Unit_Script : MonoBehaviour
                 for (int i = 0; i < unitnumber; i++)
                 {
                     GameObject cloneFront = Instantiate(front3[Random.Range(0, front1.Count)], FinalPosition(transform.position), Quaternion.identity, transform);
+                    cloneFront.transform.localEulerAngles = new Vector3(-90f, 0, 0);
                 }
                 break;
             case 1:
                 for (int i = 0; i < unitnumber; i++)
                 {
                     GameObject cloneDistance = Instantiate(distance3[Random.Range(0, distance1.Count)], FinalPosition(transform.position), Quaternion.identity, transform);
+                    cloneDistance.transform.localEulerAngles = new Vector3(-90f, 0, 0);
                 }
                 break;
             case 2:
                 for (int i = 0; i < unitnumber; i++)
                 {
                     GameObject cloneArtillery = Instantiate(artillery3[Random.Range(0, artillery1.Count)], FinalPosition(transform.position), Quaternion.identity, transform);
+                    cloneArtillery.transform.localEulerAngles = new Vector3(-90f, 0, 0);
                 }
                 break;
             default:
