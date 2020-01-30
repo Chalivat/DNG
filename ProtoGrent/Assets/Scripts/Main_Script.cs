@@ -17,43 +17,47 @@ public class Main_Script : MonoBehaviour
     public float count;
 
     public bool mainIsOpen;
+    public bool canPlaceCard = true;
 
     private void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if (canPlaceCard)
         {
-            count = 0;
-        }
-        if(Input.GetMouseButton(0))
-        {
-            count += Time.deltaTime;
-        }
-        if(Input.GetMouseButtonUp(0) && count <= .3f)
-        {
-            Vector3 inputPos = Input.mousePosition;
-
-            float screenWidth = Screen.width;
-            float screenHeight = Screen.height;
-
-            float xRatio = inputPos.x / screenWidth;
-            float yRatio = inputPos.y / screenHeight;
-
-            if (xRatio >= .25f && xRatio <= .85f && yRatio <= .3f && !mainIsOpen)
+            if (Input.GetMouseButtonDown(0))
             {
-                ShowMain(true);
-                placement.UpdatePlacement();
+                count = 0;
             }
-            else if(xRatio >= .25f && xRatio <= .85f && yRatio > .5f && mainIsOpen)
+            if (Input.GetMouseButton(0))
             {
-                ShowMain(false);
-                placement.UpdatePlacement();
+                count += Time.deltaTime;
             }
+            if (Input.GetMouseButtonUp(0) && count <= .3f)
+            {
+                Vector3 inputPos = Input.mousePosition;
+
+                float screenWidth = Screen.width;
+                float screenHeight = Screen.height;
+
+                float xRatio = inputPos.x / screenWidth;
+                float yRatio = inputPos.y / screenHeight;
+
+                if (xRatio >= .25f && xRatio <= .85f && yRatio <= .3f && !mainIsOpen)
+                {
+                    ShowMain(true);
+                    placement.UpdatePlacement();
+                }
+                else if (xRatio >= .25f && xRatio <= .85f && yRatio > .5f && mainIsOpen)
+                {
+                    ShowMain(false);
+                    placement.UpdatePlacement();
+                }
+            }
+
+            Vector3 pos = allCartePos.transform.localPosition;
+            pos.x = Mathf.Clamp(pos.x, (carteMain.Count * -.25f) - (.15f * carteMain.Count), (carteMain.Count * .25f) + (.15f * carteMain.Count));
+
+            allCartePos.transform.localPosition = new Vector3(pos.x, pos.y, pos.z);
         }
-
-        Vector3 pos = allCartePos.transform.localPosition;
-        pos.x = Mathf.Clamp(pos.x, (carteMain.Count * -.25f) - (.15f * carteMain.Count), (carteMain.Count * .25f) + (.15f * carteMain.Count));
-
-        allCartePos.transform.localPosition = new Vector3(pos.x, pos.y,pos.z);
     }
 
     public void UpdateCardOnMain(List<Card> newMain)

@@ -20,6 +20,7 @@ public class Case_Unit_Manager : MonoBehaviour
 
     public void DestroyUnitOnCase()
     {
+        if(unitsParent != null)
         Destroy(unitsParent.gameObject);
     }
 
