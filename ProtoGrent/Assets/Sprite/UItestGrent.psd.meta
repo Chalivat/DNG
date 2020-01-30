@@ -11,6 +11,18 @@ TextureImporter:
   - first:
       213: -4625046593157443167
     second: PowerCrystal
+  - first:
+      213: 5171985398461800016
+    second: CarteFond
+  - first:
+      213: 2993093198170096550
+    second: FondText
+  - first:
+      213: 5289787804856440118
+    second: Cross
+  - first:
+      213: -4744987549203757657
+    second: Type1
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -181,7 +193,7 @@ TextureImporter:
         width: 139
         height: 159
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -189,6 +201,90 @@ TextureImporter:
       bones: []
       spriteID: 2f82cdde017e2214bbc2bd3fcc4dd464
       internalID: -4625046593157443167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CarteFond
+      rect:
+        serializedVersion: 2
+        x: 1497
+        y: 0
+        width: 423
+        height: 596
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b862ae7562252d2459a8ee3f9211671b
+      internalID: 5171985398461800016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FondText
+      rect:
+        serializedVersion: 2
+        x: 1509
+        y: 653
+        width: 400
+        height: 209
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f2bcbfe2b42d6a48b02568759ad7045
+      internalID: 2993093198170096550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cross
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 209
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9de0fd11f2447d4cbf29187a530b1fb
+      internalID: 5289787804856440118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Type1
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 817
+        width: 246
+        height: 263
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d74cedfe53d2aa4f9d28a41a9bca8ce
+      internalID: -4744987549203757657
       vertices: []
       indices: 
       edges: []

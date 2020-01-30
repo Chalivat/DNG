@@ -35,7 +35,7 @@ public class SwipeCamera_Script : MonoBehaviour
     
     void Update()
     {
-        if (!mainScript.mainIsOpen && !holdingScript.isHolding && !defausseScript.drag)
+        if (!mainScript.mainIsOpen && !holdingScript.isHolding && !defausseScript.isOnClick)
         {
             Drag();
         }
