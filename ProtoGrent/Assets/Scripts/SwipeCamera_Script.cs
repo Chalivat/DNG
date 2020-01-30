@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
 
 public class SwipeCamera_Script : MonoBehaviour
 {
@@ -24,13 +25,20 @@ public class SwipeCamera_Script : MonoBehaviour
     private Vector3 deltaPosition;
     private Vector3 targetPosition;
 
+
+    public Main_Script mainScript;
+    public Holding_Script holdingScript;
+    public DefausseDisplay_Script defausseScript;
     void Start()
     {
     }
     
     void Update()
     {
-        Drag();
+        if (!mainScript.mainIsOpen && !holdingScript.isHolding && !defausseScript.isOnClick)
+        {
+            Drag();
+        }
     }
 
     void Drag()
