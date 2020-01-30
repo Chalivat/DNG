@@ -16,8 +16,8 @@ MonoBehaviour:
   type: 4
   description: Oil
   damage: 0
+  contourColor: {r: 1, g: 0, b: 0.8377495, a: 0}
   effectType: 3
   nombrePioche: 0
   artwork: {fileID: 2800000, guid: f99e7a7f41af6e147977651d847a89e4, type: 3}
-  borderColor: {r: 1, g: 0, b: 0, a: 1}
-  fireColor: {r: 1, g: 0.7532815, b: 0, a: 1}
+  asDescription: 0

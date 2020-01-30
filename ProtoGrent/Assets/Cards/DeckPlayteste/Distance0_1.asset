@@ -16,6 +16,7 @@ MonoBehaviour:
   type: 1
   description: Distance
   damage: 6
+  contourColor: {r: 1, g: 1, b: 1, a: 1}
   effectType: 0
   nombrePioche: 0
   artwork: {fileID: 21300000, guid: 62f87aadc4759b24abb89c78c5a69765, type: 3}

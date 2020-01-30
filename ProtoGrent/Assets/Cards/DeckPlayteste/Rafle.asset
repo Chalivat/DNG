@@ -16,6 +16,7 @@ MonoBehaviour:
   type: 4
   description: "Pioche une carte par unit\xE9 touch\xE9s"
   damage: 0
+  contourColor: {r: 1, g: 1, b: 1, a: 1}
   effectType: 5
   nombrePioche: 0
   artwork: {fileID: 21300000, guid: c799fca474e20534cb44a9cfe1b55fc9, type: 3}

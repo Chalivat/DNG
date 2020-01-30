@@ -9,6 +9,8 @@ public class Card : ScriptableObject
     public int type;
     public string description;
     public int damage;
+
+    public Color contourColor;
     
     public enum EffectType {None,Fire,Water,Oil,Zap,Rafle,Pioche,Defausse,Encouragement,Clean};
     public EffectType effectType;
