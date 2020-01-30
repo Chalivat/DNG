@@ -19,8 +19,7 @@ public class Card : ScriptableObject
 
     [Header("Visual")]
 
-    public Texture artwork;
+    public Sprite artwork;
 
-    public Color borderColor;
-    public Color fireColor;
+    public bool asDescription;
 }

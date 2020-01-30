@@ -7,7 +7,7 @@ public class Card_Script : MonoBehaviour
 {
     public GameObject[] typeSymbols;
 
-    public MeshRenderer planeRenderer;
+    public Image image;
 
     public Vector3 posInMain;
     public Vector3 posInWorld;
@@ -29,7 +29,6 @@ public class Card_Script : MonoBehaviour
     public Text cardDescription;
 
     public GameObject descriptionObject;
-    public bool asDescription = true;
 
     public bool isClicked = false;
 
@@ -107,7 +106,7 @@ public class Card_Script : MonoBehaviour
 
     public void UpdateVisual()
     {
-        if (asDescription)
+        if (card.asDescription)
         {
             descriptionObject.SetActive(true);
         }
@@ -133,9 +132,7 @@ public class Card_Script : MonoBehaviour
                 break;
         }
 
-        planeRenderer.material.SetColor("_FireColor", card.fireColor);
-        planeRenderer.material.SetColor("_BorderColor", card.borderColor);
-        planeRenderer.material.SetTexture("_Artwork", card.artwork);
+        image.sprite = card.artwork;
 
         name = card.name;
         description = card.description;
