@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public Main_Script main;
     public Defausse_Script defausse;
 
+    public GameObject screenCanvas;
+
     public Board_Script playingBoard, notPlayingBoard;
 
     public enum Turn { player1Turn, player2Turn};
@@ -18,8 +20,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Case_Script.EndTheTurn += NextTurn;
-        Main_Script.EndTheTurn += NextTurn;
+        Case_Script.EndTheTurn += EndTurn;
+        Main_Script.EndTheTurn += EndTurn;
     }
 
     public void BeginMatch()
@@ -45,7 +47,12 @@ public class GameManager : MonoBehaviour
         notPlayingBoard.ClearBoard();
         playingBoard.ClearBoard();
 
-        NextTurn();
+        EndTurn();
+    }
+
+    public void EndTurn()
+    {
+        screenCanvas.SetActive(true);
     }
 
     public void NextTurn()
@@ -93,6 +100,8 @@ public class GameManager : MonoBehaviour
                 PlayerTurn(player1);
             }
         }
+
+        screenCanvas.SetActive(false);
     }
 
     void SavePlayer(Player player)
@@ -133,6 +142,17 @@ public class GameManager : MonoBehaviour
 
         notPlayingBoard.SetEncrougement(playingBoard.allEncouragement);
         playingBoard.SetEncrougement(tmp_Bool);
+
+        Transform[,] tmp_UnitsParent = notPlayingBoard.GetAllUnitsParent();
+
+        notPlayingBoard.SetAllUnitPosition(playingBoard.GetAllUnitsParent());
+        playingBoard.SetAllUnitPosition(tmp_UnitsParent);
+
+        notPlayingBoard.UpdateBoardPoint();
+        playingBoard.UpdateBoardPoint();
+
+        notPlayingBoard.CountPoint();
+        playingBoard.CountPoint();
     }
 
     void FinManche()

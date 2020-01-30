@@ -88,7 +88,7 @@ public class Defausse_Script : MonoBehaviour
         }
         else if(card.effectType == Card.EffectType.None)
         {
-            case_Script.EndMyTurn();
+            //case_Script.EndMyTurn();
         }
     }
 

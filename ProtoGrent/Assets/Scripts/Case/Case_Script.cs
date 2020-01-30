@@ -12,11 +12,16 @@ public class Case_Script : MonoBehaviour
 
     public int power = 0;
 
+    public Case_Effect_Manager effectManager;
+
     public delegate void EventEffect(EffectClass effect);
     public static EventEffect triggerEffect;
 
     public delegate void EndTurn();
     public static EndTurn EndTheTurn;
+
+    public delegate void CardPlaced();
+    public static CardPlaced cardPlaced;
 
     public bool isEmpty = true;
 
@@ -24,7 +29,6 @@ public class Case_Script : MonoBehaviour
     {
         if(ligne == type || type == 3)
         {
-            Case_Effect_Manager effectManager = GetComponent<Case_Effect_Manager>();
             if (effectManager)
             {
                 if (!effectManager.isOiled)
@@ -43,6 +47,11 @@ public class Case_Script : MonoBehaviour
         isEmpty = false;
         SetCard(newCard);
 
+        if (card.type <= 2)
+        {
+            SpawnUnitOnBoard();
+        }
+
         if (card.effectType != Card.EffectType.None)
         {
             EffectClass effect = new EffectClass(card.effectType, card.nombrePioche,pos,ligne,this,isColonne);
@@ -53,21 +62,38 @@ public class Case_Script : MonoBehaviour
             EndMyTurn();
         }
 
-        //UpdateBoard();
+        cardPlaced();
     }
 
-    void UpdateBoard()
+    public void SpawnUnitOnBoard()
     {
-        GameObject.Find("Board").transform.GetChild(0).GetComponent<Board_Script>().UpdateBoardCases();
+        GetComponent<Case_Unit_Manager>().SetUnitOnCase(GameObject.Find("Board").GetComponent<Unit_Script>().WhichUnity(card.damage,card.type,transform));
     }
 
     public void SetCard(Card card)
     {
         this.card = card;
+    }
+
+    public void CountPointOnCase()
+    {
         if (card != null)
+        {
+            Debug.Log(power);
             power = card.damage;
+            if (effectManager.isFired || effectManager.isWatered)
+            {
+                power = 1;
+            }
+            if (effectManager.isEncouraged)
+            {
+                power = card.damage * 2;
+            }
+        }
         else
+        {
             power = 0;
+        }
     }
 
     public void EndMyTurn()
