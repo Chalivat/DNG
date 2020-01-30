@@ -69,8 +69,14 @@ public class Defausse_Script : MonoBehaviour
             if (hit.transform.CompareTag("Case"))
             {
                 Case_Script case_Script = hit.transform.GetComponent<Case_Script>();
-                AddCardToBoard(selectedCard, case_Script);
-                isPlacingCard = false;
+                bool canPlayCard = case_Script.Check(selectedCard.type);
+
+                if (canPlayCard)
+                {
+                    AddCardToBoard(selectedCard, case_Script);
+                    isPlacingCard = false;
+                    DefausseDisplay.GetComponent<DefausseDisplay_Script>().isOnClick = false;
+                }
             }
         }
     }
@@ -85,10 +91,6 @@ public class Defausse_Script : MonoBehaviour
         if (nombrePioche > 0 && allCarte.Count > 0)
         {
             ShowAllCard();
-        }
-        else if(card.effectType == Card.EffectType.None)
-        {
-            //case_Script.EndMyTurn();
         }
     }
 
