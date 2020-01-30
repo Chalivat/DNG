@@ -67,7 +67,7 @@ public class Main_Script : MonoBehaviour
         foreach (Card card in newMain)
         {
             GameObject card_GO = Instantiate(cardPrefab,allCartePos);
-            card_GO.GetComponent<Card_Script>().card = card;
+            card_GO.GetComponent<Card_Script>().SetCard(card);
 
             carteMain.Add(card_GO);
         }

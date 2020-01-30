@@ -70,16 +70,15 @@ public class Case_Script : MonoBehaviour
         GetComponent<Case_Unit_Manager>().SetUnitOnCase(GameObject.Find("Board").GetComponent<Unit_Script>().WhichUnity(card.damage,card.type,transform));
     }
 
-    public void SetCard(Card card)
+    public void SetCard(Card newCard)
     {
-        this.card = card;
+        this.card = newCard;
     }
 
     public void CountPointOnCase()
     {
         if (card != null)
         {
-            Debug.Log(power);
             power = card.damage;
             if (effectManager.isFired || effectManager.isWatered)
             {

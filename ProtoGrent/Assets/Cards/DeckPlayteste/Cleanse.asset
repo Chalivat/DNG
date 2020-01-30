@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Cleanse
   type: 4
-  description: ENleve les effets
+  description: Enleve les effets
   damage: 0
-  effectType: 0
+  effectType: 9
   nombrePioche: 0
   artwork: {fileID: 21300000, guid: c799fca474e20534cb44a9cfe1b55fc9, type: 3}
   asDescription: 1

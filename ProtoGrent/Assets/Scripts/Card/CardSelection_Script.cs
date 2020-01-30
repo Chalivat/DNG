@@ -44,7 +44,7 @@ public class CardSelection_Script : MonoBehaviour
             clone.position = cardsPosition[i].transform.position;
             clone.rotation = cardsPosition[i].transform.rotation;
 
-            clone.GetComponent<Card_Script>().card = nombrePioche[i].carte;
+            clone.GetComponent<Card_Script>().SetCard(nombrePioche[i].carte);
 
             pickedUp.Add(clone);
         }

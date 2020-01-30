@@ -37,8 +37,6 @@ public class Card_Script : MonoBehaviour
 
     void Start()
     {
-        UpdateVisual();
-
         holding = GameObject.FindGameObjectWithTag("Main").GetComponent<Holding_Script>();
         main = GameObject.FindGameObjectWithTag("Main").GetComponent<Main_Script>();
         changeEvent = GetComponent<ChangeEvent_Script>();
@@ -47,6 +45,11 @@ public class Card_Script : MonoBehaviour
         rotInMain = transform.localEulerAngles;
 
         posInWorld = transform.position;
+
+        /*if (card != null)
+        {
+            UpdateVisual();
+        }*/
     }
 
     private void Update()
@@ -80,6 +83,12 @@ public class Card_Script : MonoBehaviour
     {
         isClicked = false;
         holding.isHolding = false;
+    }
+
+    public void SetCard(Card newCard)
+    {
+        card = newCard;
+        UpdateVisual();
     }
 
     void BeginDrag()
@@ -132,7 +141,7 @@ public class Card_Script : MonoBehaviour
                 break;
         }
 
-        image.sprite = card.artwork;
+       image.sprite = card.artwork;
 
         name = card.name;
         description = card.description;

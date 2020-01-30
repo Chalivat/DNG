@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Artillery
   type: 2
-  description: Pioche 1 carte
+  description: Pioche 2 carte
   damage: 4
   effectType: 6
   nombrePioche: 2

@@ -17,6 +17,6 @@ MonoBehaviour:
   description: Pioche 1 carte
   damage: 5
   effectType: 6
-  nombrePioche: 2
+  nombrePioche: 1
   artwork: {fileID: 21300000, guid: 0254293011895534880f8ed1b2e676d5, type: 3}
   asDescription: 1

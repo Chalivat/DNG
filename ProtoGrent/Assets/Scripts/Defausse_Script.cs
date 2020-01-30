@@ -114,10 +114,6 @@ public class Defausse_Script : MonoBehaviour
 
             for (int i = 0; i < allCarte.Count; i++)
             {
-                Card_Script card = Instantiate(CardPrebabs).GetComponent<Card_Script>();
-                card.card = allCarte[i];
-                card.UpdateVisual();
-
                 Transform button = Instantiate(ButtonOverlayPrefabs).transform;
                 button.SetParent(DefausseDisplay.GetChild(0).GetChild(0));
                 button.localPosition = new Vector3(defausseDisplayOffset * i, 0, 0);
@@ -126,12 +122,18 @@ public class Defausse_Script : MonoBehaviour
                 button.GetComponent<DefausseButtonOverlay_Script>().index = i;
 
                 allButton.Add(button.gameObject);
+            }
+
+            for (int i = 0; i < allCarte.Count; i++)
+            {
+                GameObject card = Instantiate(CardPrebabs);
+                card.GetComponent<Card_Script>().SetCard(allCarte[i]);
 
                 card.transform.parent = DefausseDisplay.GetChild(0);
                 card.transform.localPosition = new Vector3(defausseDisplayOffset * i, 0, 0);
                 card.transform.localEulerAngles = Vector3.zero;
 
-                allObjectCard.Add(card.gameObject);
+                allObjectCard.Add(card);
             }
         }
     }
