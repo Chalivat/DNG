@@ -67,6 +67,7 @@ MonoBehaviour:
   card: {fileID: 0}
   power: 0
   effectManager: {fileID: 8192708299036281721}
+  isEffect: 0
   isEmpty: 1
 --- !u!114 &8192708299036281721
 MonoBehaviour:
@@ -81,6 +82,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pos: {x: 0, y: 0}
+  BoomEffect: {fileID: 5555465488896044648, guid: 4393678ede9c49f4f881499fca9bab2f,
+    type: 3}
   isFired: 0
   isWatered: 0
   isOiled: 0
@@ -157,7 +160,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 70be04cb831b6754d91e963209551d7c, type: 2}
+  - {fileID: 2100000, guid: efbab9c5e995bbe4d83430eb8c8c4f76, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -48,11 +48,6 @@ public class Card_Script : MonoBehaviour
         rotInMain = transform.localEulerAngles;
 
         posInWorld = transform.position;
-
-        /*if (card != null)
-        {
-            UpdateVisual();
-        }*/
     }
 
     private void Update()
@@ -71,7 +66,7 @@ public class Card_Script : MonoBehaviour
             }
             else
             {
-                transform.parent.localPosition += new Vector3(-xScroll / 100f, 0, 0);
+                transform.parent.localPosition += new Vector3(-xScroll / 8f, 0, 0) * Time.deltaTime;
             }
         }
     }

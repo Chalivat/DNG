@@ -39,19 +39,47 @@ public class Holding_Script : MonoBehaviour
 
     void Update()
     {
-            if (Input.GetMouseButton(0) && Card != null)
+        if (Input.GetMouseButton(0) && Card != null)
+        {
+            main_script.ShowMain(false);
+            main_script.removeCartesFromMain(Card.gameObject);
+            CheckForCase();
+            RotateCard();
+            if(card.type == 4)
             {
-                main_script.ShowMain(false);
-                main_script.removeCartesFromMain(Card.gameObject);
-                CheckForCase();
-                RotateCard();
-                Highlight_Script.HighlightLine(card.type, Highlight_Script.highlight_Color);
+                Highlight_Script.HighLightEffectCase(Highlight_Script.highlight_Color);
             }
+            if (card.type < 3)
+            {
+                Highlight_Script.HighlightLine(card.type, Highlight_Script.highlight_Color,false);
+            }
+            else if(card.type == 3)
+            {
+                Highlight_Script.HighLightOccupedCase(Highlight_Script.highlight_Color);
+            }
+            else if (Case != null && Case.gameObject.GetComponent<Case_Script>().isEffect && !Case.gameObject.GetComponent<Case_Script>().isColonne)
+            {
+                Highlight_Script.ClearAllLine();
+                Highlight_Script.HighlightLine((int)Case.gameObject.GetComponent<Case_Script>().pos.y, Highlight_Script.highlight_Color,true);
+            }
+            else if (Case != null && Case.gameObject.GetComponent<Case_Script>().isEffect && Case.gameObject.GetComponent<Case_Script>().isColonne)
+            {
+                Highlight_Script.ClearAllColonne();
+                Highlight_Script.HighLightColonne((int)Case.gameObject.GetComponent<Case_Script>().pos.x, Highlight_Script.highlight_Color);
+            }
+            else
+            {
+                Highlight_Script.ClearAllLine();
+                Highlight_Script.ClearAllColonne();
+            }
+        }
             if (Input.GetMouseButtonUp(0) && Card != null)
             {
-                Highlight_Script.HighlightLine(card.type, Highlight_Script.base_Color);
+            Highlight_Script.HighLightEffectCase(Highlight_Script.base_Color);
+            Highlight_Script.ClearAllColonne();
+            Highlight_Script.ClearAllLine();
 
-                if (canPlayCard && Case.GetComponent<Case_Script>().isEmpty && card.type != 3 || card.type == 3 && !Case.GetComponent<Case_Script>().isEmpty)
+            if (canPlayCard && Case.GetComponent<Case_Script>().isEmpty && card.type != 3 || card.type == 3 && !Case.GetComponent<Case_Script>().isEmpty)
                 {
                     ReleaseCard();
                 }
@@ -88,10 +116,10 @@ public class Holding_Script : MonoBehaviour
 
     void ReleaseCard()
     {
+        main_script.canPlaceCard = false;
         Case.GetComponent<Case_Script>().PlacerCarte(card);
 
         main_script.removeCartesFromMain(Card.gameObject);
-        main_script.canPlaceCard = false;
 
         Card.GetComponentInChildren<Animator>().SetTrigger("DestroyCard");
     }

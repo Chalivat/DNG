@@ -17,7 +17,9 @@ public class CardSelection_Script : MonoBehaviour
     int nombreCarte;
     int cardCount;
 
-    private void Start()
+    bool endTurnAfterPickUp = true;
+
+    private void OnEnable()
     {
         main = GetComponent<Main_Script>();
         pioche = GameObject.FindGameObjectWithTag("Pioche").GetComponent<Pioche_Script>();
@@ -33,8 +35,10 @@ public class CardSelection_Script : MonoBehaviour
         nombrePioche.Add(carte);
     }
 
-    public void ShowTheCards(int nombre)
+    public void ShowTheCards(int nombre , bool endTurn)
     {
+        endTurnAfterPickUp = endTurn;
+
         pickedUp = new List<Transform>(nombre);
         tmpPioche.Clear();
 
@@ -87,6 +91,7 @@ public class CardSelection_Script : MonoBehaviour
             nombrePioche.Clear();
             cardCount = 0;
 
+            if(endTurnAfterPickUp)
             main.EndMyTurn();
         }
     }

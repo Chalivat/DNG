@@ -23,6 +23,7 @@ public class Case_Script : MonoBehaviour
     public delegate void CardPlaced();
     public static CardPlaced cardPlaced;
 
+    public bool isEffect = false;
     public bool isEmpty = true;
 
     public bool Check(int type)
@@ -61,7 +62,9 @@ public class Case_Script : MonoBehaviour
         {
             EndMyTurn();
         }
-
+        CountPointOnCase();
+        GameObject.Find("Front_Board").GetComponent<Board_Script>().CountPoint();
+        GameObject.Find("Back_Board").GetComponent<Board_Script>().CountPoint();
         cardPlaced();
     }
 

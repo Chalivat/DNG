@@ -897,3 +897,5 @@ C:\Users\quent\Documents\DNG\DNG\ProtoGrent\obj\Debug\Assembly-CSharp.csproj.Cor
 C:\Users\quent\Documents\DNG\DNG\ProtoGrent\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 C:\Users\quent\Documents\DNG\DNG\ProtoGrent\obj\Debug\Assembly-CSharp.dll
 C:\Users\quent\Documents\DNG\DNG\ProtoGrent\obj\Debug\Assembly-CSharp.pdb
+D:\Projets\DNG\DNG\ProtoGrent\Temp\bin\Debug\Unity.2D.Sprite.Editor.dll
+D:\Projets\DNG\DNG\ProtoGrent\Temp\bin\Debug\Unity.2D.Sprite.Editor.pdb

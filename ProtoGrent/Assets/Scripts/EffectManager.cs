@@ -16,7 +16,9 @@ public class EffectManager : MonoBehaviour
     Case_Script[,] allCase_Front = new Case_Script[5, 3];
     Case_Script[,] allCase_Back = new Case_Script[5, 3];
 
-    public delegate void PiocheEvent(int nombre);
+    List<EffectClass> effectBuffer = new List<EffectClass>();
+
+    public delegate void PiocheEvent(int nombre, bool endTurn);
     public static PiocheEvent PiocheEffect;
 
     public delegate void DefausseEvent(int nombre);
@@ -25,6 +27,7 @@ public class EffectManager : MonoBehaviour
     private void Start()
     {
         Case_Script.triggerEffect += EventTriggered;
+        GameManager.newTurn += PlayEffectBuffer;
 
         allCase_Front = new Case_Script[3, 5];
         allCase_Front = Front_board.allCase;
@@ -113,18 +116,29 @@ public class EffectManager : MonoBehaviour
                 break;
 
             case Card.EffectType.Pioche:
-                PiocheEffect(effect.numCardIfNeeded);
+                PiocheEffect(effect.numCardIfNeeded,true);
                 break;
 
             case Card.EffectType.Rafle:
                 if (effect.isColonne)
                 {
-                    PiocheEffect(GetNonEmptyCaseColonne((int)effect.pos.x));
+                    int piocheNumber = GetNonEmptyCaseColonne((int)effect.pos.x);
+                    if (piocheNumber > 0)
+                        PiocheEffect(piocheNumber, true);
+                    else
+                        effect.case_Script.EndMyTurn();
                 }
                 else
                 {
-                    PiocheEffect(GetNonEmptyCase((int)effect.pos.y));
+                    int piocheNumber = GetNonEmptyCase((int)effect.pos.y);
+                    if (piocheNumber > 0)
+                        PiocheEffect(piocheNumber, true);
+                    else
+                        effect.case_Script.EndMyTurn();
                 }
+
+                effectBuffer.Add(effect);
+
                 effect.case_Script.SetCard(null);
                 effect.case_Script.isEmpty = true;
                 break;
@@ -191,12 +205,12 @@ public class EffectManager : MonoBehaviour
 
     void ZapEffect(Case_Script case_Script)
     {
+        case_Script.GetComponent<Case_Unit_Manager>().DestroyUnitOnCase();
+
         case_Script.SetCard(null);
         case_Script.isEmpty = true;
 
-        case_Script.gameObject.GetComponent<Case_Unit_Manager>().DestroyUnitOnCase();
-
-        PiocheEffect(1);
+        PiocheEffect(1,true);
     }
 
     void EncouragementEffect(int posY)
@@ -257,8 +271,14 @@ public class EffectManager : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
-            allCase_Front[i, posY].gameObject.GetComponent<Case_Effect_Manager>().isFired = true;
-            allCase_Back[i, posY].gameObject.GetComponent<Case_Effect_Manager>().isFired = true;
+            Case_Effect_Manager frontCase = allCase_Front[i, posY].gameObject.GetComponent<Case_Effect_Manager>();
+            Case_Effect_Manager backCase = allCase_Back[i, posY].gameObject.GetComponent<Case_Effect_Manager>();
+
+            frontCase.isFired = true;
+            frontCase.CheckExplose();
+
+            backCase.isFired = true;
+            backCase.CheckExplose();
         }
     }
 
@@ -266,8 +286,14 @@ public class EffectManager : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-            allCase_Front[posX, i].gameObject.GetComponent<Case_Effect_Manager>().isFired = true;
-            allCase_Back[posX, i].gameObject.GetComponent<Case_Effect_Manager>().isFired = true;
+            Case_Effect_Manager frontCase = allCase_Front[posX, i].gameObject.GetComponent<Case_Effect_Manager>();
+            Case_Effect_Manager backCase = allCase_Back[posX, i].gameObject.GetComponent<Case_Effect_Manager>();
+
+            frontCase.isFired = true;
+            frontCase.CheckExplose();
+
+            backCase.isFired = true;
+            backCase.CheckExplose();
         }
     }
 
@@ -275,8 +301,14 @@ public class EffectManager : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
-            allCase_Front[i, posY].gameObject.GetComponent<Case_Effect_Manager>().isOiled = true;
-            allCase_Back[i, posY].gameObject.GetComponent<Case_Effect_Manager>().isOiled = true;
+            Case_Effect_Manager frontCase = allCase_Front[i, posY].gameObject.GetComponent<Case_Effect_Manager>();
+            Case_Effect_Manager backCase = allCase_Back[i, posY].gameObject.GetComponent<Case_Effect_Manager>();
+
+            frontCase.isOiled = true;
+            frontCase.CheckExplose();
+
+            backCase.isOiled = true;
+            backCase.CheckExplose();
         }
     }
 
@@ -284,8 +316,43 @@ public class EffectManager : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-            allCase_Front[posX, i].gameObject.GetComponent<Case_Effect_Manager>().isOiled = true;
-            allCase_Back[posX, i].gameObject.GetComponent<Case_Effect_Manager>().isOiled = true;
+            Case_Effect_Manager frontCase = allCase_Front[posX, i].gameObject.GetComponent<Case_Effect_Manager>();
+            Case_Effect_Manager backCase = allCase_Back[posX, i].gameObject.GetComponent<Case_Effect_Manager>();
+
+            frontCase.isOiled = true;
+            frontCase.CheckExplose();
+
+            backCase.isOiled = true;
+            backCase.CheckExplose();
         }
+    }
+
+    void PlayEffectBuffer()
+    {
+        foreach (EffectClass item in effectBuffer)
+        {
+            if (item.isColonne)
+            {
+                int piocheNumber = GetNonEmptyCaseColonne((int)item.pos.x);
+                if (piocheNumber > 0)
+                    PiocheEffect(piocheNumber, false);
+                else
+                    item.case_Script.EndMyTurn();
+            }
+            else
+            {
+                int piocheNumber = GetNonEmptyCase((int)item.pos.y);
+                if (piocheNumber > 0)
+                    PiocheEffect(piocheNumber, false);
+                else
+                    item.case_Script.EndMyTurn();
+            }
+        }
+        effectBuffer.Clear();
+    }
+
+    public int GetEffectBufferLenght()
+    {
+        return effectBuffer.Count;
     }
 }

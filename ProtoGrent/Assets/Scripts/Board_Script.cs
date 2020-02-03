@@ -10,23 +10,15 @@ public class Board_Script : MonoBehaviour
     public Case_Effect_Manager[,] allEffect = new Case_Effect_Manager[5, 3];
     public bool[,] allEncouragement = new bool[5, 3];
 
+    public delegate void BoardUpdate();
+    public static BoardUpdate boardUpdate;
+
     public int point;
 
     private void Start()
     {
         UpdateBoardCases();
-        Case_Script.cardPlaced += UpdateBoardPoint;
-    }
-
-    public void UpdateBoardPoint()
-    {
-        for (int x = 0; x < 5; x++)
-        {
-            for (int y = 0; y < 3; y++)
-            {
-                allCase[x, y].CountPointOnCase();
-            }
-        }
+        Case_Script.cardPlaced += CountPoint;
     }
 
     public void UpdateBoardCases()
@@ -48,7 +40,6 @@ public class Board_Script : MonoBehaviour
         {
             allUnitCase[(int)item.pos.x, (int)item.pos.y] = item;
         }
-        CountPoint();
     }
 
     public List<Card> GetCardPlaced()
@@ -99,7 +90,6 @@ public class Board_Script : MonoBehaviour
 
     public void SetAllUnitPosition(Transform[,] allUnit)
     {
-
         for (int x = 0; x < 5; x++)
         {
             for (int y = 0; y < 3; y++)
@@ -132,8 +122,6 @@ public class Board_Script : MonoBehaviour
                 }
             }
         }
-
-        CountPoint();
     }
 
     public void SetEncrougement(bool[,] allEncouragement)
@@ -174,6 +162,7 @@ public class Board_Script : MonoBehaviour
                 }
             }
         }
+        CountPoint();
     }
 
     public void CountPoint()
@@ -182,7 +171,9 @@ public class Board_Script : MonoBehaviour
 
         foreach (Case_Script item in allCase)
         {
+            item.CountPointOnCase();
             point += item.power;
         }
+        boardUpdate();
     }
 }

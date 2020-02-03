@@ -12,7 +12,7 @@ public class DefausseDisplay_Script : MonoBehaviour
 
     public Transform allCard;
 
-    public float scrollSensitivity = .1f;
+    public float scrollSensitivity = 1f;
     float lastPos, currentPos;
 
     public float exitTimer_Start;
@@ -27,7 +27,7 @@ public class DefausseDisplay_Script : MonoBehaviour
             lastPos = currentPos;
             currentPos = Input.mousePosition.x;
 
-            allCard.localPosition += new Vector3((currentPos - lastPos) * scrollSensitivity, 0, 0);
+            allCard.localPosition += new Vector3((currentPos - lastPos) * scrollSensitivity, 0, 0) * Time.deltaTime;
 
             float xposClamped = Mathf.Clamp(allCard.localPosition.x, -allCard.childCount * 1.25f, 0);
 

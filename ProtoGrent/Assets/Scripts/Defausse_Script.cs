@@ -83,7 +83,7 @@ public class Defausse_Script : MonoBehaviour
 
     void AddCardToBoard(Card card, Case_Script case_Script)
     {
-        highlight_Script.HighlightLine(card.type, highlight_Script.base_Color);
+        highlight_Script.HighlightLine(card.type, highlight_Script.base_Color,true);
 
         case_Script.PlacerCarte(card);
 
@@ -138,6 +138,10 @@ public class Defausse_Script : MonoBehaviour
                 allObjectCard.Add(card);
             }
         }
+        else
+        {
+            main.EndMyTurn();
+        }
     }
 
     public void ChooseCardFromDefausse(int index)
@@ -148,7 +152,7 @@ public class Defausse_Script : MonoBehaviour
 
         selectedCard = allCarte[index];
 
-        highlight_Script.HighlightLine(allCarte[index].type, highlight_Script.highlight_Color);
+        highlight_Script.HighlightLine(allCarte[index].type, highlight_Script.highlight_Color,false);
 
         nombrePioche--;
 

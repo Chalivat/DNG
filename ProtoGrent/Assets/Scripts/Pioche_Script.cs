@@ -16,7 +16,7 @@ public class Pioche_Script : MonoBehaviour
         EffectManager.PiocheEffect += ShowCarte;
     }
 
-    void ShowCarte(int nombre)
+    void ShowCarte(int nombre, bool endTurn)
     {
         cardToPioche = nombre;
         if (nombre > 3)
@@ -48,7 +48,7 @@ public class Pioche_Script : MonoBehaviour
                 selection.AddToList(new CartePioche(carte[random[t]], random[t]));
             }
 
-            selection.ShowTheCards(cardToShow);
+            selection.ShowTheCards(cardToShow, endTurn);
     }
 
     public void RemoveCarte(Card cardToRemove)

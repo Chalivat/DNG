@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +15,12 @@ public class GameManager : MonoBehaviour
     public GameObject screenCanvas;
     public Text passButton_txt;
 
+    public Text player1Info;
+    public Text player2Info;
+
+    public Text player1CardCount;
+    public Text player2CardCount;
+
     public Board_Script playingBoard, notPlayingBoard;
 
     public enum Turn { player1Turn, player2Turn};
@@ -25,10 +32,15 @@ public class GameManager : MonoBehaviour
     public float timerEndTurn_Start;
     public float timerEndTurn;
 
+    public delegate void NewTurn();
+    public static NewTurn newTurn;
+
     private void Start()
     {
         Case_Script.EndTheTurn += EndTurn;
         Main_Script.EndTheTurn += EndTurn;
+
+        Board_Script.boardUpdate += UpdatePlayerInfo;
     }
 
     private void Update()
@@ -67,8 +79,6 @@ public class GameManager : MonoBehaviour
 
     void NewManche()
     {
-        Debug.Log("NEW MANCHE");
-
         player1.asPassed = false;
         player2.asPassed = false;
 
@@ -80,13 +90,14 @@ public class GameManager : MonoBehaviour
 
         timerEndTurn = 0f;
         passTurn = true;
+
+        UpdatePlayerInfo();
     }
 
     public void EndTurn()
     {
         if (player1.asPassed || player2.asPassed)
         {
-            Debug.Log("canplaceCard");
             NextTurn();
         }
         else
@@ -109,7 +120,6 @@ public class GameManager : MonoBehaviour
         }
         else if(turn == Turn.player1Turn)
         {
-            Debug.Log("TURN J1");
             if (!player1.asPassed)
             {
                 SavePlayer(player2);
@@ -127,7 +137,6 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("TURN J2");
             if (!player2.asPassed)
             {
                 SavePlayer(player1);
@@ -145,12 +154,12 @@ public class GameManager : MonoBehaviour
         }
 
         screenCanvas.SetActive(false);
+        newTurn();
+        UpdatePlayerCard();
     }
 
     void SavePlayer(Player player)
     {
-        player.point = player.playingBoard.point;
-
         List<Card> cards = new List<Card>();
 
         List<GameObject> allCards = new List<GameObject>();
@@ -169,8 +178,6 @@ public class GameManager : MonoBehaviour
 
     void PlayerTurn(Player player)
     {
-        Debug.Log(player.name + " TURN");
-
         main.UpdateCardOnMain(player.allCard);
     }
 
@@ -205,17 +212,35 @@ public class GameManager : MonoBehaviour
         notPlayingBoard.SetAllUnitPosition(playingBoard.GetAllUnitsParent());
         playingBoard.SetAllUnitPosition(tmp_UnitsParent);
 
-        notPlayingBoard.UpdateBoardPoint();
-        playingBoard.UpdateBoardPoint();
+        //notPlayingBoard.CountPoint();
+        //playingBoard.CountPoint();
+    }
 
-        notPlayingBoard.CountPoint();
-        playingBoard.CountPoint();
+    void UpdatePlayerInfo()
+    {
+        if(turn == Turn.player2Turn)
+        {
+            player1.point = playingBoard.point;
+            player2.point = notPlayingBoard.point;
+        }
+        else
+        {
+            player2.point = playingBoard.point;
+            player1.point = notPlayingBoard.point;
+        }
+
+        player1Info.text = " Joueur 1 : Vie : " + player1.life + " / Points: " + player1.point;
+        player2Info.text = " Joueur 2 : Vie : " + player2.life + " / Points: " + player2.point;
+    }
+
+    void UpdatePlayerCard()
+    {
+        player1CardCount.text = " / Cartes :" + player1.allCard.Count.ToString();
+        player2CardCount.text = " / Cartes :" + player2.allCard.Count.ToString();
     }
 
     void FinManche()
     {
-        Debug.Log("FIN MANCHE");
-
         defausse.AddBoardCardToDefausse();
 
         if(player1.point > player2.point)
@@ -246,5 +271,10 @@ public class GameManager : MonoBehaviour
                 NewManche();
             }
         }
+    }
+
+    public void DEBUG_ReloadScene()
+    {
+        SceneManager.LoadScene(0);
     }
 }

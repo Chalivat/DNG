@@ -41,12 +41,12 @@ public class Main_Script : MonoBehaviour
                 float xRatio = inputPos.x / screenWidth;
                 float yRatio = inputPos.y / screenHeight;
 
-                if (xRatio >= .25f && xRatio <= .85f && yRatio <= .3f && !mainIsOpen)
+                if (xRatio >= .05f && xRatio <= .95f && yRatio <= .3f && !mainIsOpen)
                 {
                     ShowMain(true);
                     placement.UpdatePlacement();
                 }
-                else if (xRatio >= .25f && xRatio <= .85f && yRatio > .5f && mainIsOpen)
+                else if (xRatio >= .05f && xRatio <= .95f && yRatio > .5f && mainIsOpen)
                 {
                     ShowMain(false);
                     placement.UpdatePlacement();
