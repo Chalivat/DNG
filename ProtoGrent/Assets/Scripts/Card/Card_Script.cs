@@ -95,7 +95,7 @@ public class Card_Script : MonoBehaviour
         {
             GetComponent<BoxCollider>().enabled = false;
 
-            holding.Card = transform;
+            holding.Carte = transform;
             holding.card = card;
 
             transform.SetParent(null);

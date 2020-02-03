@@ -11,6 +11,7 @@ public class LigneHighlight_Script : MonoBehaviour
 
     public MeshRenderer[] effectCases;
 
+    public Color darker_Color;
     public Color highlight_Color;
     public Color base_Color;
 
@@ -31,7 +32,7 @@ public class LigneHighlight_Script : MonoBehaviour
         base_Color = casesFront[0].transform.GetChild(0).GetComponentInChildren<MeshRenderer>().material.GetColor("_BaseColor");
     }
 
-    public void HighlightLine(int yIndex,Color color, bool ignoreUnit)
+    public void HighlightLine(int yIndex,Color color, bool ignoreUnit,bool mirror)
     {
         for (int i = 0; i < 5; i++)
         {
@@ -46,6 +47,22 @@ public class LigneHighlight_Script : MonoBehaviour
                     allCaseFront[i, yIndex].GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", color);
             }
         }
+        if(mirror)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                if (ignoreUnit)
+                {
+                    allCaseBack[i, yIndex].GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", color);
+                }
+                else
+                {
+                    Case_Script case_Script = allCaseFront[i, yIndex].GetComponent<Case_Script>();
+                    if (case_Script.isEmpty && !case_Script.GetComponent<Case_Effect_Manager>().isOiled)
+                        allCaseBack[i, yIndex].GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", color);
+                }
+            }
+        }
     }
 
     public void HighLightColonne(int xIndex, Color color)
@@ -57,39 +74,63 @@ public class LigneHighlight_Script : MonoBehaviour
         }
     }
 
-    public void HighLightOccupedCase(Color color)
+    public void HighLightOccupedCase()
     {
+        DarkerAllLine();
         for (int x   = 0; x < 5; x++)
         {
             for (int y = 0; y < 3; y++)
             {
                 if (!allCaseFront[x, y].GetComponent<Case_Script>().isEmpty)
-                    allCaseFront[x, y].GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", color);
+                    allCaseFront[x, y].GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", highlight_Color);
             }
         }
     }
 
-    public void HighLightEffectCase(Color color)
+    public void HighLightEffectCaseLine()
     {
-        foreach (MeshRenderer item in effectCases)
+        for (int i = 0; i < 3; i++)
         {
-            item.material.SetColor("_BaseColor", color);
+            effectCases[i].material.SetColor("_BaseColor", highlight_Color);
+        }
+    }
+    public void HighLightEffectCaseColonne()
+    {
+        for (int i = 3; i < 8; i++)
+        {
+            effectCases[i].material.SetColor("_BaseColor", highlight_Color);
         }
     }
 
-    public void ClearAllLine()
+    public void DarkerAllLine()
     {
-        HighlightLine(0, base_Color,true);
-        HighlightLine(1, base_Color, true);
-        HighlightLine(2, base_Color, true);
+        foreach (MeshRenderer item in effectCases)
+        {
+            item.material.SetColor("_BaseColor", darker_Color);
+        }
+        for (int x = 0; x < 5; x++)
+        {
+            for (int y = 0; y < 3; y++)
+            {
+                allCaseFront[x, y].GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", darker_Color);
+                allCaseBack[x, y].GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", darker_Color);
+            }
+        }
     }
 
-    public void ClearAllColonne()
+    public void ClearAllCase()
     {
-        HighLightColonne(0, base_Color);
-        HighLightColonne(1, base_Color);
-        HighLightColonne(2, base_Color);
-        HighLightColonne(3, base_Color);
-        HighLightColonne(4, base_Color);
+        foreach (MeshRenderer item in effectCases)
+        {
+            item.material.SetColor("_BaseColor", base_Color);
+        }
+        for (int x = 0; x < 5; x++)
+        {
+            for (int y = 0; y < 3; y++)
+            {
+                allCaseFront[x, y].GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", base_Color);
+                allCaseBack[x, y].GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", base_Color);
+            }
+        }
     }
 }

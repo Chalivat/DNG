@@ -12,7 +12,7 @@ public class Holding_Script : MonoBehaviour
 
     public LayerMask mask;
 
-    public Transform Card, Case;
+    public Transform Carte, Case;
     public Card card;
     bool canPlayCard;
     Camera cam;
@@ -39,45 +39,62 @@ public class Holding_Script : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(0) && Card != null)
+        if (Input.GetMouseButton(0) && Carte != null)
         {
             main_script.ShowMain(false);
-            main_script.removeCartesFromMain(Card.gameObject);
+            main_script.removeCartesFromMain(Carte.gameObject);
             CheckForCase();
             RotateCard();
+
             if(card.type == 4)
             {
-                Highlight_Script.HighLightEffectCase(Highlight_Script.highlight_Color);
-            }
-            if (card.type < 3)
-            {
-                Highlight_Script.HighlightLine(card.type, Highlight_Script.highlight_Color,false);
+                Highlight_Script.DarkerAllLine();
+                Highlight_Script.HighLightEffectCaseLine();
+                if (card.effectType != Card.EffectType.Encouragement)
+                {
+                    Highlight_Script.HighLightEffectCaseColonne();
+                }
+
+                #region CASE EFFECT HIGHLIGHT
+
+                if (Case != null)
+                {
+                    Case_Script case_Script = Case.GetComponent<Case_Script>();
+                    if (case_Script.isEffect && case_Script.isColonne)
+                    {
+                        Highlight_Script.HighLightColonne((int)case_Script.pos.x, Highlight_Script.highlight_Color);
+                    }
+                    else if (case_Script.isEffect && !case_Script.isColonne)
+                    {
+                        Highlight_Script.HighLightEffectCaseLine();
+
+                        if (card.effectType != Card.EffectType.Encouragement)
+                        {
+                            Highlight_Script.HighLightEffectCaseColonne();
+                            Highlight_Script.HighlightLine((int)case_Script.pos.y, Highlight_Script.highlight_Color, true, true);
+                        }
+                        else
+                        {
+                            Highlight_Script.HighlightLine((int)case_Script.pos.y, Highlight_Script.highlight_Color, true, false);
+                        }
+                    }
+                }
+
+                #endregion
             }
             else if(card.type == 3)
             {
-                Highlight_Script.HighLightOccupedCase(Highlight_Script.highlight_Color);
-            }
-            else if (Case != null && Case.gameObject.GetComponent<Case_Script>().isEffect && !Case.gameObject.GetComponent<Case_Script>().isColonne)
-            {
-                Highlight_Script.ClearAllLine();
-                Highlight_Script.HighlightLine((int)Case.gameObject.GetComponent<Case_Script>().pos.y, Highlight_Script.highlight_Color,true);
-            }
-            else if (Case != null && Case.gameObject.GetComponent<Case_Script>().isEffect && Case.gameObject.GetComponent<Case_Script>().isColonne)
-            {
-                Highlight_Script.ClearAllColonne();
-                Highlight_Script.HighLightColonne((int)Case.gameObject.GetComponent<Case_Script>().pos.x, Highlight_Script.highlight_Color);
+                Highlight_Script.HighLightOccupedCase();
             }
             else
             {
-                Highlight_Script.ClearAllLine();
-                Highlight_Script.ClearAllColonne();
+                Highlight_Script.DarkerAllLine();
+                Highlight_Script.HighlightLine(card.type, Highlight_Script.highlight_Color, false,false);
             }
         }
-            if (Input.GetMouseButtonUp(0) && Card != null)
+        if (Input.GetMouseButtonUp(0) && Carte != null)
             {
-            Highlight_Script.HighLightEffectCase(Highlight_Script.base_Color);
-            Highlight_Script.ClearAllColonne();
-            Highlight_Script.ClearAllLine();
+            Highlight_Script.ClearAllCase();
 
             if (canPlayCard && Case.GetComponent<Case_Script>().isEmpty && card.type != 3 || card.type == 3 && !Case.GetComponent<Case_Script>().isEmpty)
                 {
@@ -87,7 +104,7 @@ public class Holding_Script : MonoBehaviour
                 {
                     PlaceCardToMain();
                 }
-                Card = null;
+            Carte = null;
                 Case = null;
                 card = null;
             }
@@ -101,7 +118,7 @@ public class Holding_Script : MonoBehaviour
         if (Physics.Raycast(ray, out hit, mask))
         {
             lerpPoint = hit.point;
-            Card.transform.eulerAngles = holdingRot;
+            Carte.transform.eulerAngles = holdingRot;
 
             if (hit.transform.CompareTag("Case"))
             {
@@ -111,7 +128,7 @@ public class Holding_Script : MonoBehaviour
             
         }
         else canPlayCard = false;
-        Card.transform.position = Vector3.Lerp(Card.transform.position, lerpPoint + offset, lerpSpeed * Time.deltaTime);
+        Carte.transform.position = Vector3.Lerp(Carte.transform.position, lerpPoint + offset, lerpSpeed * Time.deltaTime);
     }
 
     void ReleaseCard()
@@ -119,32 +136,32 @@ public class Holding_Script : MonoBehaviour
         main_script.canPlaceCard = false;
         Case.GetComponent<Case_Script>().PlacerCarte(card);
 
-        main_script.removeCartesFromMain(Card.gameObject);
+        main_script.removeCartesFromMain(Carte.gameObject);
 
-        Card.GetComponentInChildren<Animator>().SetTrigger("DestroyCard");
+        Carte.GetComponentInChildren<Animator>().SetTrigger("DestroyCard");
     }
 
     void PlaceCardToMain()
     {
-        Card.SetParent(transform);
+        Carte.SetParent(transform);
 
-        Card_Script card_Script = Card.GetComponent<Card_Script>();
+        Card_Script card_Script = Carte.GetComponent<Card_Script>();
 
-        Card.localPosition = card_Script.posInMain;
-        Card.localEulerAngles = card_Script.rotInMain;
+        Carte.localPosition = card_Script.posInMain;
+        Carte.localEulerAngles = card_Script.rotInMain;
 
-        main_script.addCarteToMain(Card.gameObject);
+        main_script.addCarteToMain(Carte.gameObject);
     }
 
     void RotateCard()
     {
         previousPos = cardPos;
-        cardPos = Card.position;
+        cardPos = Carte.position;
 
         Vector3 cardvelocity = ((cardPos - previousPos) / Time.deltaTime) * 2;
 
         Vector3 rot = Vector3.Cross(Vector3.up, cardvelocity);
 
-        Card.transform.eulerAngles = new Vector3(holdingRot.x + rot.x , rot.y , rot.z);
+        Carte.transform.eulerAngles = new Vector3(holdingRot.x + rot.x , rot.y , rot.z);
     }
 }
