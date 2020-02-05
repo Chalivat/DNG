@@ -93,7 +93,12 @@ public class Holding_Script : MonoBehaviour
             }
         }
         if (Input.GetMouseButtonUp(0) && Carte != null)
+        {
+            if (card.isEspion)
             {
+                LigneHighlight_Script.EchangeActiveBoard();
+            }
+
             Highlight_Script.ClearAllCase();
 
             if (canPlayCard && Case.GetComponent<Case_Script>().isEmpty && card.type != 3 || card.type == 3 && !Case.GetComponent<Case_Script>().isEmpty)
@@ -104,10 +109,11 @@ public class Holding_Script : MonoBehaviour
                 {
                     PlaceCardToMain();
                 }
+
             Carte = null;
-                Case = null;
-                card = null;
-            }
+            Case = null;
+            card = null;
+        }
     }
 
     void CheckForCase()
@@ -118,16 +124,19 @@ public class Holding_Script : MonoBehaviour
         if (Physics.Raycast(ray, out hit, mask))
         {
             lerpPoint = hit.point;
-            Carte.transform.eulerAngles = holdingRot;
+            //Carte.transform.eulerAngles = holdingRot;
 
             if (hit.transform.CompareTag("Case"))
             {
                 Case = hit.transform;
-                canPlayCard = Case.GetComponent<Case_Script>().Check(card.type);
+                canPlayCard = Case.GetComponent<Case_Script>().Check(card.type, LigneHighlight_Script.activeBoard);
             }
-            
+
         }
-        else canPlayCard = false;
+        else
+        {
+            canPlayCard = false;
+        }
         Carte.transform.position = Vector3.Lerp(Carte.transform.position, lerpPoint + offset, lerpSpeed * Time.deltaTime);
     }
 
@@ -163,5 +172,7 @@ public class Holding_Script : MonoBehaviour
         Vector3 rot = Vector3.Cross(Vector3.up, cardvelocity);
 
         Carte.transform.eulerAngles = new Vector3(holdingRot.x + rot.x , rot.y , rot.z);
+
+        //Carte.transform.GetChild(0).LookAt(cam.transform);
     }
 }

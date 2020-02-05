@@ -69,7 +69,7 @@ public class Defausse_Script : MonoBehaviour
             if (hit.transform.CompareTag("Case"))
             {
                 Case_Script case_Script = hit.transform.GetComponent<Case_Script>();
-                bool canPlayCard = case_Script.Check(selectedCard.type);
+                bool canPlayCard = case_Script.Check(selectedCard.type,LigneHighlight_Script.activeBoard);
 
                 if (canPlayCard)
                 {

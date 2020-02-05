@@ -103,6 +103,11 @@ public class Card_Script : MonoBehaviour
             holding.isHolding = true;
 
             isClicked = false;
+
+            if (card.isEspion)
+            {
+                LigneHighlight_Script.EchangeActiveBoard();
+            }
         }
     }
 
