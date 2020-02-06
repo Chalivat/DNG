@@ -282,6 +282,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cb1baf7d181ad9244b1865fde2dbc88e, type: 2}
   - {fileID: 11400000, guid: be1aa2943aae23b49a11cd8305f3587d, type: 2}
   - {fileID: 11400000, guid: 68bf86052fe4fdd4e83af63444e9beec, type: 2}
+  - {fileID: 11400000, guid: 829d24976738f024889a635e7aad61d4, type: 2}
+  - {fileID: 11400000, guid: 829d24976738f024889a635e7aad61d4, type: 2}
   random: 
   selection: {fileID: 224089440}
   cardToPioche: 0
