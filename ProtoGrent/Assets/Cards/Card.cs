@@ -17,7 +17,8 @@ public class Card : ScriptableObject
 
     public int nombrePioche;
 
-    //public Effect effect;
+    //SI ESPION SE PLACE DANS LE CAMP ADVERSE
+    public bool isEspion;
 
     [Header("Visual")]
 

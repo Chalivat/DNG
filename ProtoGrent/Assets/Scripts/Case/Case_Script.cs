@@ -7,6 +7,7 @@ public class Case_Script : MonoBehaviour
     public Vector2 pos;
     public int ligne;
     public bool isColonne = false;
+    public uint boardNumber;
 
     public Card card;
 
@@ -23,12 +24,15 @@ public class Case_Script : MonoBehaviour
     public delegate void CardPlaced();
     public static CardPlaced cardPlaced;
 
+    public delegate void Action(PlayerCoup coup);
+    public static Action playerAction;
+
     public bool isEffect = false;
     public bool isEmpty = true;
 
-    public bool Check(int type)
+    public bool Check(int type, uint board)
     {
-        if(ligne == type || type == 3)
+        if(ligne == type && boardNumber == board || type == 3 && boardNumber == board || isColonne && isEffect)
         {
             if (effectManager)
             {
@@ -47,6 +51,7 @@ public class Case_Script : MonoBehaviour
     {
         isEmpty = false;
         SetCard(newCard);
+        playerAction(new PlayerCoup(this, card, LigneHighlight_Script.activeBoard));
 
         if (card.type <= 2)
         {
@@ -70,7 +75,9 @@ public class Case_Script : MonoBehaviour
 
     public void SpawnUnitOnBoard()
     {
-        GetComponent<Case_Unit_Manager>().SetUnitOnCase(GameObject.Find("Board").GetComponent<Unit_Script>().WhichUnity(card.damage,card.type,transform));
+        Case_Unit_Manager case_Unit_Manager = GetComponent<Case_Unit_Manager>();
+        if(case_Unit_Manager != null)
+        case_Unit_Manager.SetUnitOnCase(GameObject.Find("Board").GetComponent<Unit_Script>().WhichUnity(card.damage,card.type,transform));
     }
 
     public void SetCard(Card newCard)

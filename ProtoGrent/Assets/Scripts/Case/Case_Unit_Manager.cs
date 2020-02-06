@@ -22,7 +22,6 @@ public class Case_Unit_Manager : MonoBehaviour
     {
         if (unitsParent != null)
         {
-            Debug.Log("DestroyUNIT");
             Destroy(unitsParent.gameObject);
         }
     }

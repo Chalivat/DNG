@@ -35,6 +35,9 @@ public class GameManager : MonoBehaviour
     public delegate void NewTurn();
     public static NewTurn newTurn;
 
+    public delegate void newManche();
+    public static newManche newmanche;
+
     private void Start()
     {
         Case_Script.EndTheTurn += EndTurn;
@@ -79,6 +82,8 @@ public class GameManager : MonoBehaviour
 
     void NewManche()
     {
+        newmanche();
+
         player1.asPassed = false;
         player2.asPassed = false;
 
@@ -125,8 +130,9 @@ public class GameManager : MonoBehaviour
                 SavePlayer(player2);
                 PlayerTurn(player1);
 
-                EchangeBoard();
+                //EchangeBoard();
 
+                LigneHighlight_Script.activeBoard = 1;
                 turn = Turn.player2Turn;
             }
             else
@@ -142,8 +148,9 @@ public class GameManager : MonoBehaviour
                 SavePlayer(player1);
                 PlayerTurn(player2);
 
-                EchangeBoard();
+                //EchangeBoard();
 
+                LigneHighlight_Script.activeBoard = 2;
                 turn = Turn.player1Turn;
             }
             else

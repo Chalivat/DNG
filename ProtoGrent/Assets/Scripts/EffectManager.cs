@@ -9,7 +9,6 @@ public class EffectManager : MonoBehaviour
     public GameObject[] particleEffect;
 
     public Vector3[] particleEffectPos_Front;
-    public Vector3[] particleEffectPos_Back;
 
     public Vector3[] particleEffectPos_Colonne;
 
@@ -50,8 +49,10 @@ public class EffectManager : MonoBehaviour
                 {
                     FireEffect((int)effect.pos.y);
 
-                    SpawnParticle(particleEffect[0], particleEffectPos_Front[(int)effect.pos.y]);
-                    SpawnParticle(particleEffect[0], particleEffectPos_Back[(int)effect.pos.y]);
+                    Vector3 SpawnPos = particleEffectPos_Front[(int)effect.pos.y];
+
+                    SpawnParticle(particleEffect[0], SpawnPos);
+                    SpawnParticle(particleEffect[0], new Vector3(SpawnPos.x,SpawnPos.y,Mathf.Abs(SpawnPos.z)));
                 }
                 effect.case_Script.SetCard(null);
                 effect.case_Script.isEmpty = true;
@@ -70,8 +71,10 @@ public class EffectManager : MonoBehaviour
                 {
                     WaterEffect((int)effect.pos.y);
 
-                    SpawnParticle(particleEffect[1], particleEffectPos_Front[(int)effect.pos.y]);
-                    SpawnParticle(particleEffect[1], particleEffectPos_Back[(int)effect.pos.y]);
+                    Vector3 SpawnPos = particleEffectPos_Front[(int)effect.pos.y];
+
+                    SpawnParticle(particleEffect[1], SpawnPos);
+                    SpawnParticle(particleEffect[1], new Vector3(SpawnPos.x, SpawnPos.y, Mathf.Abs(SpawnPos.z)));
                 }
                 effect.case_Script.SetCard(null);
                 effect.case_Script.isEmpty = true;
@@ -90,8 +93,10 @@ public class EffectManager : MonoBehaviour
                 {
                     OilEffect((int)effect.pos.y);
 
-                    SpawnParticle(particleEffect[2], particleEffectPos_Front[(int)effect.pos.y]);
-                    SpawnParticle(particleEffect[2], particleEffectPos_Back[(int)effect.pos.y]);
+                    Vector3 SpawnPos = particleEffectPos_Front[(int)effect.pos.y];
+
+                    SpawnParticle(particleEffect[2], SpawnPos);
+                    SpawnParticle(particleEffect[2], new Vector3(SpawnPos.x, SpawnPos.y, Mathf.Abs(SpawnPos.z)));
                 }
                 effect.case_Script.SetCard(null);
                 effect.case_Script.isEmpty = true;
@@ -100,12 +105,10 @@ public class EffectManager : MonoBehaviour
                 break;
 
             case Card.EffectType.Encouragement:
-                EncouragementEffect((int)effect.pos.y);
+                EncouragementEffect((int)effect.pos.y,effect.case_Script.boardNumber,effect.pos);
 
                 effect.case_Script.SetCard(null);
                 effect.case_Script.isEmpty = true;
-
-                SpawnParticle(particleEffect[3], particleEffectPos_Front[(int)effect.pos.y]);
 
                 effect.case_Script.EndMyTurn();
 
@@ -158,8 +161,10 @@ public class EffectManager : MonoBehaviour
                 {
                     CleanEffect((int)effect.pos.y);
 
-                    SpawnParticle(particleEffect[7], particleEffectPos_Front[(int)effect.pos.y]);
-                    SpawnParticle(particleEffect[7], particleEffectPos_Back[(int)effect.pos.y]);
+                    Vector3 SpawnPos = particleEffectPos_Front[(int)effect.pos.y];
+
+                    SpawnParticle(particleEffect[7], SpawnPos);
+                    SpawnParticle(particleEffect[7], new Vector3(SpawnPos.x, SpawnPos.y, Mathf.Abs(SpawnPos.z)));
                 }
                 effect.case_Script.SetCard(null);
                 effect.case_Script.isEmpty = true;
@@ -213,11 +218,30 @@ public class EffectManager : MonoBehaviour
         PiocheEffect(1,true);
     }
 
-    void EncouragementEffect(int posY)
+    void EncouragementEffect(int posY, uint boardNumber,Vector2 pos)
     {
-        for (int i = 0; i < 5; i++)
+        if (boardNumber == 1)
         {
-            allCase_Front[i, posY].gameObject.GetComponent<Case_Effect_Manager>().isEncouraged = true;
+            for (int i = 0; i < 5; i++)
+            {
+                Case_Effect_Manager case_Effect_Front = allCase_Front[i, posY].gameObject.GetComponent<Case_Effect_Manager>();
+                case_Effect_Front.isEncouraged = true;
+                case_Effect_Front.AddImage(case_Effect_Front.modifierSprite[3]);
+
+                SpawnParticle(particleEffect[3], particleEffectPos_Front[(int)pos.y]);
+            }
+        }
+        else if(boardNumber == 2)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                Case_Effect_Manager case_Effect_Back = allCase_Back[i, posY].gameObject.GetComponent<Case_Effect_Manager>();
+                case_Effect_Back.isEncouraged = true;
+                case_Effect_Back.AddImage(case_Effect_Back.modifierSprite[3]);
+
+                Vector3 SpawnPos = particleEffectPos_Front[(int)pos.y];
+                SpawnParticle(particleEffect[3], new Vector3(SpawnPos.x, SpawnPos.y, Mathf.Abs(SpawnPos.z)));
+            }
         }
     }
 
@@ -225,13 +249,17 @@ public class EffectManager : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
-            allCase_Front[i, posY].gameObject.GetComponent<Case_Effect_Manager>().isWatered = false;
-            allCase_Front[i, posY].gameObject.GetComponent<Case_Effect_Manager>().isFired = false;
-            allCase_Front[i, posY].gameObject.GetComponent<Case_Effect_Manager>().isOiled = false;
+            Case_Effect_Manager case_Effect_Front = allCase_Front[i, posY].gameObject.GetComponent<Case_Effect_Manager>();
+            case_Effect_Front.isWatered = false;
+            case_Effect_Front.isFired = false;
+            case_Effect_Front.isOiled = false;
+            case_Effect_Front.ClearImage();
 
-            allCase_Back[i, posY].gameObject.GetComponent<Case_Effect_Manager>().isWatered = false;
-            allCase_Back[i, posY].gameObject.GetComponent<Case_Effect_Manager>().isFired = false;
-            allCase_Back[i, posY].gameObject.GetComponent<Case_Effect_Manager>().isOiled = false;
+            Case_Effect_Manager case_Effect_Back = allCase_Back[i, posY].gameObject.GetComponent<Case_Effect_Manager>();
+            case_Effect_Back.isWatered = false;
+            case_Effect_Back.isFired = false;
+            case_Effect_Back.isOiled = false;
+            case_Effect_Back.ClearImage();
         }
     }
 
@@ -239,13 +267,17 @@ public class EffectManager : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-            allCase_Front[posX, i].gameObject.GetComponent<Case_Effect_Manager>().isWatered = false;
-            allCase_Front[posX, i].gameObject.GetComponent<Case_Effect_Manager>().isFired = false;
-            allCase_Front[posX, i].gameObject.GetComponent<Case_Effect_Manager>().isOiled = false;
+            Case_Effect_Manager case_Effect_Front = allCase_Front[posX, i].gameObject.GetComponent<Case_Effect_Manager>();
+            case_Effect_Front.isWatered = false;
+            case_Effect_Front.isFired = false;
+            case_Effect_Front.isOiled = false;
+            case_Effect_Front.ClearImage();
 
-            allCase_Back[posX, i].gameObject.GetComponent<Case_Effect_Manager>().isWatered = false;
-            allCase_Back[posX, i].gameObject.GetComponent<Case_Effect_Manager>().isFired = false;
-            allCase_Back[posX, i].gameObject.GetComponent<Case_Effect_Manager>().isOiled = false;
+            Case_Effect_Manager case_Effect_Back = allCase_Back[posX, i].gameObject.GetComponent<Case_Effect_Manager>();
+            case_Effect_Back.isWatered = false;
+            case_Effect_Back.isFired = false;
+            case_Effect_Back.isOiled = false;
+            case_Effect_Back.ClearImage();
         }
     }
 
@@ -253,8 +285,13 @@ public class EffectManager : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
-            allCase_Front[i, posY].gameObject.GetComponent<Case_Effect_Manager>().isWatered = true;
-            allCase_Back[i, posY].gameObject.GetComponent<Case_Effect_Manager>().isWatered = true;
+            Case_Effect_Manager case_Effect_Front = allCase_Front[i, posY].gameObject.GetComponent<Case_Effect_Manager>();
+            case_Effect_Front.isWatered = true;
+            case_Effect_Front.AddImage(case_Effect_Front.modifierSprite[1]);
+
+            Case_Effect_Manager case_Effect_Back = allCase_Back[i, posY].gameObject.GetComponent<Case_Effect_Manager>();
+            case_Effect_Back.isWatered = true;
+            case_Effect_Back.AddImage(case_Effect_Back.modifierSprite[1]);
         }
     }
 
@@ -262,8 +299,13 @@ public class EffectManager : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-            allCase_Front[posX, i].gameObject.GetComponent<Case_Effect_Manager>().isWatered = true;
-            allCase_Back[posX, i].gameObject.GetComponent<Case_Effect_Manager>().isWatered = true;
+            Case_Effect_Manager case_Effect_Front = allCase_Front[posX, i].gameObject.GetComponent<Case_Effect_Manager>();
+            case_Effect_Front.isWatered = true;
+            case_Effect_Front.AddImage(case_Effect_Front.modifierSprite[1]);
+
+            Case_Effect_Manager case_Effect_Back = allCase_Back[posX, i].gameObject.GetComponent<Case_Effect_Manager>();
+            case_Effect_Back.isWatered = true;
+            case_Effect_Back.AddImage(case_Effect_Back.modifierSprite[1]);
         }
     }
 
@@ -276,9 +318,11 @@ public class EffectManager : MonoBehaviour
 
             frontCase.isFired = true;
             frontCase.CheckExplose();
+            frontCase.AddImage(frontCase.modifierSprite[0]);
 
             backCase.isFired = true;
             backCase.CheckExplose();
+            backCase.AddImage(backCase.modifierSprite[0]);
         }
     }
 
@@ -291,9 +335,11 @@ public class EffectManager : MonoBehaviour
 
             frontCase.isFired = true;
             frontCase.CheckExplose();
+            frontCase.AddImage(frontCase.modifierSprite[0]);
 
             backCase.isFired = true;
             backCase.CheckExplose();
+            backCase.AddImage(backCase.modifierSprite[0]);
         }
     }
 
@@ -306,9 +352,11 @@ public class EffectManager : MonoBehaviour
 
             frontCase.isOiled = true;
             frontCase.CheckExplose();
+            frontCase.AddImage(frontCase.modifierSprite[2]);
 
             backCase.isOiled = true;
             backCase.CheckExplose();
+            backCase.AddImage(backCase.modifierSprite[2]);
         }
     }
 
@@ -321,9 +369,11 @@ public class EffectManager : MonoBehaviour
 
             frontCase.isOiled = true;
             frontCase.CheckExplose();
+            frontCase.AddImage(frontCase.modifierSprite[2]);
 
             backCase.isOiled = true;
             backCase.CheckExplose();
+            backCase.AddImage(backCase.modifierSprite[2]);
         }
     }
 
