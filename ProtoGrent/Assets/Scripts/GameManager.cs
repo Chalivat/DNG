@@ -38,9 +38,6 @@ public class GameManager : MonoBehaviour
     public delegate void newManche();
     public static newManche newmanche;
 
-    public delegate void EndTheTurn();
-    public static EndTheTurn endTurn;
-
     private void Start()
     {
         Case_Script.EndTheTurn += EndTurn;
@@ -68,7 +65,6 @@ public class GameManager : MonoBehaviour
                     passButton_txt.text = "BEGIN Tour Player 1";
 
                 screenCanvas.SetActive(true);
-                endTurn();
                 passTurn = false;
             }
         }
@@ -163,9 +159,8 @@ public class GameManager : MonoBehaviour
                 PlayerTurn(player1);
             }
         }
-
-        screenCanvas.SetActive(false);
         newTurn();
+        screenCanvas.SetActive(false);
         UpdatePlayerCard();
     }
 
