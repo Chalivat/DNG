@@ -60,6 +60,7 @@ public class Card_Script : MonoBehaviour
             float xScroll = lastMousePos.x - currentMousePos.x;
             float yScroll = lastMousePos.y - currentMousePos.y;
 
+            Debug.Log(yScroll);
             if(yScroll < -15f)
             {
                 BeginDrag();
