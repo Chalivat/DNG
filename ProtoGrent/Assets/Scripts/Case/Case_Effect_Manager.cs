@@ -57,7 +57,6 @@ public class Case_Effect_Manager : MonoBehaviour
         {
             if (images[i].sprite == null)
             {
-                Debug.Log(index);
                 SetImagePosSizeAndSprite(images[i], imageSizes[index - 1], index-1, sprite);
             }
             else

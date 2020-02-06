@@ -536,8 +536,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -4625046593157443167, guid: 610f38017a9438b4fbd40f8f393d2bc8,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 358050082164445716, guid: 4d8c08330dea725488953df5bb13f995,
         type: 3}
       propertyPath: m_StaticEditorFlags

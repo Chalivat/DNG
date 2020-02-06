@@ -22,6 +22,8 @@ public class HandPlacement : MonoBehaviour
 
     public void UpdatePlacement()
     {
+        int width = Screen.width;
+
         tmp_Main = new List<GameObject>();
         tmp_Main.Clear();
         tmp_Main = Main_Script.getMain();
@@ -36,7 +38,6 @@ public class HandPlacement : MonoBehaviour
 
             Card_Script card_Script = tmp_Main[x].GetComponent<Card_Script>();
 
-            //tmp_Main[x].transform.RotateAround(pivot.position, pivot.forward, angle / tmp_Main.Count * i);
             if (!Main_Script.mainIsOpen)
             {
                 tmp_Main[x].transform.localPosition += new Vector3(xOffSetMain / tmp_Main.Count * i, -.025f * x, 0);
