@@ -159,9 +159,8 @@ public class GameManager : MonoBehaviour
                 PlayerTurn(player1);
             }
         }
-
-        screenCanvas.SetActive(false);
         newTurn();
+        screenCanvas.SetActive(false);
         UpdatePlayerCard();
     }
 
