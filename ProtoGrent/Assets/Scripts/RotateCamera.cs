@@ -25,9 +25,21 @@ public class RotateCamera : MonoBehaviour
     private Vector3 targetPosition;
     private float zoom;
 
+    private bool isPlayer1;
+
     void Start()
     {
         Anchor = cam.transform.parent.gameObject;
+    }
+
+    void OnEnable()
+    {
+        GameManager.newTurn += SwapPlayer;
+    }
+
+    void OnDisable()
+    {
+        GameManager.newTurn -= SwapPlayer;
     }
     
     void Update()
@@ -122,7 +134,19 @@ public class RotateCamera : MonoBehaviour
         else return true;
     }
 
-    
+    void SwapPlayer()
+    {
+        if (!isPlayer1)
+        {
+            Anchor.transform.rotation = Quaternion.identity;
+            isPlayer1 = !isPlayer1;
+        }
+        else
+        {
+            Anchor.transform.rotation = Quaternion.identity * Quaternion.Euler(0,180,0);
+            isPlayer1 = !isPlayer1;
+        }
+    }
 
     
 }
