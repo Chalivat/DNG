@@ -5,25 +5,16 @@ using UnityEngine.UI;
 
 public class Card_Script : MonoBehaviour
 {
-    public GameObject[] typeSymbols;
-
-    public Image image;
-
     public Vector3 posInMain;
-    public Vector3 posInWorld;
-
     public Vector3 rotInMain;
 
-    public Holding_Script holding;
-    public Main_Script main;
     public Card card;
-    public ChangeEvent_Script changeEvent;
 
-    private new string name;
-    private string description;
-    private int damage;
+    public delegate void ClickedEvent(bool value,Transform trans,Card card);
+    public static ClickedEvent ClickTheCard;
 
-    private int nombrePioche;
+    [Space]
+    [Header("Visual")]
 
     public Text cardDamage;
     public Text cardDescription;
@@ -33,83 +24,28 @@ public class Card_Script : MonoBehaviour
 
     public GameObject descriptionObject;
 
-    public bool isClicked = false;
-
-    Vector3 currentMousePos;
-    Vector3 lastMousePos;
+    public GameObject[] typeSymbols;
 
     void Start()
     {
-        holding = GameObject.FindGameObjectWithTag("Main").GetComponent<Holding_Script>();
-        main = GameObject.FindGameObjectWithTag("Main").GetComponent<Main_Script>();
-        changeEvent = GetComponent<ChangeEvent_Script>();
-
         posInMain = transform.localPosition;
         rotInMain = transform.localEulerAngles;
-
-        posInWorld = transform.position;
-    }
-
-    private void Update()
-    {
-        if(isClicked)
-        {
-            lastMousePos = currentMousePos;
-            currentMousePos = Input.mousePosition;
-
-            float xScroll = lastMousePos.x - currentMousePos.x;
-            float yScroll = lastMousePos.y - currentMousePos.y;
-
-            Debug.Log(yScroll);
-            if(yScroll < -15f)
-            {
-                BeginDrag();
-            }
-            else
-            {
-                transform.parent.localPosition += new Vector3(-xScroll / 8f, 0, 0) * Time.deltaTime;
-            }
-        }
     }
 
     public void ClickOnCard()
     {
-        currentMousePos = Input.mousePosition;
-        isClicked = true;
+        ClickTheCard(true,transform ,card);
     }
 
     public void PointerUpOnCard()
     {
-        isClicked = false;
-        holding.isHolding = false;
+        ClickTheCard(false,null,null);
     }
 
     public void SetCard(Card newCard)
     {
         card = newCard;
         UpdateVisual();
-    }
-
-    void BeginDrag()
-    {
-        if (!holding.isHolding && main.mainIsOpen)
-        {
-            GetComponent<BoxCollider>().enabled = false;
-
-            holding.Carte = transform;
-            holding.card = card;
-
-            transform.SetParent(null);
-
-            holding.isHolding = true;
-
-            isClicked = false;
-
-            if (card.isEspion)
-            {
-                LigneHighlight_Script.EchangeActiveBoard();
-            }
-        }
     }
 
     public GameObject GetGameObject()
@@ -152,15 +88,7 @@ public class Card_Script : MonoBehaviour
                 break;
         }
 
-       image.sprite = card.artwork;
-
-        name = card.name;
-        description = card.description;
-        damage = card.damage;
-
-        nombrePioche = card.nombrePioche;
-
-        cardDamage.text = damage.ToString();
-        cardDescription.text = description;
+        cardDamage.text = card.damage.ToString();
+        cardDescription.text = card.description;
     }
 }

@@ -109,7 +109,8 @@ public class RotateCamera : MonoBehaviour
 
         //cam.transform.position = direction * zoom;
         zoom = Mathf.Clamp(zoom, minZoom, maxZoom);
-        Anchor.transform.localScale = new Vector3(zoom,zoom,zoom);
+        cam.transform.Translate(direction * value);
+        //Anchor.transform.localScale = new Vector3(zoom,zoom,zoom);
     }
 
     bool canSwipe()
