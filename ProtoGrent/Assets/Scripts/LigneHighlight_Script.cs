@@ -161,7 +161,7 @@ public class LigneHighlight_Script : MonoBehaviour
 
     public void HighLightEffectCaseColonne()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 10; i++)
         {
             allColonneEffectCase[i].material.SetColor("_BaseColor", highlight_Color);
         }

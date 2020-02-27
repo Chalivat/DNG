@@ -48,6 +48,11 @@ public class CardNavigation : MonoBehaviour
             if (Mathf.Abs(lastMousePos.x - currentMousePos.x) > 1 && !CardAsPopUp)
             {
                 allCard.Translate(Vector3.right * (currentMousePos.x - lastMousePos.x) * xSensitivity * Time.deltaTime,Space.Self);
+
+                Vector3 pos = allCard.transform.localPosition;
+                pos.x = Mathf.Clamp(pos.x, (allCard.transform.childCount * -.25f) - (.15f * allCard.transform.childCount), (allCard.transform.childCount * .25f) + (.15f * allCard.transform.childCount));
+
+                allCard.transform.localPosition = pos;
             }
             if (currentMousePos.y >= Screen.height * .55f && CardAsPopUp)
             {
