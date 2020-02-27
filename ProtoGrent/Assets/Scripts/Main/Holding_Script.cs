@@ -41,8 +41,6 @@ public class Holding_Script : MonoBehaviour
     {
         if (Input.GetMouseButton(0) && Carte != null)
         {
-            main_script.ShowMain(false);
-            main_script.removeCartesFromMain(Carte.gameObject);
             CheckForCase();
             RotateCard();
 
@@ -147,19 +145,21 @@ public class Holding_Script : MonoBehaviour
 
         main_script.removeCartesFromMain(Carte.gameObject);
 
-        Carte.GetComponentInChildren<Animator>().SetTrigger("DestroyCard");
+        Destroy(Carte.gameObject);
     }
 
     void PlaceCardToMain()
     {
-        Carte.SetParent(transform);
+        Carte.SetParent(transform.GetChild(0));
 
         Card_Script card_Script = Carte.GetComponent<Card_Script>();
 
-        Carte.localPosition = card_Script.posInMain;
-        Carte.localEulerAngles = card_Script.rotInMain;
+        LerpManager lerpToMain = new LerpManager(Carte.localPosition, card_Script.posInMain, Carte,1f,true,false,LerpCurve.Curve.linear);
+        lerpToMain.StartLerp();
 
         main_script.addCarteToMain(Carte.gameObject);
+
+        Carte.localEulerAngles = card_Script.rotInMain;
     }
 
     void RotateCard()

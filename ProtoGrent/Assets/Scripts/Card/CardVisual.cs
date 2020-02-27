@@ -6,8 +6,8 @@ public class CardVisual : MonoBehaviour
 {
     public GameObject Card;
 
-    public void DestroyCard()
+    /*public void DestroyCard()
     {
         Destroy(transform.parent.gameObject);
-    }
+    }*/
 }

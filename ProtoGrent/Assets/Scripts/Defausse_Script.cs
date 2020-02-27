@@ -118,6 +118,7 @@ public class Defausse_Script : MonoBehaviour
             {
                 Transform button = Instantiate(ButtonOverlayPrefabs).transform;
                 button.SetParent(DefausseDisplay.GetChild(0).GetChild(0));
+
                 button.localPosition = new Vector3(defausseDisplayOffset * i, 0, 0);
                 button.localEulerAngles = new Vector3(0, 0, 0);
 
@@ -132,7 +133,11 @@ public class Defausse_Script : MonoBehaviour
                 card.GetComponent<Card_Script>().SetCard(allCarte[i]);
 
                 card.transform.parent = DefausseDisplay.GetChild(0);
-                card.transform.localPosition = new Vector3(defausseDisplayOffset * i, 0, 0);
+                card.transform.localPosition = transform.position;
+
+                LerpManager lerpCard = new LerpManager(card.transform.localPosition, new Vector3(defausseDisplayOffset * i, 0, 0), card.transform, 1f, true, false, LerpCurve.Curve.easeInOut);
+                lerpCard.StartLerp();
+
                 card.transform.localEulerAngles = Vector3.zero;
 
                 allObjectCard.Add(card);
@@ -147,8 +152,11 @@ public class Defausse_Script : MonoBehaviour
     public void ChooseCardFromDefausse(int index)
     {
         choosedCard = allObjectCard[index].transform;
+
+        LerpManager lerpToCardPos = new LerpManager(choosedCard.position, CardPos.position, choosedCard, .5f, false, false, LerpCurve.Curve.easeInOut);
+        lerpToCardPos.StartLerp();
         choosedCard.SetParent(CardPos);
-        choosedCard.localPosition = Vector3.zero;
+        //choosedCard.localPosition = Vector3.zero;
 
         selectedCard = allCarte[index];
 

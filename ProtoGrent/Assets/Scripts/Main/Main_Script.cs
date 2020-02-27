@@ -44,12 +44,10 @@ public class Main_Script : MonoBehaviour
                 if (xRatio >= .05f && xRatio <= .95f && yRatio <= .3f && !mainIsOpen)
                 {
                     ShowMain(true);
-                    placement.UpdatePlacement();
                 }
                 else if (xRatio >= .05f && xRatio <= .95f && yRatio > .5f && mainIsOpen)
                 {
                     ShowMain(false);
-                    placement.UpdatePlacement();
                 }
             }
 
@@ -81,7 +79,7 @@ public class Main_Script : MonoBehaviour
     public void removeCartesFromMain(GameObject carte)
     {
         carteMain.Remove(carte);
-        placement.UpdatePlacement();
+        //placement.UpdatePlacement();
     }
 
     public void addCarteToMain(GameObject carte)
@@ -103,14 +101,17 @@ public class Main_Script : MonoBehaviour
     {
         if(!value)
         {
-            allCartePos.localPosition = new Vector3(0, 0, -1.25f);
+            LerpManager lerpMainUp = new LerpManager(allCartePos.localPosition, new Vector3(.5f, -.75f, -1f), allCartePos, 1f, true,false,LerpCurve.Curve.easeInOut);
+            lerpMainUp.StartLerp();
             mainIsOpen = false;
         }
         else
         {
-            allCartePos.localPosition = new Vector3(0, 1.25f, .25f);
+            LerpManager lerpMainDown = new LerpManager(allCartePos.localPosition, new Vector3(.5f, 1.15f, -.5f), allCartePos, 1f, true,false,LerpCurve.Curve.easeInOut);
+            lerpMainDown.StartLerp();
             mainIsOpen = true;
         }
+        placement.UpdatePlacement();
     }
 
     public void EndMyTurn()
