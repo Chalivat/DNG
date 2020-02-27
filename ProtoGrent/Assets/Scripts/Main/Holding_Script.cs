@@ -150,17 +150,16 @@ public class Holding_Script : MonoBehaviour
 
     void PlaceCardToMain()
     {
-        Carte.SetParent(transform);
+        Carte.SetParent(transform.GetChild(0));
 
         Card_Script card_Script = Carte.GetComponent<Card_Script>();
 
         LerpManager lerpToMain = new LerpManager(Carte.localPosition, card_Script.posInMain, Carte,1f,true,false,LerpCurve.Curve.linear);
         lerpToMain.StartLerp();
-        main_script.ShowMain(true);
-
-        Carte.localEulerAngles = card_Script.rotInMain;
 
         main_script.addCarteToMain(Carte.gameObject);
+
+        Carte.localEulerAngles = card_Script.rotInMain;
     }
 
     void RotateCard()

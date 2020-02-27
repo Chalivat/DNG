@@ -116,7 +116,7 @@ public class RotateCamera : MonoBehaviour
     {
         zoom += value;
         //Debug.Log(zoom);
-        Vector3 direction = cam.transform.position - Anchor.transform.position;
+        Vector3 direction = cam.transform.localPosition - Anchor.transform.position;
         direction = direction.normalized;
 
         //cam.transform.position = direction * zoom;

@@ -101,16 +101,14 @@ public class Main_Script : MonoBehaviour
     {
         if(!value)
         {
-            LerpManager lerpMainUp = new LerpManager(allCartePos.localPosition, new Vector3(0, -.75f, -1f), allCartePos, 1f, true,false,LerpCurve.Curve.easeInOut);
+            LerpManager lerpMainUp = new LerpManager(allCartePos.localPosition, new Vector3(.5f, -.75f, -1f), allCartePos, 1f, true,false,LerpCurve.Curve.easeInOut);
             lerpMainUp.StartLerp();
-            //allCartePos.localPosition = new Vector3(0, -.75f, -1f);
             mainIsOpen = false;
         }
         else
         {
-            LerpManager lerpMainDown = new LerpManager(allCartePos.localPosition, new Vector3(0, 1.15f, -.5f), allCartePos, 1f, true,false,LerpCurve.Curve.easeInOut);
+            LerpManager lerpMainDown = new LerpManager(allCartePos.localPosition, new Vector3(.5f, 1.15f, -.5f), allCartePos, 1f, true,false,LerpCurve.Curve.easeInOut);
             lerpMainDown.StartLerp();
-            //allCartePos.localPosition = new Vector3(0, 1.15f, -.5f);
             mainIsOpen = true;
         }
         placement.UpdatePlacement();

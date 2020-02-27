@@ -850,6 +850,56 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 2109356046870452582, guid: 4d8c08330dea725488953df5bb13f995,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 216968740}
+    - target: {fileID: 2109356047833225618, guid: 4d8c08330dea725488953df5bb13f995,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 216968740}
+    - target: {fileID: 2109356048095005734, guid: 4d8c08330dea725488953df5bb13f995,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 216968740}
+    - target: {fileID: 2109356048338060371, guid: 4d8c08330dea725488953df5bb13f995,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 216968740}
+    - target: {fileID: 2109356048618212330, guid: 4d8c08330dea725488953df5bb13f995,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 216968740}
+    - target: {fileID: 2126497267447528277, guid: 4d8c08330dea725488953df5bb13f995,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 216968740}
+    - target: {fileID: 2126497267721563873, guid: 4d8c08330dea725488953df5bb13f995,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 216968740}
+    - target: {fileID: 2126497268015343252, guid: 4d8c08330dea725488953df5bb13f995,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 216968740}
+    - target: {fileID: 2126497268274194733, guid: 4d8c08330dea725488953df5bb13f995,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 216968740}
+    - target: {fileID: 2126497268947139489, guid: 4d8c08330dea725488953df5bb13f995,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 216968740}
     - target: {fileID: 2313463885903138532, guid: 4d8c08330dea725488953df5bb13f995,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1155,6 +1205,31 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 3899794721488246593, guid: 4d8c08330dea725488953df5bb13f995,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 216968740}
+    - target: {fileID: 3899794722140641205, guid: 4d8c08330dea725488953df5bb13f995,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 216968740}
+    - target: {fileID: 3899794722411987457, guid: 4d8c08330dea725488953df5bb13f995,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 216968740}
+    - target: {fileID: 3899794722705246836, guid: 4d8c08330dea725488953df5bb13f995,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 216968740}
+    - target: {fileID: 3899794722968618445, guid: 4d8c08330dea725488953df5bb13f995,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 216968740}
     - target: {fileID: 3975628004250709846, guid: 4d8c08330dea725488953df5bb13f995,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1615,6 +1690,56 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 6722654771478873048, guid: 4d8c08330dea725488953df5bb13f995,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 216968740}
+    - target: {fileID: 6722654771739855969, guid: 4d8c08330dea725488953df5bb13f995,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 216968740}
+    - target: {fileID: 6722654771997416985, guid: 4d8c08330dea725488953df5bb13f995,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 216968740}
+    - target: {fileID: 6722654772258671533, guid: 4d8c08330dea725488953df5bb13f995,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 216968740}
+    - target: {fileID: 6722654773484412653, guid: 4d8c08330dea725488953df5bb13f995,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 216968740}
+    - target: {fileID: 6740920231016332330, guid: 4d8c08330dea725488953df5bb13f995,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 216968740}
+    - target: {fileID: 6740920231410196767, guid: 4d8c08330dea725488953df5bb13f995,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 216968740}
+    - target: {fileID: 6740920231683960486, guid: 4d8c08330dea725488953df5bb13f995,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 216968740}
+    - target: {fileID: 6740920231966424286, guid: 4d8c08330dea725488953df5bb13f995,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 216968740}
+    - target: {fileID: 6740920232240982378, guid: 4d8c08330dea725488953df5bb13f995,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 216968740}
     - target: {fileID: 6778338453037453411, guid: 4d8c08330dea725488953df5bb13f995,
         type: 3}
       propertyPath: imageSizes.Array.data[0].pos.Array.size
@@ -1965,6 +2090,31 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 8507440848195833343, guid: 4d8c08330dea725488953df5bb13f995,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 216968740}
+    - target: {fileID: 8507440848473588294, guid: 4d8c08330dea725488953df5bb13f995,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 216968740}
+    - target: {fileID: 8507440848755265598, guid: 4d8c08330dea725488953df5bb13f995,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 216968740}
+    - target: {fileID: 8507440849026090378, guid: 4d8c08330dea725488953df5bb13f995,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 216968740}
+    - target: {fileID: 8507440849948659914, guid: 4d8c08330dea725488953df5bb13f995,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 216968740}
     - target: {fileID: 8559884830169321840, guid: 4d8c08330dea725488953df5bb13f995,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3432,12 +3582,12 @@ MonoBehaviour:
       - serializedVersion: 3
         time: 0
         value: 0
-        inSlope: 4.260848
-        outSlope: 4.260848
+        inSlope: 3.9438539
+        outSlope: 3.9438539
         tangentMode: 0
         weightedMode: 0
         inWeight: 0
-        outWeight: 0.024193548
+        outWeight: 0.03341014
       - serializedVersion: 3
         time: 1
         value: 1
@@ -5525,7 +5675,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2098515970}
   m_LocalRotation: {x: -0.38268322, y: -0, z: -0, w: 0.9238797}
-  m_LocalPosition: {x: 0, y: -0.75, z: -1}
+  m_LocalPosition: {x: 0.5, y: -0.75, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224089436}

@@ -35,6 +35,7 @@ public class Card_Script : MonoBehaviour
     public void ClickOnCard()
     {
         ClickTheCard(true,transform ,card);
+        posInMain = transform.localPosition;
     }
 
     public void PointerUpOnCard()

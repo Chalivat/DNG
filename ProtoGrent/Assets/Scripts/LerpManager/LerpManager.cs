@@ -90,7 +90,7 @@ public class LerpClass : MonoBehaviour
         {
             if (allLerpInstance[i].lerpObject == lerpObject && allLerpInstance[i] != this)
             {
-                endPos = allLerpInstance[i].GetObjectStartPos();
+                //endPos = allLerpInstance[i].GetObjectStartPos();
                 Destroy(allLerpInstance[i].gameObject);
             }
         }
@@ -110,7 +110,7 @@ public class LerpClass : MonoBehaviour
         if (lerpObject == null)
             Destroy(gameObject);
 
-        float percent = Mathf.Clamp01((lerpPos / lerpTime));
+        float percent = Mathf.Clamp01(lerpPos / lerpTime);
 
         if (isLocalSpace)
         {

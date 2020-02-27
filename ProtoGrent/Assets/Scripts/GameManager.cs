@@ -130,8 +130,6 @@ public class GameManager : MonoBehaviour
                 SavePlayer(player2);
                 PlayerTurn(player1);
 
-                //EchangeBoard();
-
                 LigneHighlight_Script.activeBoard = 1;
                 turn = Turn.player2Turn;
             }
@@ -147,8 +145,6 @@ public class GameManager : MonoBehaviour
             {
                 SavePlayer(player1);
                 PlayerTurn(player2);
-
-                //EchangeBoard();
 
                 LigneHighlight_Script.activeBoard = 2;
                 turn = Turn.player1Turn;

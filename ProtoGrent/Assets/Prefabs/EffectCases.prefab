@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 120907279}
   - component: {fileID: 120907282}
   - component: {fileID: 120907281}
-  - component: {fileID: 120907280}
   m_Layer: 8
   m_Name: Effect Placer_Ligne2 (5)
   m_TagString: Case
@@ -69,19 +68,6 @@ MonoBehaviour:
   effectManager: {fileID: 0}
   isEffect: 1
   isEmpty: 1
---- !u!65 &120907280
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 120907278}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.5, y: 0.1, z: 1.5}
-  m_Center: {x: 5.75, y: 0, z: 0}
 --- !u!1 &258194792
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,7 +79,6 @@ GameObject:
   - component: {fileID: 258194793}
   - component: {fileID: 258194796}
   - component: {fileID: 258194795}
-  - component: {fileID: 258194794}
   m_Layer: 8
   m_Name: Effect Placer_Ligne2 (4)
   m_TagString: Case
@@ -151,19 +136,6 @@ MonoBehaviour:
   effectManager: {fileID: 0}
   isEffect: 1
   isEmpty: 1
---- !u!65 &258194794
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 258194792}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.5, y: 0.1, z: 1.5}
-  m_Center: {x: 5.75, y: 0, z: 0}
 --- !u!1 &550611131
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,7 +147,6 @@ GameObject:
   - component: {fileID: 550611132}
   - component: {fileID: 550611135}
   - component: {fileID: 550611134}
-  - component: {fileID: 550611133}
   m_Layer: 8
   m_Name: Effect Placer_Ligne2 (1)
   m_TagString: Case
@@ -233,19 +204,6 @@ MonoBehaviour:
   effectManager: {fileID: 0}
   isEffect: 1
   isEmpty: 1
---- !u!65 &550611133
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 550611131}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.5, y: 0.1, z: 1.5}
-  m_Center: {x: 5.75, y: 0, z: 0}
 --- !u!1 &787438884
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,7 +309,6 @@ GameObject:
   - component: {fileID: 824259294}
   - component: {fileID: 824259297}
   - component: {fileID: 824259296}
-  - component: {fileID: 824259295}
   m_Layer: 8
   m_Name: Effect Placer_Ligne2 (2)
   m_TagString: Case
@@ -409,19 +366,6 @@ MonoBehaviour:
   effectManager: {fileID: 0}
   isEffect: 1
   isEmpty: 1
---- !u!65 &824259295
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 824259293}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.5, y: 0.1, z: 1.5}
-  m_Center: {x: 5.75, y: 0, z: 0}
 --- !u!1 &854842675
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,7 +659,6 @@ GameObject:
   - component: {fileID: 1325134486}
   - component: {fileID: 1325134489}
   - component: {fileID: 1325134488}
-  - component: {fileID: 1325134487}
   m_Layer: 8
   m_Name: Effect Placer_Ligne2 (3)
   m_TagString: Case
@@ -773,19 +716,6 @@ MonoBehaviour:
   effectManager: {fileID: 0}
   isEffect: 1
   isEmpty: 1
---- !u!65 &1325134487
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1325134485}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.5, y: 0.1, z: 1.5}
-  m_Center: {x: 5.75, y: 0, z: 0}
 --- !u!1 &1983230181
 GameObject:
   m_ObjectHideFlags: 0
