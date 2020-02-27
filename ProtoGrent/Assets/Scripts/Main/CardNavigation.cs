@@ -42,7 +42,7 @@ public class CardNavigation : MonoBehaviour
             if(Timer <= 0 && currentMousePos == firstPos && !CardAsPopUp)
             {
                 CardAsPopUp = true;
-                LerpManager popUpLerp = new LerpManager(clickedCardTrans.position, clickedCardTrans.position - clickedCardTrans.forward *.65f, clickedCardTrans,.5f,false,false,LerpCurve.Curve.easeInOut);
+                LerpManager popUpLerp = new LerpManager(clickedCardTrans.position, clickedCardTrans.position - clickedCardTrans.forward *.65f + clickedCardTrans.up * .65f, clickedCardTrans,.5f,false,false,LerpCurve.Curve.easeInOut);
                 popUpLerp.StartLerp();
             }
             if (Mathf.Abs(lastMousePos.x - currentMousePos.x) > 1 && !CardAsPopUp)

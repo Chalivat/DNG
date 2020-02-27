@@ -20,6 +20,8 @@ public class Card_Script : MonoBehaviour
     public Text cardDescription;
 
     public Image[] imagesToColour;
+    public SpriteRenderer[] spriteToColor;
+
     public Text descriptionText;
 
     public GameObject descriptionObject;
@@ -58,7 +60,11 @@ public class Card_Script : MonoBehaviour
     {
         for (int i = 0; i < imagesToColour.Length; i++)
         {
-            imagesToColour[i].GetComponent<Image>().color = card.contourColor;
+            imagesToColour[i].color = card.contourColor;
+        }
+        for (int i = 0; i < spriteToColor.Length; i++)
+        {
+            spriteToColor[i].color = card.contourColor;
         }
 
         descriptionText.color = card.contourColor;

@@ -32,7 +32,10 @@ public class HistoriqueSlot : MonoBehaviour
         if (coup.cardPlaced.asDescription)
         {
             description.GetComponentInChildren<Text>().text = coup.cardPlaced.description;
-            description.GetComponent<RectTransform>().localPosition = new Vector3(105f, 0f, 0f);
+            Transform descTransform = description.GetComponent<RectTransform>();
+
+            LerpManager lerpHistoriqueDesc = new LerpManager(descTransform.localPosition, new Vector3(105f, 0f, 0f), descTransform, .5f, true, true, LerpCurve.Curve.easeInOut);
+            lerpHistoriqueDesc.StartLerp();
         }
     }
 
@@ -40,6 +43,10 @@ public class HistoriqueSlot : MonoBehaviour
     {
         ligneHighlight_Script.HighLightCase((int)coup.caseFill.pos.x, (int)coup.caseFill.pos.y, coup.caseFill.boardNumber, ligneHighlight_Script.highlight_Color);
         ligneHighlight_Script.ClearAllCase();
-        description.GetComponent<RectTransform>().localPosition = new Vector3(-60f, 0f, 0f);
+
+        Transform descTransform = description.GetComponent<RectTransform>();
+
+        LerpManager lerpHistoriqueDesc = new LerpManager(descTransform.localPosition, new Vector3(-60f, 0f, 0f), descTransform, .5f, true, true, LerpCurve.Curve.easeInOut);
+        lerpHistoriqueDesc.StartLerp();
     }
 }
