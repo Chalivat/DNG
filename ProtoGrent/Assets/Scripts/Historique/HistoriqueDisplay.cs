@@ -13,18 +13,18 @@ public class HistoriqueDisplay : MonoBehaviour
 
     private void Start()
     {
-        playerCoups = new PlayerCoup[8];
-        allSlot = new GameObject[8];
+        playerCoups = new PlayerCoup[7];
+        allSlot = new GameObject[7];
     }
 
     public void AddCoup(PlayerCoup coup)
     {
-        if (index > 7)
+        if (index > 6)
         {
             index = 0;
         }
 
-        if (allSlot[7] != null)
+        if (allSlot[6] != null)
         {
             Destroy(allSlot[0+index].gameObject);
         }
@@ -38,7 +38,7 @@ public class HistoriqueDisplay : MonoBehaviour
 
         allSlot[index] = newSlot.gameObject;
 
-        newSlot.GetComponent<RectTransform>().localPosition = new Vector3(0f, -175f, 0f);
+        newSlot.GetComponent<RectTransform>().localPosition = new Vector3(0f, -150f, 0f);
         index++;
     }
 

@@ -50,11 +50,6 @@ public class Main_Script : MonoBehaviour
                     ShowMain(false);
                 }
             }
-
-            Vector3 pos = allCartePos.transform.localPosition;
-            pos.x = Mathf.Clamp(pos.x, (carteMain.Count * -.25f) - (.15f * carteMain.Count), (carteMain.Count * .25f) + (.15f * carteMain.Count));
-
-            allCartePos.transform.localPosition = new Vector3(pos.x, pos.y, pos.z);
         }
     }
 
@@ -101,13 +96,13 @@ public class Main_Script : MonoBehaviour
     {
         if(!value)
         {
-            LerpManager lerpMainUp = new LerpManager(allCartePos.localPosition, new Vector3(.5f, -.75f, -1f), allCartePos, 1f, true,false,LerpCurve.Curve.easeInOut);
+            LerpManager lerpMainUp = new LerpManager(allCartePos.localPosition, new Vector3(0f, -.75f, -1f), allCartePos, 1f, true,false,LerpCurve.Curve.easeInOut);
             lerpMainUp.StartLerp();
             mainIsOpen = false;
         }
         else
         {
-            LerpManager lerpMainDown = new LerpManager(allCartePos.localPosition, new Vector3(.5f, 1.15f, -.5f), allCartePos, 1f, true,false,LerpCurve.Curve.easeInOut);
+            LerpManager lerpMainDown = new LerpManager(allCartePos.localPosition, new Vector3(0f, 1.15f, -.5f), allCartePos, 1f, true,false,LerpCurve.Curve.easeInOut);
             lerpMainDown.StartLerp();
             mainIsOpen = true;
         }

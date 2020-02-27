@@ -76,6 +76,9 @@ public class RotateCamera : MonoBehaviour
         Vector3 rotation = cam.transform.rotation.eulerAngles;
         rotation.y += -deltaPosition.x * sensitivityX * Time.deltaTime;
         rotation.x += deltaPosition.y * sensitivityY * Time.deltaTime;
+
+        rotation.x = Mathf.Clamp(rotation.x, 0f, 60f);
+
         Quaternion newRot = Quaternion.Euler(rotation);
 
         float yRot = cam.transform.rotation.eulerAngles.y;
