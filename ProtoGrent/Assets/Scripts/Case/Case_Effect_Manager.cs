@@ -77,6 +77,15 @@ public class Case_Effect_Manager : MonoBehaviour
             SetImagePosSizeAndSprite(images[0], imageSizes[0], 0, modifierSprite[3]);
     }
 
+    public void ClearAllImage()
+    {
+        for (int i = 0; i < images.Length; i++)
+        {
+            images[i].sprite = null;
+            images[i].gameObject.SetActive(false);
+        }
+    }
+
     void SetImagePosSizeAndSprite(Image image,ImageSize imageSize,int ImageIndex, Sprite sprite)
     {
         image.gameObject.SetActive(true);

@@ -12,6 +12,9 @@ public class Card : ScriptableObject
 
     public Color contourColor;
     
+    public enum Faction {Human,Skeleton,Overlord };
+    public Faction cardFaction;
+
     public enum EffectType {None,Fire,Water,Oil,Zap,Rafle,Pioche,Defausse,Encouragement,Clean};
     public EffectType effectType;
 

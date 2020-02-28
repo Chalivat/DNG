@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adaaee7a1750456489d23d910588e1a5, type: 3}
-  m_Name: Front0_3
+  m_Name: Front6
   m_EditorClassIdentifier: 
   name: Front
   type: 0
   description: 
-  damage: 10
+  damage: 6
   contourColor: {r: 1, g: 0, b: 0.049950123, a: 1}
   effectType: 0
   nombrePioche: 0
-  artwork: {fileID: 21300000, guid: 86234972f07244741ad27330b89b6a90, type: 3}
+  isEspion: 0
+  artwork: {fileID: 21300000, guid: 0254293011895534880f8ed1b2e676d5, type: 3}
   asDescription: 0

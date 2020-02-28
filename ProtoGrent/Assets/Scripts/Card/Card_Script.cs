@@ -16,6 +16,8 @@ public class Card_Script : MonoBehaviour
     [Space]
     [Header("Visual")]
 
+    public Image artwork;
+
     public Text cardDamage;
     public Text cardDescription;
 
@@ -32,6 +34,8 @@ public class Card_Script : MonoBehaviour
     {
         posInMain = transform.localPosition;
         rotInMain = transform.localEulerAngles;
+
+        transform.GetComponentInChildren<Canvas>().worldCamera = GameObject.Find("MainCamera").GetComponent<Camera>();
     }
 
     public void ClickOnCard()
@@ -58,6 +62,8 @@ public class Card_Script : MonoBehaviour
 
     public void UpdateVisual()
     {
+        artwork.sprite = card.artwork;
+
         for (int i = 0; i < imagesToColour.Length; i++)
         {
             imagesToColour[i].color = card.contourColor;

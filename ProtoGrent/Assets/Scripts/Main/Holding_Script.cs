@@ -33,7 +33,7 @@ public class Holding_Script : MonoBehaviour
 
     private void Start()
     {
-        cam = Camera.main;
+        cam = GameObject.Find("MainCamera").GetComponent<Camera>();
         Highlight_Script = board.GetComponent<LigneHighlight_Script>();
     }
 
@@ -122,7 +122,6 @@ public class Holding_Script : MonoBehaviour
         if (Physics.Raycast(ray, out hit, mask))
         {
             lerpPoint = hit.point;
-            //Carte.transform.eulerAngles = holdingRot;
 
             if (hit.transform.CompareTag("Case"))
             {
