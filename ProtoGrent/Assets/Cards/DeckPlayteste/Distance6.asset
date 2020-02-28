@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adaaee7a1750456489d23d910588e1a5, type: 3}
-  m_Name: Front0_2
+  m_Name: Distance6
   m_EditorClassIdentifier: 
-  name: Front
-  type: 0
-  description: 
+  name: Distance
+  type: 1
+  description: Distance
   damage: 6
-  contourColor: {r: 1, g: 0, b: 0.049950123, a: 1}
+  contourColor: {r: 1, g: 0.55099326, b: 0, a: 1}
   effectType: 0
   nombrePioche: 0
-  artwork: {fileID: 21300000, guid: 0254293011895534880f8ed1b2e676d5, type: 3}
+  isEspion: 0
+  artwork: {fileID: 21300000, guid: 62f87aadc4759b24abb89c78c5a69765, type: 3}
   asDescription: 0

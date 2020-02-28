@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adaaee7a1750456489d23d910588e1a5, type: 3}
-  m_Name: Distance0_1
+  m_Name: DistancePioche1
   m_EditorClassIdentifier: 
-  name: Distance
+  name: DistancePioche
   type: 1
-  description: Distance
-  damage: 6
+  description: Pioche 1 carte
+  damage: 1
   contourColor: {r: 1, g: 0.55099326, b: 0, a: 1}
-  effectType: 0
-  nombrePioche: 0
-  artwork: {fileID: 21300000, guid: 62f87aadc4759b24abb89c78c5a69765, type: 3}
-  asDescription: 0
+  effectType: 6
+  nombrePioche: 1
+  isEspion: 0
+  artwork: {fileID: 21300000, guid: ecaffdba21be0fd45abef11464170050, type: 3}
+  asDescription: 1

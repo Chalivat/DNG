@@ -1,20 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class LerpManager : MonoBehaviour
+public class LerpManager
 {
     GameObject lerpInstance;
 
-    public Vector3 startPos, endPos;
-    public Transform lerpObject;
+    Vector3 startPos, endPos;
+    Transform lerpObject;
 
-    public float lerpTime;
+    float lerpTime;
 
-    public bool isLocalSpace;
-    public bool normalizeDistance;
+    bool isLocalSpace;
+    bool normalizeDistance;
 
     LerpCurve.Curve curve;
+
+    public delegate void EndLerpEvent();
+    public EndLerpEvent endEvent;
+
+    float delay;
 
     public LerpManager(Vector3 startPos,Vector3 endPos,Transform lerpObject,float lerpTime,bool isLocalSpace,bool normalizeDistance,LerpCurve.Curve curve)
     {
@@ -29,21 +35,40 @@ public class LerpManager : MonoBehaviour
         this.curve = curve;
     }
 
+    public LerpManager(Vector3 startPos, Vector3 endPos, Transform lerpObject, float lerpTime, bool isLocalSpace, bool normalizeDistance, EndLerpEvent endEvent,float delay,LerpCurve.Curve curve)
+    {
+        this.startPos = startPos;
+        this.endPos = endPos;
+        this.lerpObject = lerpObject;
+        this.lerpTime = lerpTime;
+
+        this.isLocalSpace = isLocalSpace;
+        this.normalizeDistance = normalizeDistance;
+
+        this.curve = curve;
+
+        this.endEvent = endEvent;
+
+        this.delay = delay;
+    }
+
     public void StartLerp()
     {
         lerpInstance = new GameObject("LerpInstance");
-        lerpInstance.AddComponent<LerpClass>().SetLerpValue(startPos, endPos, lerpObject, lerpTime, isLocalSpace, normalizeDistance, curve, this);
+        if (endEvent == null)
+            lerpInstance.AddComponent<LerpClass>().SetLerpValue(startPos, endPos, lerpObject, lerpTime, isLocalSpace, normalizeDistance, curve, this);
+        else
+            lerpInstance.AddComponent<LerpClass>().SetLerpValue(startPos, endPos, lerpObject, lerpTime, isLocalSpace, normalizeDistance,endEvent,delay, curve, this);
     }
 
-    public void CancelLerp()
+   /*public void CancelLerp()
     {
-        Destroy(lerpInstance);
-    }
+        //destroy;
+    }*/
 
     ~LerpManager()
     {
         Debug.Log("LERP END");
-        Destroy(lerpInstance);
     }
 }
 
@@ -64,6 +89,9 @@ public class LerpClass : MonoBehaviour
     AnimationCurve animCurve;
 
     LerpManager lerpManager;
+    LerpManager.EndLerpEvent endEvent;
+
+    float delay;
 
     public void SetLerpValue(Vector3 startPos,Vector3 endPos, Transform lerpObject, float lerpTime,bool isLocalSpace, bool normalizeDistance ,LerpCurve.Curve curve,LerpManager lerpManager)
     {
@@ -75,6 +103,28 @@ public class LerpClass : MonoBehaviour
 
         this.isLocalSpace = isLocalSpace;
         this.normalizeDistance = normalizeDistance;
+
+        animCurve = GameObject.FindObjectOfType<LerpCurve>().GetCurve(curve);
+
+        lerpPos = 0;
+
+        TestAllLerpInstance();
+    }
+
+    public void SetLerpValue(Vector3 startPos, Vector3 endPos, Transform lerpObject, float lerpTime, bool isLocalSpace, bool normalizeDistance, LerpManager.EndLerpEvent endEvent,float delay,LerpCurve.Curve curve, LerpManager lerpManager)
+    {
+        this.startPos = startPos;
+        this.endPos = endPos;
+        this.lerpObject = lerpObject;
+        this.lerpTime = lerpTime;
+        this.lerpManager = lerpManager;
+
+        this.isLocalSpace = isLocalSpace;
+        this.normalizeDistance = normalizeDistance;
+
+        this.endEvent = endEvent;
+
+        this.delay = delay;
 
         animCurve = GameObject.FindObjectOfType<LerpCurve>().GetCurve(curve);
 
@@ -117,7 +167,10 @@ public class LerpClass : MonoBehaviour
             lerpObject.localPosition = Vector3.Lerp(startPos, endPos, animCurve.Evaluate(percent));
             if (lerpObject.localPosition == endPos)
             {
-                Destroy(gameObject);
+                if (endEvent != null)
+                    StartCoroutine(LaunchEndEvent(delay));
+                else
+                    Destroy(gameObject);
             }
         }
         else
@@ -125,7 +178,10 @@ public class LerpClass : MonoBehaviour
             lerpObject.position = Vector3.Lerp(startPos, endPos, animCurve.Evaluate(percent));
             if (lerpObject.position == endPos)
             {
-                Destroy(gameObject);
+                if (endEvent != null)
+                    StartCoroutine(LaunchEndEvent(delay));
+                else
+                    Destroy(gameObject);
             }
         }
 
@@ -137,8 +193,16 @@ public class LerpClass : MonoBehaviour
         return startPos;
     }
 
+    IEnumerator LaunchEndEvent(float timer)
+    {
+        yield return new WaitForSeconds(timer);
+        endEvent();
+
+        Destroy(gameObject);
+    }
+
     private void OnDestroy()
     {
-        Destroy(lerpManager);
+        lerpManager = null;
     }
 }

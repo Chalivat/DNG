@@ -13,6 +13,8 @@ public class Case_Script : MonoBehaviour
 
     public int power = 0;
 
+    Transform cam;
+
     public Case_Effect_Manager effectManager;
 
     public delegate void EventEffect(EffectClass effect);
@@ -29,6 +31,11 @@ public class Case_Script : MonoBehaviour
 
     public bool isEffect = false;
     public bool isEmpty = true;
+
+    private void Start()
+    {
+        cam = GameObject.Find("MainCamera").transform;
+    }
 
     public bool Check(int type, uint board)
     {
@@ -56,17 +63,23 @@ public class Case_Script : MonoBehaviour
         if (card.type <= 2)
         {
             SpawnUnitOnBoard();
-        }
 
-        if (card.effectType != Card.EffectType.None)
+            Transform cam = GameObject.Find("MainCamera").transform;
+            Vector3 pos = transform.position - (transform.position - cam.position) * .25f;
+
+            LerpManager lerpToCase = new LerpManager(cam.transform.position, pos ,cam, .75f, false, true, EndLerp,1f, LerpCurve.Curve.easeInOut);
+            lerpToCase.StartLerp();
+        }
+        else if (card.effectType != Card.EffectType.None)
         {
-            EffectClass effect = new EffectClass(card.effectType, card.nombrePioche,pos,ligne,this,isColonne);
+            EffectClass effect = new EffectClass(card.effectType, card.nombrePioche, pos, ligne, this, isColonne);
             triggerEffect(effect);
         }
         else
         {
-            EndMyTurn();
+            EndTheTurn();
         }
+
         CountPointOnCase();
         GameObject.Find("Front_Board").GetComponent<Board_Script>().CountPoint();
         GameObject.Find("Back_Board").GetComponent<Board_Script>().CountPoint();
@@ -87,9 +100,10 @@ public class Case_Script : MonoBehaviour
 
     public void CountPointOnCase()
     {
-        if (card != null)
+        if (card != null && effectManager != null)
         {
             power = card.damage;
+
             if (effectManager.isFired || effectManager.isWatered)
             {
                 power = 1;
@@ -105,8 +119,28 @@ public class Case_Script : MonoBehaviour
         }
     }
 
+    void EndLerp()
+    {
+        LerpManager lerpToBase = new LerpManager(cam.transform.localPosition, new Vector3(0, 0, 0), cam, .6f, true, true, TriggerEffect,0f,LerpCurve.Curve.easeInOut);
+        lerpToBase.StartLerp();
+    }
+
+    void TriggerEffect()
+    {
+        if (card.effectType != Card.EffectType.None)
+        {
+            EffectClass effect = new EffectClass(card.effectType, card.nombrePioche, pos, ligne, this, isColonne);
+            triggerEffect(effect);
+        }
+        else
+        {
+            EndMyTurn();
+        }
+    }
+
     public void EndMyTurn()
     {
+
         EndTheTurn();
     }
 }
