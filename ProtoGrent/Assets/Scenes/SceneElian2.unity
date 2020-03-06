@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 5298b5f7265d89444a61bced0295ff12,
     type: 2}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -442,7 +442,6 @@ MonoBehaviour:
   playerNombre: 1
   allCard: []
   playingBoard: {fileID: 128705511}
-  noPlayingBoard: {fileID: 1989525857}
   point: 0
   asPassed: 0
   life: 2
@@ -2675,7 +2674,7 @@ MonoBehaviour:
   m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
-  m_StopNaN: 0
+  m_StopNaN: 1
   m_Dithering: 0
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
@@ -2694,6 +2693,7 @@ GameObject:
   - component: {fileID: 224089438}
   - component: {fileID: 224089440}
   - component: {fileID: 224089441}
+  - component: {fileID: 224089442}
   m_Layer: 0
   m_Name: MainPlayer
   m_TagString: Main
@@ -2821,6 +2821,20 @@ MonoBehaviour:
   CardAsPopUp: 0
   xSensitivity: 0.1
   popUpTimer: 0.1
+--- !u!114 &224089442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224089435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87a6ce8be1977c641b69302bec618bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  main: {fileID: 224089439}
+  maxCardToReplace: 3
 --- !u!4 &242281408 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5533529946982019759, guid: d7b9477b1bec4ab44b1e37a7c2871562,
@@ -5581,7 +5595,6 @@ MonoBehaviour:
   playerNombre: 0
   allCard: []
   playingBoard: {fileID: 128705511}
-  noPlayingBoard: {fileID: 1989525857}
   point: 0
   asPassed: 0
   life: 2
@@ -6292,6 +6305,7 @@ MonoBehaviour:
   pioche: {fileID: 99381277}
   main: {fileID: 224089439}
   defausse: {fileID: 136257057}
+  startButton: {fileID: 413462941}
   screenCanvas: {fileID: 1788795207}
   passButton_txt: {fileID: 1429212648}
   player1Info: {fileID: 243581873}
@@ -6304,6 +6318,7 @@ MonoBehaviour:
   passTurn: 0
   timerEndTurn_Start: 2
   timerEndTurn: 0
+  turnCount: 0
 --- !u!4 &1914424573
 Transform:
   m_ObjectHideFlags: 0

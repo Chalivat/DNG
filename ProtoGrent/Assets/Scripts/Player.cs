@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 
     public List<Card> allCard = new List<Card>();
 
-    public Board_Script playingBoard, noPlayingBoard;
+    public Board_Script playingBoard;
 
     public int point;
 

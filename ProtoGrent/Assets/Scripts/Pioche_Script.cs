@@ -56,6 +56,21 @@ public class Pioche_Script : MonoBehaviour
         carte.Remove(cardToRemove);
     }
 
+    public List<Card> AddCardToPlayer(int nombre,int power,int marge)
+    {
+        List<Card> allCard = new List<Card>();
+        int totalPower = 0;
+
+        for (int i = 0; i < nombre; i++)
+        {
+            int rnd = Random.Range(0, carte.Count);
+            totalPower += carte[rnd].cardPower;
+            allCard.Add(carte[rnd]);
+        }
+        Debug.Log(totalPower);
+        return allCard;
+    }
+
     public List<Card> SimplyAddCardsToPlayer(int nombre)
     {
         List<Card> allCard = new List<Card>();

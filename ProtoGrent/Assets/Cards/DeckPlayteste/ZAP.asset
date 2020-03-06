@@ -17,7 +17,10 @@ MonoBehaviour:
   description: Elimine une carte, pioche 1 carte
   damage: 0
   contourColor: {r: 1, g: 1, b: 1, a: 1}
+  cardPower: 6
+  cardFaction: 0
   effectType: 4
   nombrePioche: 0
+  isEspion: 0
   artwork: {fileID: 21300000, guid: c799fca474e20534cb44a9cfe1b55fc9, type: 3}
   asDescription: 1
