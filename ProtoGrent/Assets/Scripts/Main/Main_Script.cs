@@ -21,34 +21,34 @@ public class Main_Script : MonoBehaviour
 
     private void Update()
     {
-        if (canPlaceCard)
+        if (!canPlaceCard)
+            return;
+
+        if (Input.GetMouseButtonDown(0))
         {
-            if (Input.GetMouseButtonDown(0))
+            count = 0;
+        }
+        if (Input.GetMouseButton(0))
+        {
+            count += Time.deltaTime;
+        }
+        if (Input.GetMouseButtonUp(0) && count <= .3f)
+        {
+            Vector3 inputPos = Input.mousePosition;
+
+            float screenWidth = Screen.width;
+            float screenHeight = Screen.height;
+
+            float xRatio = inputPos.x / screenWidth;
+            float yRatio = inputPos.y / screenHeight;
+
+            if (xRatio >= .05f && xRatio <= .95f && yRatio <= .3f && !mainIsOpen)
             {
-                count = 0;
+                ShowMain(true);
             }
-            if (Input.GetMouseButton(0))
+            else if (xRatio >= .05f && xRatio <= .95f && yRatio > .5f && mainIsOpen)
             {
-                count += Time.deltaTime;
-            }
-            if (Input.GetMouseButtonUp(0) && count <= .3f)
-            {
-                Vector3 inputPos = Input.mousePosition;
-
-                float screenWidth = Screen.width;
-                float screenHeight = Screen.height;
-
-                float xRatio = inputPos.x / screenWidth;
-                float yRatio = inputPos.y / screenHeight;
-
-                if (xRatio >= .05f && xRatio <= .95f && yRatio <= .3f && !mainIsOpen)
-                {
-                    ShowMain(true);
-                }
-                else if (xRatio >= .05f && xRatio <= .95f && yRatio > .5f && mainIsOpen)
-                {
-                    ShowMain(false);
-                }
+                ShowMain(false);
             }
         }
     }

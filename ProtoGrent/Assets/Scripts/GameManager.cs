@@ -6,11 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+
     public Player player1, player2;
 
     public Pioche_Script pioche;
     public Main_Script main;
     public Defausse_Script defausse;
+
+    public GameObject startButton;
 
     public GameObject screenCanvas;
     public Text passButton_txt;
@@ -27,16 +31,40 @@ public class GameManager : MonoBehaviour
 
     public Turn turn = Turn.player1Turn;
 
+    [Space]
+    [Header("Pass turn delay")]
+
     public bool passTurn = false;
 
     public float timerEndTurn_Start;
     public float timerEndTurn;
+
+    [Space]
+    [Header("Pass turn delay")]
+
+    public int turnCount;
 
     public delegate void NewTurn();
     public static NewTurn newTurn;
 
     public delegate void newManche();
     public static newManche newmanche;
+
+    public delegate void newGame();
+    public static newGame newgame;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Debug.Log("Instance already exists, destroying object!");
+            Destroy(this);
+        }
+    }
 
     private void Start()
     {
@@ -74,8 +102,14 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("BEGIN MATCH !!!");
 
-        player1.SetAllCard(pioche.SimplyAddCardsToPlayer(10));
-        player2.SetAllCard(pioche.SimplyAddCardsToPlayer(10));
+        startButton.SetActive(false);
+
+        //player1.SetAllCard(pioche.SimplyAddCardsToPlayer(10));
+        //player2.SetAllCard(pioche.SimplyAddCardsToPlayer(10));
+        player1.SetAllCard(pioche.AddCardToPlayer(10, 30, 5));
+        player2.SetAllCard(pioche.AddCardToPlayer(10, 30, 5));
+
+        turnCount = 0;
 
         NewManche();
     }
@@ -197,27 +231,6 @@ public class GameManager : MonoBehaviour
         passTurn = true;
     }
 
-    void EchangeBoard()
-    {
-        Card[,] tmp_Board = notPlayingBoard.GetAllCard();
-
-        notPlayingBoard.SetCardOnBoard(playingBoard.GetAllCard());
-        playingBoard.SetCardOnBoard(tmp_Board);
-
-        bool[,] tmp_Bool = notPlayingBoard.allEncouragement;
-
-        notPlayingBoard.SetEncrougement(playingBoard.allEncouragement);
-        playingBoard.SetEncrougement(tmp_Bool);
-
-        Transform[,] tmp_UnitsParent = notPlayingBoard.GetAllUnitsParent();
-
-        notPlayingBoard.SetAllUnitPosition(playingBoard.GetAllUnitsParent());
-        playingBoard.SetAllUnitPosition(tmp_UnitsParent);
-
-        //notPlayingBoard.CountPoint();
-        //playingBoard.CountPoint();
-    }
-
     void UpdatePlayerInfo()
     {
         if(turn == Turn.player2Turn)
@@ -273,10 +286,5 @@ public class GameManager : MonoBehaviour
                 NewManche();
             }
         }
-    }
-
-    public void DEBUG_ReloadScene()
-    {
-        SceneManager.LoadScene(0);
     }
 }

@@ -11,6 +11,8 @@ public class Card : ScriptableObject
     public int damage;
 
     public Color contourColor;
+
+    public int cardPower = 0;
     
     public enum Faction {Human,Skeleton,Overlord };
     public Faction cardFaction;

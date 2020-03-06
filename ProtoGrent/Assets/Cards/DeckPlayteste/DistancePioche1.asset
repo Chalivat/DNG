@@ -17,6 +17,8 @@ MonoBehaviour:
   description: Pioche 1 carte
   damage: 1
   contourColor: {r: 1, g: 0.55099326, b: 0, a: 1}
+  cardPower: 4
+  cardFaction: 0
   effectType: 6
   nombrePioche: 1
   isEspion: 0

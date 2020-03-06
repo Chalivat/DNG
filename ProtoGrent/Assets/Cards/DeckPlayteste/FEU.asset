@@ -17,6 +17,7 @@ MonoBehaviour:
   description: Baisse la puissance de toute les carte a 1
   damage: 0
   contourColor: {r: 1, g: 1, b: 1, a: 1}
+  cardPower: 6
   cardFaction: 0
   effectType: 1
   nombrePioche: 0
