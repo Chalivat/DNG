@@ -18,8 +18,11 @@ public class GameServer : MonoBehaviour
     private TcpListener _server;
     private byte[] _buffer = new byte[4096];
 
-    private int _bytesReceived;
-    private string _messageReceived;
+    private int _bytesReceived1;
+    private string _messageReceived1;
+
+    private int _bytesReceived2;
+    private string _messageReceived2;
 
     private IEnumerator ListenClientMsgsCoroutine = null;
 
@@ -36,7 +39,7 @@ public class GameServer : MonoBehaviour
     {
         if (_client1.client != null && _client2.client != null && ListenClientMsgsCoroutine == null)
         {
-            ListenClientMsgsCoroutine = ListenClient1Message();
+            ListenClientMsgsCoroutine = ListenClientMessage();
 
             StartCoroutine(ListenClientMsgsCoroutine);
         }
@@ -64,41 +67,39 @@ public class GameServer : MonoBehaviour
             Debug.Log("Already two player connected to the server");
     }
 
-    IEnumerator ListenClient1Message()
+    IEnumerator ListenClientMessage()
     {
-        _bytesReceived = 0;
+        _bytesReceived1 = 0;
+        _bytesReceived2 = 0;
+
         _buffer = new byte[4096];
 
         _client1.stream = _client1.client.GetStream();
+        _client2.stream = _client2.client.GetStream();
 
         do
         {
             #region CLIENT 1
             //Start Async Reading from Client and manage the response on MessageReceived function
             _client1.stream.BeginRead(_buffer, 0, _buffer.Length, MessageReceived1, _client1.stream);
-
-            //If there is any msg, do something
-            if (_bytesReceived > 0)
-            {
-                OnMessageReceivedClient1(_messageReceived);
-                _bytesReceived = 0;
-            }
-            #endregion
-
-            #region CLIENT 2
-            //Start Async Reading from Client and manage the response on MessageReceived function
             _client2.stream.BeginRead(_buffer, 0, _buffer.Length, MessageReceived2, _client2.stream);
 
             //If there is any msg, do something
-            if (_bytesReceived > 0)
+            if (_bytesReceived1 > 0)
             {
-                OnMessageReceivedClient2(_messageReceived);
-                _bytesReceived = 0;
+                OnMessageReceived(_messageReceived1);
+                _bytesReceived1 = 0;
+            }
+
+            if(_bytesReceived2 > 0)
+            {
+                OnMessageReceived(_messageReceived2);
+                _bytesReceived2 = 0;
             }
             #endregion
             yield return new WaitForSeconds(.5f);
 
-        } while (_bytesReceived >= 0 && _client1.stream != null && _client2.stream != null);
+        } while (_bytesReceived1 >= 0 && _bytesReceived2 >= 0 && _client1.stream != null && _client2.stream != null);
     }
 
     private void SendMessageToClient(string _msg, GameServer_Client client)
@@ -129,41 +130,8 @@ public class GameServer : MonoBehaviour
 
         Debug.Log("Msg sended to BOTH Client: " + _msg);
     }
-    private void OnMessageReceivedClient1(string receivedMessage)
-    {
-        Debug.Log("Msg recived on Server: " + receivedMessage);
 
-        string[] _msg = receivedMessage.Split('\t');
-
-        switch (_msg[0])
-        {
-            case "Launched":
-                clientStatus[int.Parse(_msg[1])] = true;
-
-                if(clientStatus[0] && clientStatus[1])
-                {
-                    Debug.Log("IS LAUNCHED FOR BOTH");
-                    SendMessageToBothClient("InitializeGame");
-                    clientStatus[0] = false;
-                    clientStatus[1] = false;
-                }
-                break;
-            case "Initialized":
-                clientStatus[int.Parse(_msg[1])] = true;
-
-                if (clientStatus[0] && clientStatus[1])
-                {
-
-                    clientStatus[0] = false;
-                    clientStatus[1] = false;
-                }
-                break;
-            default:
-                break;
-        }
-    }
-
-    private void OnMessageReceivedClient2(string receivedMessage)
+    private void OnMessageReceived(string receivedMessage)
     {
         Debug.Log("Msg recived on Server: " + receivedMessage);
 
@@ -201,8 +169,8 @@ public class GameServer : MonoBehaviour
         if (result.IsCompleted && _client1.client.Connected && _client2.client.Connected)
         {
             //build message received from client
-            _bytesReceived = _client1.stream.EndRead(result);                            //End async reading
-            _messageReceived = Encoding.ASCII.GetString(_buffer, 0, _bytesReceived); //De-encode message as string
+            _bytesReceived1 = _client1.stream.EndRead(result);                            //End async reading
+            _messageReceived1 = Encoding.ASCII.GetString(_buffer, 0, _bytesReceived1); //De-encode message as string
         }
     }
 
@@ -211,10 +179,11 @@ public class GameServer : MonoBehaviour
         if (result.IsCompleted && _client1.client.Connected && _client2.client.Connected)
         {
             //build message received from client
-            _bytesReceived = _client2.stream.EndRead(result);                            //End async reading
-            _messageReceived = Encoding.ASCII.GetString(_buffer, 0, _bytesReceived); //De-encode message as string
+            _bytesReceived2 = _client1.stream.EndRead(result);                            //End async reading
+            _messageReceived2 = Encoding.ASCII.GetString(_buffer, 0, _bytesReceived2); //De-encode message as string
         }
     }
+
     public class GameServer_Client
     {
         public static int dataBufferSize = 4096;

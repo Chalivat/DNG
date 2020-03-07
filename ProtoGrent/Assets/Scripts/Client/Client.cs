@@ -214,7 +214,10 @@ public class Client : MonoBehaviour
             {(int)ServerPackets.research,ClientHandle.SearchForPlayer},
             {(int)ServerPackets.match,ClientHandle.MatchFind },
             {(int)ServerPackets.register,ClientHandle.RegisterComplet },
-            {(int)ServerPackets.login,ClientHandle.LoginComplet }
+            {(int)ServerPackets.login,ClientHandle.LoginComplet },
+            {(int)ServerPackets.cards,ClientHandle.ReceiveCards },
+            {(int)ServerPackets.decks,ClientHandle.ReceiveDecks }
+
     };
         Debug.Log("Initialize packet");
     }

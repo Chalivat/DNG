@@ -52,13 +52,34 @@ public class ClientHandle
         string msg = _packet.ReadString();
         string[] msgPart = msg.Split('\t');
 
-        if(bool.Parse(msgPart[2]))
+        bool loginBool = bool.Parse(msgPart[2]);
+
+        if (loginBool)
         {
             UIManager.instance.GoToDeckSelection();
         }
 
         Debug.Log($"Message from server: {msgPart[0]} AS {msgPart[1]}");
         UIManager.instance.label.text = msgPart[1];
+    }
+
+    public static void ReceiveCards(Packet _packet)
+    {
+        string msg = _packet.ReadString();
+
+        AllCards.instance.InitializeCards(msg);
+    }
+
+    public static void ReceiveDecks(Packet _packet)
+    {
+        string msg = _packet.ReadString();
+        string[] msgPart = msg.Split('$');
+
+        foreach (var item in msgPart)
+        {
+            if(item != "")
+            AllDecks.instance.LoadDeck(item);
+        }
     }
 
 }

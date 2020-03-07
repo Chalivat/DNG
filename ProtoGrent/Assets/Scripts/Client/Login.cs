@@ -14,7 +14,6 @@ public class Login : MonoBehaviour
 
     public void CallLogin()
     {
-        //StartCoroutine(LoginUser());
         ClientSend.Login();
     }
 

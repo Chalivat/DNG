@@ -777,7 +777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f603ba64bca7fee4ab4f3ed998124f25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  matchmakingIp: 10.109.253.6
+  matchmakingIp: 127.0.0.1
   matchmakingPort: 30012
   clientServerIp: 127.0.0.1
   clientServerPort: 30012
@@ -1014,6 +1014,104 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 353092753}
   m_CullTransparentMesh: 0
+--- !u!1 &380951932
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 380951934}
+  - component: {fileID: 380951933}
+  m_Layer: 0
+  m_Name: AllCards
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &380951933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380951932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92dc10aa85cb66e41a63a619d194fc2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardsList:
+  - unlocked: 0
+    card: {fileID: 11400000, guid: b74fcc5dbfd40d0419d5cea7f0a8e8b2, type: 2}
+  - unlocked: 0
+    card: {fileID: 11400000, guid: a90bdd9d4c69fd74d8d3ceca2fe465d4, type: 2}
+  - unlocked: 0
+    card: {fileID: 11400000, guid: 2abb9e134b38e0c429d4876769fc19ac, type: 2}
+  - unlocked: 0
+    card: {fileID: 11400000, guid: c4c6171446d2e534088876870fbd273b, type: 2}
+  - unlocked: 0
+    card: {fileID: 11400000, guid: 829d24976738f024889a635e7aad61d4, type: 2}
+  - unlocked: 0
+    card: {fileID: 11400000, guid: ff21332f594b47f4faadc85945ce2a06, type: 2}
+  - unlocked: 0
+    card: {fileID: 11400000, guid: f453c869015bb5247a516e744e310f93, type: 2}
+  - unlocked: 0
+    card: {fileID: 11400000, guid: dabcaabe564ea6c4b8820a52747daee2, type: 2}
+  - unlocked: 0
+    card: {fileID: 11400000, guid: 68bf86052fe4fdd4e83af63444e9beec, type: 2}
+  - unlocked: 0
+    card: {fileID: 11400000, guid: 98df323af58c3bf4397230e12c91369b, type: 2}
+  - unlocked: 0
+    card: {fileID: 11400000, guid: 3653279117db0fc48846e7790ff8d69b, type: 2}
+  - unlocked: 0
+    card: {fileID: 11400000, guid: 991fc5ae4605db64abc70eb6dff88b1f, type: 2}
+  - unlocked: 0
+    card: {fileID: 11400000, guid: 34804b38c07eef14db807ad4106894c5, type: 2}
+  - unlocked: 0
+    card: {fileID: 11400000, guid: f6df82a85e4241541a33742dcbc1ac4b, type: 2}
+  - unlocked: 0
+    card: {fileID: 11400000, guid: be1aa2943aae23b49a11cd8305f3587d, type: 2}
+  - unlocked: 0
+    card: {fileID: 11400000, guid: 4a73b81931f15b041bba871af48a4ffb, type: 2}
+  - unlocked: 0
+    card: {fileID: 11400000, guid: 0f7563d5dd55a824ca7de92a28b5804a, type: 2}
+  - unlocked: 0
+    card: {fileID: 11400000, guid: db80a55ccc2b9684ea6fb181eaffd744, type: 2}
+  - unlocked: 0
+    card: {fileID: 11400000, guid: 77d928cf65d63064c8dc6dcd6692d085, type: 2}
+  - unlocked: 0
+    card: {fileID: 11400000, guid: 0e434ce78a277b44cbbd616fef209ebf, type: 2}
+  - unlocked: 0
+    card: {fileID: 11400000, guid: cd9457aef69556d4c9ca094f5807f152, type: 2}
+  - unlocked: 0
+    card: {fileID: 11400000, guid: 43f98ef8df2ebed448516a35dc0e3d05, type: 2}
+  - unlocked: 0
+    card: {fileID: 11400000, guid: cb1baf7d181ad9244b1865fde2dbc88e, type: 2}
+  - unlocked: 0
+    card: {fileID: 11400000, guid: 579d6263442727149ba3b84a4ebe1e30, type: 2}
+  - unlocked: 0
+    card: {fileID: 11400000, guid: f8381e22c583feb49a73ade381a03acd, type: 2}
+  - unlocked: 0
+    card: {fileID: 11400000, guid: 20c3ff69209416d45951ab68753517d5, type: 2}
+  - unlocked: 0
+    card: {fileID: 11400000, guid: af54ace4c35e1c74798b11a799cef9f6, type: 2}
+--- !u!4 &380951934
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380951932}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 386.35837, y: 175.4378, z: -1579.3419}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &389488397
 GameObject:
   m_ObjectHideFlags: 0
@@ -4737,3 +4835,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2109119555}
   m_CullTransparentMesh: 0
+--- !u!1 &2130772609
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2130772611}
+  - component: {fileID: 2130772610}
+  m_Layer: 0
+  m_Name: AllDecks
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2130772610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130772609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c62adddcad4574749ab6135de459f82c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allDeck: []
+--- !u!4 &2130772611
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130772609}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 386.35837, y: 175.4378, z: -1579.3419}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
