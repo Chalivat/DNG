@@ -69,11 +69,6 @@ public class Client : MonoBehaviour
         tcp.Connect(clientServerIp, clientServerPort);
     }
 
-    public void LaunchMatchmaking()
-    {
-        ClientSend.SearchMatch();
-    }
-
     public class TCP
     {
         public TcpClient socket;

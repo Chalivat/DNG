@@ -7,9 +7,10 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
-    public GameObject mainMenu;
+    public GameObject connectionMenu;
     public GameObject registerMenu;
     public GameObject loginMenu;
+    public GameObject mainMenu;
 
     public GameObject deckSelectionMenu;
 
@@ -19,8 +20,6 @@ public class UIManager : MonoBehaviour
 
     public InputField Login_usernameField;
     public InputField Login_passwordField;
-
-    public InputField DeckSelectionField;
 
     public Text label;
 
@@ -37,41 +36,49 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void LaunchMatch()
+    public void GoToConnection()
     {
-        Client.instance.LaunchMatchmaking();
-    }
-
-    public void GoToMain()
-    {
-        mainMenu.SetActive(true);
+        connectionMenu.SetActive(true);
     }
 
     public void GoToRegister()
     {
-        mainMenu.SetActive(false);
+        connectionMenu.SetActive(false);
 
         registerMenu.SetActive(true);
     }
 
     public void GoToLogin()
     {
-        mainMenu.SetActive(false);
+        connectionMenu.SetActive(false);
 
         loginMenu.SetActive(true);
     }
 
     public void GoToDeckSelection()
     {
-        loginMenu.SetActive(false);
+        mainMenu.SetActive(false);
 
         deckSelectionMenu.SetActive(true);
     }
 
-    public void BackToMainMenu()
+    public void GoToMain()
+    {
+        loginMenu.SetActive(false);
+
+        mainMenu.SetActive(true);
+    }
+
+    public void BackToConnectionMenu()
     {
         loginMenu.SetActive(false);
         registerMenu.SetActive(false);
+
+        connectionMenu.SetActive(true);
+    }
+
+    public void BackToMainMenu()
+    {
         deckSelectionMenu.SetActive(false);
 
         mainMenu.SetActive(true);

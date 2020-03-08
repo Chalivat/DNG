@@ -11,7 +11,7 @@ public class ClientHandle
 
         Debug.Log($"Message from server: {_msg}");
         Client.instance.myId = _myId;
-        UIManager.instance.GoToMain();
+        UIManager.instance.GoToConnection();
         ClientSend.WelcomeReceived();
     }
 
@@ -56,7 +56,7 @@ public class ClientHandle
 
         if (loginBool)
         {
-            UIManager.instance.GoToDeckSelection();
+            UIManager.instance.GoToMain();
         }
 
         Debug.Log($"Message from server: {msgPart[0]} AS {msgPart[1]}");
@@ -80,6 +80,8 @@ public class ClientHandle
             if(item != "")
             AllDecks.instance.LoadDeck(item);
         }
+
+        DeckSelection.instance.InitializeDeck();
     }
 
 }

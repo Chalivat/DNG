@@ -21,13 +21,13 @@ public class ClientSend
         }
     }
 
-    public static void SearchMatch()
+    public static void SearchMatch(int _power)
     {
         using (Packet _packet = new Packet((int)ClientPackets.researchReceived))
         {
             _packet.Write(Client.instance.myId);
-            //_packet.Write(Client.instance);
-            _packet.Write(UIManager.instance.DeckSelectionField.text);
+
+            _packet.Write(_power);
 
             SendTCPData(_packet);
         }
